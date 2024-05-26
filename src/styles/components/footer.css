@@ -1,0 +1,31 @@
+/* FOOTER */
+
+/* @media (max-width: 768px) {
+    .footer {
+        position: relative;
+    }
+}
+ */
+.section-help .nav-link {
+    padding-left: 0;
+    /* Elimina el padding izquierdo */
+    color: white;
+    /* Color de los enlaces */
+}
+
+.section-help .nav-link:hover {
+    text-decoration: underline;
+    /* Subraya los enlaces al pasar el cursor por encima */
+}
+
+.section-help .nav-link:not(:last-child) {
+    margin-bottom: 10px;
+    /* Espaciado entre los elementos de la lista */
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: white;
+    margin: 20px 0;
+}

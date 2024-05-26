@@ -1,0 +1,68 @@
+/* BANNER */
+.banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.banner-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    width: 80%;
+    height: auto;
+    max-height: 80vh; /* Establecer una altura máxima relativa a la altura de la pantalla */
+}
+
+.banner h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.banner p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.banner-button {
+    font-size: 1rem;
+    padding: 5px 10px;
+    bottom: 10px;
+    /* Ajustar la posición del botón dentro del .banner-content */
+}
+
+@media (min-width: 768px) {
+
+    .banner-content {
+        width: auto;
+        max-height: 100%;
+    }
+
+
+    .banner h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .banner p {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .banner-button {
+        font-size: 1.2rem;
+        padding: 3px 6px;
+    }
+}

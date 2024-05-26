@@ -1,12 +1,14 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import '../../styles/components/footer.css'
 
 const Footer = () => {
   return (
-    <footer className="bg-dark text-white mt-5 p-4">
+    <footer className="bg-dark text-white mt-5 p-4 footer">
       <Container>
         <Row>
           <Col md={2}>
@@ -22,11 +24,11 @@ const Footer = () => {
           </Col>
           <Col md={2}>
             <h5>Help</h5>
-            <div>
-              <ul>
-                <li>FAQ</li>
-                <li>Contact us</li>
-              </ul>
+            <div className="section-help">
+              <Nav className="flex-column">
+                <Nav.Link as={Link} to="/faq" className="text-white p-0 mb-2">FAQ</Nav.Link>
+                <Nav.Link as={Link} to="/contact" className="text-white p-0">Contact us</Nav.Link>
+              </Nav>
             </div>
           </Col>
           <Col md={3}>

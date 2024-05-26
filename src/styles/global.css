@@ -1,0 +1,30 @@
+/* src/styles/global.css */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    box-sizing: border-box;
+  }
+  
+  #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+/* HEADER */
+
+.home-header Header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que el header esté siempre en la parte superior */
+  }
+  
+  
+main {
+    margin-top: 20px; /* Ajusta según la altura de tu header */
+    flex: 1;
+  }
+  
