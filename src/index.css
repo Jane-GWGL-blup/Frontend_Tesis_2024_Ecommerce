@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +10,28 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+
+/* Agrega este CSS en tu archivo de estilos global o en un archivo CSS separado */
+
+/* ADMIN */
+/* .admin-header-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: calc(100% - 220px); 
+
+}
+
+.admin-sidebar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 220px; 
+} */
+
+.admin-profile{
+  background-color: darkred;
+  
 }
