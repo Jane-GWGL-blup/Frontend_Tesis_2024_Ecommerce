@@ -19,7 +19,7 @@ const Header = ({ onLogout }) => {
           <Nav.Item>
             <Nav.Link href="#" className="align-items-center">
               <FontAwesomeIcon icon={faHome} size="lg" /> {/* Icono para Inicio */}
-              <span className="d-none d-md-inline ml-2 mx-2">Inicio</span> {/* imagen para pantallas pequeñas */}
+              <span className="d-none d-md-inline ml-2 mx-2">Categorias</span> {/* imagen para pantallas pequeñas */}
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
@@ -29,7 +29,7 @@ const Header = ({ onLogout }) => {
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="#" className="d-flex align-items-center">
+            <Nav.Link as={Link} to="/products" className="d-flex align-items-center">
               <FontAwesomeIcon icon={faBox} size="lg" /> {/* Icono para Products */}
               <span className="d-none d-md-inline ml-2 mx-2">Products</span> {/* Texto para pantallas pequeñas */}
             </Nav.Link>

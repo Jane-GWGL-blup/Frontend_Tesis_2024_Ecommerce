@@ -7,6 +7,7 @@ import HomePage from './pages/home/HomePage'
 import RegisterPage from './pages/auth/RegisterPage'
 import LoginPage from './pages/auth/LoginPage'
 import AdminDashboardPage from './pages/admin/AdminDashboardPage';
+import ProductListPage from './pages/product/ProductListPage';
 /* import UserProfile from './pages/UserProfile'; */
 
 function App(){
@@ -17,6 +18,7 @@ function App(){
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/admin" element={<AdminDashboardPage />} />
+          <Route path="/products" element={<ProductListPage />} />
         </Routes>
       </Router>
   );

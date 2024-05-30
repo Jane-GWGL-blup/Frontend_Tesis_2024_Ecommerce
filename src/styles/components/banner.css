@@ -8,7 +8,7 @@
 
 .banner-image {
     width: 100%;
-    height: auto;
+    height: 70vh;
     object-fit: cover;
 }
 
@@ -24,6 +24,8 @@
     width: 80%;
     height: auto;
     max-height: 80vh; /* Establecer una altura máxima relativa a la altura de la pantalla */
+    box-sizing: border-box; /* Añadir esto para asegurar que el padding no cause desbordamiento */
+    overflow: hidden; /* Ocultar cualquier contenido que se desborde */
 }
 
 .banner h2 {
@@ -43,13 +45,14 @@
     /* Ajustar la posición del botón dentro del .banner-content */
 }
 
+/* OJO MEJORAR LO DEL BANNER - SE PRODUCE DESBORDE CON .banner-content */
+
 @media (min-width: 768px) {
 
     .banner-content {
         width: auto;
         max-height: 100%;
     }
-
 
     .banner h2 {
         font-size: 2.5rem;
@@ -64,5 +67,28 @@
     .banner-button {
         font-size: 1.2rem;
         padding: 3px 6px;
+    }
+}
+
+@media (max-width: 767px) {
+    .banner-content {
+        width: 90%;
+        max-height: 60vh; /* Ajuste la altura máxima para pantallas más pequeñas */
+        padding: 10px; /* Reducir el padding para pantallas más pequeñas */
+    }
+
+    .banner h2 {
+        font-size: 1.2rem; /* Ajustar el tamaño de la fuente para pantallas más pequeñas */
+        margin-bottom: 8px;
+    }
+
+    .banner p {
+        font-size: 0.9rem; /* Ajustar el tamaño de la fuente para pantallas más pequeñas */
+        margin-bottom: 8px;
+    }
+
+    .banner-button {
+        font-size: 0.9rem; /* Ajustar el tamaño de la fuente para pantallas más pequeñas */
+        padding: 4px 8px;
     }
 }

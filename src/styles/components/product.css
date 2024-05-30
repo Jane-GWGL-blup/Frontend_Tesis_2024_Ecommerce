@@ -1,0 +1,28 @@
+/* ProductList.css */
+/* para que los productos se muestren correctamente en filas y columnas. */
+.product-list {
+    margin: 20px 0;
+  }
+  
+  .product-list h2 {
+    margin-bottom: 20px;
+  }
+  
+  .product-list .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .product-list .col-md-4 {
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  

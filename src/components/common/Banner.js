@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel, Button } from 'react-bootstrap';
+import { Carousel} from 'react-bootstrap';
 import '../../styles/components/banner.css'
 
 const Banner = ({ banners }) => {
@@ -12,13 +12,13 @@ const Banner = ({ banners }) => {
             src={banner.imageUrl}
             alt={`Slide ${index + 1}`}
           />
-          <Carousel.Caption className="banner-content">
+          {/*<Carousel.Caption className="banner-content">
             <h2>{banner.title}</h2>
             <p>{banner.subtitle}</p>
             <Button href={banner.ctaLink} variant="primary" className="banner-button">
               {banner.ctaText}
             </Button>
-          </Carousel.Caption>
+          </Carousel.Caption>*/}
         </Carousel.Item>
       ))}
     </Carousel>
