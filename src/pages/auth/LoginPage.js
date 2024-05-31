@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import LoginForm from '../../components/auth/LoginForm';
 import Footer from '../../components/common/Footer';
 import Header from '../../components/common/Header';
+import AlertModal from '../../components/common/AlertModal';
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
+
+  //Para el modal de alerta
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,18 +25,28 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.email || !formData.password) {
-      alert('Please fill in all fields');
-      return;
+      setModalMessage('Please fill in all fields');
+      setShowModal(true);
+/*       alert('Please fill in all fields');
+ */      return;
     }
     // Aquí podrías manejar el envío del formulario, por ejemplo, enviar los datos a una API
     console.log('Datos del formulario:', formData);
   };
 
+  const handleCloseModal = () => setShowModal(false);
+
   return (
     <div>
-      <Header/>
+      <Header />
       <LoginForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
-      <Footer/>
+      <Footer />
+      <AlertModal
+      show={showModal}
+      handleClose={handleCloseModal}
+      title='Login error '
+      message={modalMessage}
+      />
     </div>
   )
 }

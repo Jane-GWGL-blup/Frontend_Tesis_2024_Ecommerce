@@ -17,7 +17,7 @@ const LoginForm = ({ formData, handleChange, handleSubmit }) => {
             name='email'
             value={formData.email}
             onChange={handleChange} 
-            placeholder='Enter email'/>
+            placeholder='Enter email: example@gmail.com'/>
           </Form.Group>
           <Form.Group controlId="formPassword" className='mt-2'>
             <Form.Label>Password</Form.Label>
