@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Nav, NavDropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faClipboardList, faBox, faUser } from '@fortawesome/free-solid-svg-icons'; // Importar los iconos que necesites
@@ -52,9 +53,15 @@ const AdminSidebar = ({onLogout}) => {
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="#" className="d-flex align-items-center">
+              <Nav.Link as={Link} to="/admin-products"  className="d-flex align-items-center">
                 <FontAwesomeIcon icon={faBox} size="lg"/> {/* Icono para Products */}
                 <span className="d-none d-md-inline ml-2 mx-2">Products</span> {/* Texto para pantallas pequeñas */}
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="#" className="d-flex align-items-center">
+                <FontAwesomeIcon icon={faBox} size="lg"/> {/* Icono para Products */}
+                <span className="d-none d-md-inline ml-2 mx-2">Categories</span> {/* Texto para pantallas pequeñas */}
               </Nav.Link>
             </Nav.Item>
             {/* Agregar más elementos del menú aquí */}

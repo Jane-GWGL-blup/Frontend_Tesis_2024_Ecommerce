@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import LoginForm from '../../components/auth/LoginForm';
 import Footer from '../../components/common/Footer';
 import Header from '../../components/common/Header';
-import AlertModal from '../../components/common/AlertModal';
+import AlertModal from '../../components/common/modals/AlertModal';
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({

@@ -5,11 +5,6 @@ import AdminSidebar from '../../components/admin/AdminSidebar';
 import AdminDashboard from '../../components/admin/AdminDashboard';
 
 const AdminDashboardPage = () => {
-/*   const [showSidebar, setShowSidebar] = useState(false);
-
-  const toggleSidebar = () => {
-      setShowSidebar(!showSidebar);
-  }; */
     // Estado local para la simulación de usuario
     const [user, setUser] = useState({
         id: 1,

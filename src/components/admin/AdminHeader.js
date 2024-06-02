@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
@@ -28,7 +29,7 @@ const AdminHeader = ({ onLogout }) => {
             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item as="div">
-              <Nav.Link onClick={onLogout} className="text-dark">Logout</Nav.Link>
+              <Nav.Link as={Link} to="/" onClick={onLogout} className="text-dark">Logout</Nav.Link>
             </NavDropdown.Item>
           </NavDropdown>
         </Nav>

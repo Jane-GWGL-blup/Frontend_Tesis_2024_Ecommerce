@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container, Form, Button, Row } from 'react-bootstrap';
 import '../../styles/components/auth.css'
 
-const RegisterForm = ({ formData, handleChange, handleSubmit, validated, passwordError }) => {
+const RegisterForm = ({ formData, handleChange, handleSubmit, validated, emailError, passwordError, confirmPasswordError }) => {
 
   return (
     <Container className='mt-5'>
@@ -12,52 +12,58 @@ const RegisterForm = ({ formData, handleChange, handleSubmit, validated, passwor
         {/*Form for Register */}
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Row className="mb-3">
-            <Form.Group controlId="validationCustom01" className='mt-2'>
-              <Form.Label>Email</Form.Label>
+            <Form.Group className='mt-2'>
+              <Form.Label>
+                Email <span className="text-danger">*</span>
+              </Form.Label>
               <Form.Control
                 type='email'
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
                 placeholder='Enter email: example@gmail.com'
-                required />
+                required
+                isInvalid={!!emailError} />
               <Form.Control.Feedback>
                 Looks good!
               </Form.Control.Feedback>
               <Form.Control.Feedback type="invalid">
-                Please provide a email.
+                {emailError || 'Please provide an email.'}
               </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group controlId="validationCustom02" className='mt-2'>
-              <Form.Label controlId="formPassword">Password</Form.Label>
+            <Form.Group className='mt-2'>
+              <Form.Label >
+                Password  <span className="text-danger">*
+                </span></Form.Label>
               <Form.Control
                 type='password'
                 name='password'
                 value={formData.password}
                 onChange={handleChange}
                 placeholder='Enter password'
-                required />
+                required
+                isInvalid={!!passwordError} />
               <Form.Control.Feedback>
                 Looks good!
               </Form.Control.Feedback>
               <Form.Control.Feedback type="invalid">
-                Please provide a password.
+                {passwordError || 'Please provide a password.'}
               </Form.Control.Feedback>
-              {passwordError && (
-                <div className="text-danger">{passwordError}</div>
-              )}
             </Form.Group>
-            <Form.Group controlId="validationCustom03" className='mt-2'>
-              <Form.Label>Confirm Password</Form.Label>
+            <Form.Group className='mt-2'>
+              <Form.Label>
+                Confirm Password  <span className="text-danger">*</span>
+              </Form.Label>
               <Form.Control
                 type='password'
                 name='confirmPassword'
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 placeholder='Enter password again'
-                required />
+                required
+                isInvalid={!!confirmPasswordError} />
               <Form.Control.Feedback type="invalid">
-                Please provide a confirm password.
+                {confirmPasswordError || 'Please provide a confirm password.'}
               </Form.Control.Feedback>
             </Form.Group>
           </Row>
@@ -74,3 +80,6 @@ const RegisterForm = ({ formData, handleChange, handleSubmit, validated, passwor
 }
 
 export default RegisterForm
+/* {passwordError && (
+  <div className="text-danger">{passwordError}</div>
+)} */

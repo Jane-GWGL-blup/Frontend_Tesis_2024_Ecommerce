@@ -8,6 +8,7 @@ import RegisterPage from './pages/auth/RegisterPage'
 import LoginPage from './pages/auth/LoginPage'
 import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 import ProductListPage from './pages/product/ProductListPage';
+import ManageProductsPage from './pages/admin/ManageProductPage';
 /* import UserProfile from './pages/UserProfile'; */
 
 function App(){
@@ -19,6 +20,7 @@ function App(){
           <Route path="/login" element={<LoginPage />} />
           <Route path="/admin" element={<AdminDashboardPage />} />
           <Route path="/products" element={<ProductListPage />} />
+          <Route path="/admin-products" element={<ManageProductsPage />} />
         </Routes>
       </Router>
   );
