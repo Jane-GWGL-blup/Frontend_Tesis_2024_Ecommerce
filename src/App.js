@@ -9,6 +9,7 @@ import LoginPage from './pages/auth/LoginPage'
 import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 import ProductListPage from './pages/product/ProductListPage';
 import ManageProductsPage from './pages/admin/ManageProductPage';
+import AdminProductCreate from './pages/admin/AdminProductCreate';
 /* import UserProfile from './pages/UserProfile'; */
 
 function App(){
@@ -21,6 +22,7 @@ function App(){
           <Route path="/admin" element={<AdminDashboardPage />} />
           <Route path="/products" element={<ProductListPage />} />
           <Route path="/admin-products" element={<ManageProductsPage />} />
+          <Route path="/admin-products-create" element={<AdminProductCreate />} />
         </Routes>
       </Router>
   );

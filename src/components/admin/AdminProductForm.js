@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Form, Button} from 'react-bootstrap';
 
 const AdminProductForm = ({ formData, handleChange, handleSubmit, handleImageChange, validated }) => {
   const [previewImage, setPreviewImage] = useState(null);
@@ -77,8 +78,11 @@ const AdminProductForm = ({ formData, handleChange, handleSubmit, handleImageCha
         </Form.Control.Feedback>
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button className='m-2' variant="primary" type="submit">
         Submit
+      </Button>
+      <Button className='m-2' variant="danger" as={Link} to="/admin-products">
+        Close
       </Button>
     </Form>
   );
