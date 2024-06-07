@@ -1,8 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
-import AdminHeader from '../../components/admin/AdminHeader';
+/* import AdminHeader from '../../components/admin/AdminHeader';
 import AdminSidebar from '../../components/admin/AdminSidebar';
-import AdminDashboard from '../../components/admin/AdminDashboard';
+import AdminDashboard from '../../components/admin/AdminDashboard'; */
+import {AdminHeader, AdminSidebar, AdminDashboard} from '../../components/'
 
 const AdminDashboardPage = () => {
     // Estado local para la simulación de usuario

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import RegisterForm from '../../components/auth/RegisterForm'
+/* import RegisterForm from '../../components/auth/RegisterForm'
 import Footer from '../../components/common/Footer'
 import Header from '../../components/common/Header'
-import AlertModal from '../../components/common/modals/AlertModal';
+import AlertModal from '../../components/common/modals/AlertModal'; */
+import { AlertModal, Footer, Header, RegisterForm } from '../../components';
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({

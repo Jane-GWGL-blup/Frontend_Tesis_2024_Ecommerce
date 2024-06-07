@@ -1,10 +1,11 @@
 /* 30/05/24 */
 /* ProductListPage, muestra la lista completa de productos. */
 import React from 'react';
-import Header from '../../components/common/Header';
+/* import Header from '../../components/common/Header';
 import Footer from '../../components/common/Footer';
 import LoadingComponent from '../../components/common/Spinner';
-import ProductList from '../../components/product/ProductList';
+import ProductList from '../../components/product/ProductList'; */
+import { Header, Footer, LoadingComponent, ProductList} from '../../components';
 
 const ProductListPage = () => {
   const allProducts = [

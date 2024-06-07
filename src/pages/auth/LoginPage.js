@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import LoginForm from '../../components/auth/LoginForm';
+/* import LoginForm from '../../components/auth/LoginForm';
 import Footer from '../../components/common/Footer';
 import Header from '../../components/common/Header';
-import AlertModal from '../../components/common/modals/AlertModal';
+import AlertModal from '../../components/common/modals/AlertModal'; */
+import {AlertModal, Footer, Header, LoginForm} from '../../components';
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import AdminProductForm from '../../components/admin/AdminProductForm';
+/* import AdminProductForm from '../../components/admin/AdminProductForm';
 import AdminHeader from '../../components/admin/AdminHeader';
-import AdminSidebar from '../../components/admin/AdminSidebar';
+import AdminSidebar from '../../components/admin/AdminSidebar'; */
+import {AdminHeader, AdminSidebar, AdminProductForm}  from '../../components';
 
 const AdminProductCreate = () => {
     const [formData, setFormData] = useState({

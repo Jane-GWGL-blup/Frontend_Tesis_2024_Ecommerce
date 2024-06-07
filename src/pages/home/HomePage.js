@@ -1,10 +1,13 @@
 import React from 'react';
-import Header from '../../components/common/Header';
+/* import Header from '../../components/common/Header';
 import Footer from '../../components/common/Footer';
 import LoadingComponent from '../../components/common/Spinner';
 import Banner from '../../components/common/Banner';
-import ProductList from '../../components/product/ProductList';
-
+import ProductList from '../../components/product/ProductList'; */
+import {
+  Header, Footer, LoadingComponent,
+  Banner, ProductList
+} from '../../components';
 
 const HomePage = () => {
 
