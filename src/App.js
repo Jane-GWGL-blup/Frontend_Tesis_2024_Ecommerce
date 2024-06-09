@@ -1,31 +1,48 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-/* import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import HomePage from './pages/HomePage'; */
-import HomePage from './pages/home/HomePage'
+
+/* import HomePage from './pages/home/HomePage'
 import RegisterPage from './pages/auth/RegisterPage'
 import LoginPage from './pages/auth/LoginPage'
 import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 import ProductListPage from './pages/product/ProductListPage';
 import ManageProductsPage from './pages/admin/ManageProductPage';
 import AdminProductCreate from './pages/admin/AdminProductCreate';
+import AdminLayout from './components/admin/AdminLayout'; */
 /* import UserProfile from './pages/UserProfile'; */
 
-function App(){
+import {
+  HomePage, 
+  RegisterPage, LoginPage,
+  AdminDashboardPage, ManageProductPage, ManageCategoryPage, ProductCreatePage, CategoryCreatePage,
+  ProductListPage
+} from './pages'
+
+import AdminLayout from './components/admin/AdminLayout';
+
+function App() {
   return (
-      <Router>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/admin" element={<AdminDashboardPage />} />
-          <Route path="/products" element={<ProductListPage />} />
-          <Route path="/admin-products" element={<ManageProductsPage />} />
-          <Route path="/admin-products-create" element={<AdminProductCreate />} />
-        </Routes>
-      </Router>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+
+        {/* Rutas para productos accesibles por usuarios y administradores */}
+        <Route path="/products" element={<ProductListPage />} />
+        <Route path="/categories" element={<ProductListPage />} />
+
+        {/* Rutas de administración anidadas */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<AdminDashboardPage />} />
+          <Route path="products" element={<ManageProductPage />} />
+          <Route path="products/create" element={<ProductCreatePage />} />
+          <Route path="categories" element={<ManageCategoryPage />} />
+          <Route path="categories/create" element={<CategoryCreatePage />} />
+        </Route>
+      </Routes>
+    </Router>
   );
-}; 
+};
 
 export default App;

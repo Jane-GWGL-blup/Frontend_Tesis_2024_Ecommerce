@@ -1,9 +1,12 @@
 // src/components/index.js
 export { default as AdminHeader } from './admin/AdminHeader';
 export { default as AdminSidebar } from './admin/AdminSidebar';
+export { default as AdminLayout } from './admin/AdminLayout';
 export { default as AdminDashboard } from './admin/AdminDashboard';
 export { default as AdminProductForm} from './admin/AdminProductForm';
 export { default as AdminManageProduct } from './admin/AdminManageProduct';
+export { default as AdminCategoryForm} from './admin/AdminCategoryForm';
+export { default as AdminManageCategory } from './admin/AdminManageCategory';
 
 export { default as LoginForm } from './auth/LoginForm';
 export { default as RegisterForm } from './auth/RegisterForm';

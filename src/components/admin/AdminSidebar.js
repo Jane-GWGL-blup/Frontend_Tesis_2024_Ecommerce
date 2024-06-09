@@ -1,10 +1,21 @@
 import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Nav, NavDropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faClipboardList, faBox, faUser } from '@fortawesome/free-solid-svg-icons'; // Importar los iconos que necesites
+import '../../styles/components/admin.css'
 
 const AdminSidebar = ({ onLogout }) => {
+  // Estado local para la simulación de usuario
+  const [user, setUser] = useState({
+    id: 1,
+    username: 'AdminUser',
+    email: 'admin@example.com',
+    role: 'admin',
+    isLoggedIn: true
+  });
+
   return (
     <nav className="col-md-2 col-2 bg-light sidebar">
       <div className="sidebar-sticky ">
@@ -14,7 +25,7 @@ const AdminSidebar = ({ onLogout }) => {
             title={
               <span>
                 <FontAwesomeIcon icon={faUser} className="px-2" />
-                AdministradorG
+                {user.username}
               </span>
             }
             id="basic-nav-dropdown"
@@ -24,6 +35,7 @@ const AdminSidebar = ({ onLogout }) => {
             </NavDropdown.Item>
           </NavDropdown>
         </Nav>
+
         {/* Este NavDropdown estará a la derecha en pantallas pequeñas */}
         <Nav className="d-lg-none">
           <NavDropdown
@@ -39,11 +51,12 @@ const AdminSidebar = ({ onLogout }) => {
             </NavDropdown.Item>
           </NavDropdown>
         </Nav>
+        <div className='divider-admin' />
         <Nav className="flex-column px-2">
           <Nav.Item>
-            <Nav.Link href="#" className="d-flex align-items-center">
+            <Nav.Link as={Link} to="/admin" className="d-flex align-items-center">
               <FontAwesomeIcon icon={faHome} size="lg" alt="" /> {/* Icono para Inicio */}
-              <span className="d-none d-md-inline ml-2 mx-2">Inicio</span> {/* Texto para pantallas pequeñas */}
+              <span className="d-none d-md-inline ml-2 mx-2">Dashboard</span> {/* Texto para pantallas pequeñas */}
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
@@ -52,14 +65,15 @@ const AdminSidebar = ({ onLogout }) => {
               <span className="d-none d-md-inline ml-2 mx-2">Orders</span> {/* Texto para pantallas pequeñas */}
             </Nav.Link>
           </Nav.Item>
+          <section className="d-none d-md-inline ml-2 mx-2"><span>Managment</span></section>
           <Nav.Item>
-            <Nav.Link as={Link} to="/admin-products" className="d-flex align-items-center">
+            <Nav.Link as={Link} to="/admin/products" className="d-flex align-items-center">
               <FontAwesomeIcon icon={faBox} size="lg" title="Products" /> {/* Icono para Products */}
               <span className="d-none d-md-inline ml-2 mx-2">Products</span> {/* Texto para pantallas pequeñas */}
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="#" className="d-flex align-items-center">
+            <Nav.Link as={Link} to="/admin/categories" className="d-flex align-items-center">
               <FontAwesomeIcon icon={faBox} size="lg" title="Categories" /> {/* Icono para Products */}
               <span className="d-none d-md-inline ml-2 mx-2">Categories</span> {/* Texto para pantallas pequeñas */}
             </Nav.Link>

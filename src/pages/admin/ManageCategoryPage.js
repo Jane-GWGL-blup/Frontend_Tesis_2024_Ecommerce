@@ -4,10 +4,10 @@ import AdminSidebar from '../../components/admin/AdminSidebar';
 import AdminManageProduct from '../../components/admin/AdminManageProduct'; */
 /* import { AdminHeader, AdminSidebar, AdminManageProduct } from '../../components';
  */
-import {  AdminManageProduct } from '../../components';
+import {  AdminManageCategory } from '../../components';
 
 
-const ManageProductPage = () => {
+const ManageCategoryPage = () => {
 
   // Estado local para la simulación de usuario
   const [user, setUser] = useState({
@@ -29,11 +29,11 @@ const ManageProductPage = () => {
 
   return (
     <div>
-      <h1>Manage Products</h1>
-      <AdminManageProduct />
+      <h1>Manage Categories</h1>
+      <AdminManageCategory />
     </div>
   );
 
 };
 
-export default ManageProductPage;
+export default ManageCategoryPage;

@@ -6,7 +6,7 @@ const AdminManageProduct = () => {
   return (
     <div>
       <div>
-        <Button as={Link} to="/admin-products-create" variant='outline-primary'> Agregar producto </Button>
+        <Button as={Link} to="/admin/products/create" variant='outline-primary'> Agregar producto </Button>
       </div>
       <Table responsive>
         <thead>
