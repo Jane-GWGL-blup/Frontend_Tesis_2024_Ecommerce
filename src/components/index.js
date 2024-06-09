@@ -10,8 +10,9 @@ export { default as AdminManageCategory } from './admin/AdminManageCategory';
 
 export { default as LoginForm } from './auth/LoginForm';
 export { default as RegisterForm } from './auth/RegisterForm';
-/* export { default as ForgotPasswordForm } from './auth/ForgotPasswordForm';
- */
+export { default as ForgotPasswordForm } from './auth/ForgotPasswordForm';
+export { default as ResetPasswordForm } from './auth/ResetPasswordForm';
+
 export { default as CartItem } from './cart/CartItem';
 export { default as CartSummary } from './cart/CartSummary';
 

@@ -13,7 +13,7 @@ import AdminLayout from './components/admin/AdminLayout'; */
 
 import {
   HomePage, 
-  RegisterPage, LoginPage,
+  RegisterPage, LoginPage, ForgotPasswordPage, ResetPasswordPage,
   AdminDashboardPage, ManageProductPage, ManageCategoryPage, ProductCreatePage, CategoryCreatePage,
   ProductListPage
 } from './pages'
@@ -27,6 +27,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage/>} />
 
         {/* Rutas para productos accesibles por usuarios y administradores */}
         <Route path="/products" element={<ProductListPage />} />

@@ -34,6 +34,8 @@ const LoginForm = ({ formData, handleChange, handleSubmit }) => {
                 </Button>
             </div>
             <Link to="/register" className='back-form'>Not got a My Account? Join now!</Link>
+            <Link to="/forgot-password" className='back-form'>Forgot password?</Link>
+
         </Form>
       </div>
   </Container>

@@ -8,8 +8,9 @@ export { default as CategoryCreatePage } from './admin/CategoryCreatePage';
 
 export { default as LoginPage } from './auth/LoginPage';
 export { default as RegisterPage } from './auth/RegisterPage';
-/* export { default as ForgotPasswordForm } from './auth/ForgotPasswordForm';
- */
+export { default as ForgotPasswordPage } from './auth/ForgotPasswordPage';
+export { default as ResetPasswordPage } from './auth/ResetPasswordPage';
+
 export { default as CartPage } from './cart/CartPage';
 
 
