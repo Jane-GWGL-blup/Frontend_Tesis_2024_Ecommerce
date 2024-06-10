@@ -7,6 +7,8 @@ export { default as AdminProductForm} from './admin/AdminProductForm';
 export { default as AdminManageProduct } from './admin/AdminManageProduct';
 export { default as AdminCategoryForm} from './admin/AdminCategoryForm';
 export { default as AdminManageCategory } from './admin/AdminManageCategory';
+export { default as AdminEditCategoryForm } from './admin/AdminEditCategoryForm';
+
 
 export { default as LoginForm } from './auth/LoginForm';
 export { default as RegisterForm } from './auth/RegisterForm';

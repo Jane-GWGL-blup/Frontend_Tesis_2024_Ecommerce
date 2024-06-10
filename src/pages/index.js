@@ -5,6 +5,8 @@ export { default as ManageProductPage} from './admin/ManageProductPage';
 export { default as ManageCategoryPage} from './admin/ManageCategoryPage';
 export { default as ProductCreatePage} from './admin/ProductCreatePage';
 export { default as CategoryCreatePage } from './admin/CategoryCreatePage';
+export { default as CategoryEditPage } from './admin/CategoryEditPage';
+
 
 export { default as LoginPage } from './auth/LoginPage';
 export { default as RegisterPage } from './auth/RegisterPage';

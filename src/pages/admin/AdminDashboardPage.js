@@ -30,7 +30,20 @@ const AdminDashboardPage = () => {
     return (
     <div>
         <h1>Welcome, {user.username}!</h1>
-        <AdminDashboard />
+
+        <h2>Admin Dashboard</h2>
+        <div className='row'>
+            <div className='col'>
+
+            </div>
+            <div className='col'>
+
+            </div>
+            <div className='col-lg-4'>
+            <AdminDashboard />
+            </div>
+        </div>
+
     </div>
     );
 };

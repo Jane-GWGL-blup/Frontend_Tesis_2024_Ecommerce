@@ -6,6 +6,14 @@ import { faTrash, faPencil } from '@fortawesome/free-solid-svg-icons'; // Import
 import '../../styles/components/admin.css'
 
 const AdminManageCategory = () => {
+
+   // Simulación de datos de categorías
+   const categories = [
+    { id: 1, name: 'Category 1', description: 'Description 1' },
+    { id: 2, name: 'Category 2', description: 'Description 2' },
+    // Agrega más categorías según sea necesario
+  ];
+
   return (
     <div>
       <div>
@@ -17,27 +25,28 @@ const AdminManageCategory = () => {
             <th>#</th>
             <th>Name</th>
             <th>Description</th>
-            <th></th>
-            <th></th>
+            <th>Edit </th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            {Array.from({ length: 2 }).map((_, index) => (
-              <td key={index}>Table cell {index}</td>
-            ))}
-            <td>
-              <Link to={"#"}>
-                <FontAwesomeIcon icon={faPencil} className="px-2 color-icon-edit" />
-              </Link>
-            </td>
-            <td>
-              <Link to={"#"}>
-                <FontAwesomeIcon icon={faTrash} className="px-2 color-icon-delete" />
-              </Link>
-            </td>
-          </tr>
+          {categories.map((category, index) => (
+            <tr key={category.id}>
+              <td>{index + 1}</td>
+              <td>{category.name}</td>
+              <td>{category.description}</td>
+              <td>
+                <Link to={`/admin/categories/edit/${category.id}`}>
+                  <FontAwesomeIcon icon={faPencil} className="px-2 color-icon-edit" />
+                </Link>
+              </td>
+              <td>
+                <Link to={"#"}>
+                  <FontAwesomeIcon icon={faTrash} className="px-2 color-icon-delete" />
+                </Link>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </div>

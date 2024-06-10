@@ -15,6 +15,7 @@ import {
   HomePage, 
   RegisterPage, LoginPage, ForgotPasswordPage, ResetPasswordPage,
   AdminDashboardPage, ManageProductPage, ManageCategoryPage, ProductCreatePage, CategoryCreatePage,
+  CategoryEditPage,
   ProductListPage
 } from './pages'
 
@@ -41,6 +42,7 @@ function App() {
           <Route path="products/create" element={<ProductCreatePage />} />
           <Route path="categories" element={<ManageCategoryPage />} />
           <Route path="categories/create" element={<CategoryCreatePage />} />
+          <Route path="categories/edit/:id" element={<CategoryEditPage />} />
         </Route>
       </Routes>
     </Router>

@@ -81,7 +81,6 @@ const AdminDashboard = () => {
 
   return (
     <div className="admin-dashboard">
-      <h2>Admin Dashboard</h2>
       {/* Contenido de estadísticas */}
       <div className="statistics">
         <h3>Estadísticas de Ventas</h3>

@@ -1,2 +1,24 @@
+.navbar-toggle{
+    margin-right: auto;
+}
+.user-dropdown-toggle {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    color: #9B9D9E;
+}
 
+.user-dropdown-toggle:hover {
+    color: #bcbcbd;
+}
 
+.cart-dropdown-toggle {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    color: #9B9D9E;
+}
+
+.cart-dropdown-toggle:hover{
+    color: #bcbcbd;
+}
