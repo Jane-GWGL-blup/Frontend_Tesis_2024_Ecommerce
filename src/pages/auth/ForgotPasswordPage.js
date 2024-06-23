@@ -25,9 +25,7 @@ const ForgotPasswordPage = () => {
 
   return (
     <div>
-          <Header />
       <ForgotPasswordForm handleSubmit={handleSubmit} />
-      <Footer />
       <AlertModal show={modalShow} handleClose={handleClose} title={modalTitle} message={modalMessage} />
     </div>
   )

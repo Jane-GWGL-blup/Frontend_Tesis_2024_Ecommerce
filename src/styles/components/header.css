@@ -1,11 +1,42 @@
-.navbar-toggle{
+@import url('../variables.css');
+
+
+.header-store{
+    background: var(--background-header-store);
+    border-bottom: 5px groove var(--color-lead2);;
+}
+
+.search-header input{
+    background-color: var(--color-lead);
+}
+
+.text-nav-header {
+    color: var(--color-gold);
+}
+
+.icon-nav-header-color {
+    color: var(--color-gold);
+}
+
+.text-nav-header:hover {
+    color: var(--color-lead)
+}
+
+.icon-nav-header-color:hover {
+    color: var(--color-lead)
+}
+
+
+.navbar-toggle {
     margin-right: auto;
 }
+
 .user-dropdown-toggle {
     background-color: transparent !important;
     border: none !important;
     padding: 0 !important;
-    color: #9B9D9E;
+    color: var(--color-gold);
+    margin-left: 30px;
 }
 
 .user-dropdown-toggle:hover {
@@ -13,12 +44,66 @@
 }
 
 .cart-dropdown-toggle {
-    background-color: transparent !important;
     border: none !important;
-    padding: 0 !important;
-    color: #9B9D9E;
+    /*     padding: 0 !important; */
+    color: var(--color-gold);
 }
 
-.cart-dropdown-toggle:hover{
+.cart-dropdown-toggle:hover {
     color: #bcbcbd;
+}
+
+.dropdown-toggle-header-category {
+    background-color: transparent !important;
+    border: none !important;
+    color: var(--color-gold)
+}
+
+.dropdown-toggle-header-category:hover {
+    color: #bcbcbd;
+}
+
+.dropdown-menu-categories-bg{
+    background: var(--background-gradient-menu);
+}
+
+.dropdown-menu-categories {
+    
+    display: flex ;
+    flex-direction: row;
+    padding: 1.5rem;
+}
+
+.dropdown-menu-categories .dropdown-item {
+    color: var(--color-black);
+    background-color: transparent;
+    font-weight: bold;
+    margin-right: 10px;
+    /* Espacio entre los elementos */
+    white-space: nowrap;
+    /* Asegura que el texto no se envuelva */
+}
+
+.dropdown-menu-categories .dropdown-item:hover {
+    color: var(--color-gold);
+    background-color: transparent;
+}
+
+.dropdown-menu-categories-ss-bg {
+    background: var(--background-gradient-menu);
+    margin-right: 40%;
+}
+
+.dropdown-menu-categories-ss {
+    display: flex;
+    padding: 0.5rem;
+}
+
+.dropdown-menu-categories-ss .dropdown-item {
+    background-color: transparent !important;
+    font-weight: bold;
+}
+
+.dropdown-menu-categories-ss .dropdown-item:hover {
+    color: var(--color-gold);
 }

@@ -84,7 +84,6 @@ const RegisterPage = () => {
 
   return (
     <div>
-      <Header />
       <RegisterForm
         validated={validated}
         formData={formData}
@@ -94,7 +93,6 @@ const RegisterPage = () => {
         passwordError={passwordError}
         confirmPasswordError={confirmPasswordError}
       />
-      <Footer />
       <AlertModal
         show={showModal}
         handleClose={handleCloseModal}

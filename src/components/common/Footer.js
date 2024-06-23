@@ -17,22 +17,22 @@ const Footer = () => {
             </p>
           </Col>
           <Col md={3}>
-            <h5>About Us</h5>
+            <h5 className='text-color-footer'>About Us</h5>
             <p>
               We are a company dedicated to providing the best services to our customers. Our goal is to meet your needs and exceed your expectations.
             </p>
           </Col>
           <Col md={2}>
-            <h5>Help</h5>
+            <h5 className='text-color-footer'>Help</h5>
             <div className="section-help">
               <Nav className="flex-column">
                 <Nav.Link as={Link} to="/faq" className="text-white p-0 mb-2">FAQ</Nav.Link>
-                <Nav.Link as={Link} to="/contact" className="text-white p-0">Contact us</Nav.Link>
+                <Nav.Link as={Link} to="/contact" className=" text-white p-0">Contact us</Nav.Link>
               </Nav>
             </div>
           </Col>
           <Col md={3}>
-            <h5>Contact Us</h5>
+            <h5 className='text-color-footer'>Contact Us</h5>
             <p>
               <FontAwesomeIcon icon={faEnvelope} /> Email: info@example.com
             </p>
@@ -41,7 +41,7 @@ const Footer = () => {
             </p>
           </Col>
           <Col md={2}>
-            <h5>Follow Us</h5>
+            <h5 className='text-color-footer'>Follow Us</h5>
             <div>
               <a href="https://facebook.com" className="text-white m-3">
                 <FontAwesomeIcon icon={faFacebook} size="2x" />
@@ -49,7 +49,7 @@ const Footer = () => {
               <a href="https://twitter.com" className="text-white m-3">
                 <FontAwesomeIcon icon={faTwitter} size="2x" />
               </a>
-              <a href="https://instagram.com" className="text-white m-3">
+              <a href="https://www.instagram.com/almajewellery26/" className="text-white m-3">
                 <FontAwesomeIcon icon={faInstagram} size="2x" />
               </a>
             </div>

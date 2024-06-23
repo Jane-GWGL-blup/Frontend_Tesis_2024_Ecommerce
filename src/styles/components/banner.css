@@ -1,14 +1,18 @@
-/* BANNER */
+@import url('../variables.css');
+
 .banner {
+    
     position: relative;
     width: 100%;
     overflow: hidden;
     margin-bottom: 20px;
 }
 
-.banner-image {
+.banner-image-home {
+    background: var(--color-light-grey2);
     width: 100%;
-    height: 70vh;
+    height: auto;
+    max-height: 70vh; /* Altura máxima del banner para evitar que sea demasiado alto */
     object-fit: cover;
 }
 
@@ -38,15 +42,37 @@
     margin-bottom: 10px;
 }
 
-.banner-button {
-    font-size: 1rem;
-    padding: 5px 10px;
+.carousel-caption-banner{
+    position: relative;
+    bottom: 15vh;
+    margin: 0 0 0 44%;
+}
+
+.carousel-caption-banner Button{
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 30px;
+}
+
+.banner-button-home {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    border-color: transparent;
     bottom: 10px;
     /* Ajustar la posición del botón dentro del .banner-content */
 }
 
-/* OJO MEJORAR LO DEL BANNER - SE PRODUCE DESBORDE CON .banner-content */
+.banner-button-home:hover{
+    background-color: var(--color-white);
+    color: var(--color-gold);
+    border-color: transparent;
+}
 
+
+
+
+/* OJO MEJORAR LO DEL BANNER - SE PRODUCE DESBORDE CON .banner-content */
+/** Media Queries para pantallas más pequeñas */
 @media (min-width: 768px) {
 
     .banner-content {
@@ -54,9 +80,11 @@
         max-height: 100%;
     }
 
+
     .banner h2 {
         font-size: 2.5rem;
         margin-bottom: 20px;
+
     }
 
     .banner p {
@@ -64,7 +92,7 @@
         margin-bottom: 20px;
     }
 
-    .banner-button {
+    .banner-button-home {
         font-size: 1.2rem;
         padding: 3px 6px;
     }
@@ -77,6 +105,14 @@
         padding: 10px; /* Reducir el padding para pantallas más pequeñas */
     }
 
+    
+    .banner-image {
+        width: 100%;
+        height: auto;
+        max-height: 40vh;
+        object-fit: cover;
+    }
+
     .banner h2 {
         font-size: 1.2rem; /* Ajustar el tamaño de la fuente para pantallas más pequeñas */
         margin-bottom: 8px;
@@ -87,7 +123,18 @@
         margin-bottom: 8px;
     }
 
-    .banner-button {
+    .carousel-caption-banner{
+        position: relative;
+        bottom: 10vh;
+        margin: 0 0 0 41%;
+    }
+
+    .carousel-caption-banner Button{
+        font-size: 0.9rem; /* Ajustar el tamaño de la fuente para pantallas más pequeñas */
+        padding: 4px 8px;
+    }
+
+    .banner-button-home {
         font-size: 0.9rem; /* Ajustar el tamaño de la fuente para pantallas más pequeñas */
         padding: 4px 8px;
     }

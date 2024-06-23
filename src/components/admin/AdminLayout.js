@@ -1,11 +1,21 @@
-import React from 'react';
-import {AdminHeader, AdminSidebar} from '../../components/'
-import { Outlet } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { AdminHeader, AdminSidebar } from '../../components/';
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 
 const AdminLayout = ({ onLogout, children }) => {
+  const [searchResults, setSearchResults] = useState([]);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    console.log('onLogout prop in AdminLayout:', onLogout); // Verifica si la prop onLogout se pasa correctamente
-    
+  const handleSearch = (query) => {
+    console.log('Buscando:', query);
+    if (query) {
+      navigate(`/admin/categories?search=${query}`);
+    } else {
+      navigate('/admin/categories');
+    }
+  };
+
   return (
     <div className='container-fluid'>
       <div className='row'>
@@ -15,11 +25,14 @@ const AdminLayout = ({ onLogout, children }) => {
         <div className='col-md-10 col-10'>
           <div className='row'>
             <div className='col-md-12'>
-              <AdminHeader onLogout={onLogout} />
+              <AdminHeader 
+                onLogout={onLogout} 
+                onSearch={handleSearch}
+              />
             </div>
           </div>
           <main role='main' className='px-4 py-2'>
-           <Outlet/> {children}
+            <Outlet /> {children}
           </main>
         </div>
       </div>

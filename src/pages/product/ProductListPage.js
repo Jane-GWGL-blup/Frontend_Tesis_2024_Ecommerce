@@ -5,7 +5,7 @@ import React from 'react';
 import Footer from '../../components/common/Footer';
 import LoadingComponent from '../../components/common/Spinner';
 import ProductList from '../../components/product/ProductList'; */
-import { Header, Footer, LoadingComponent, ProductList} from '../../components';
+import { LoadingComponent, ProductList, SidebarCategoryStore} from '../../components';
 
 const ProductListPage = () => {
   const allProducts = [
@@ -84,16 +84,19 @@ const ProductListPage = () => {
 
   return (
     <div>
-      <Header />
-      <main>
         <LoadingComponent>
           <div className="container">
             <h1>Products</h1>
-            <ProductList products={allProducts} title="All Products" />
+            <div className='row'>
+              <div className='col-2'>
+               <SidebarCategoryStore /> 
+              </div>
+              <div className='col'>
+              <ProductList products={allProducts} title="All Products" />
+              </div>
+            </div>
           </div>
         </LoadingComponent>
-      </main>
-      <Footer />
     </div>
   );
 }

@@ -1,18 +1,30 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Table, Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencil } from '@fortawesome/free-solid-svg-icons'; // Importar los iconos que necesites
 import '../../styles/components/admin.css'
 
 const AdminManageCategory = () => {
-
-   // Simulación de datos de categorías
-   const categories = [
+  const location = useLocation();
+  const query = new URLSearchParams(location.search).get('search');
+  const [categories, setCategories] = useState([
     { id: 1, name: 'Category 1', description: 'Description 1' },
     { id: 2, name: 'Category 2', description: 'Description 2' },
     // Agrega más categorías según sea necesario
-  ];
+  ]);
+  const [filteredCategories, setFilteredCategories] = useState(categories);
+
+  useEffect(() => {
+    if (query) {
+      const results = categories.filter(category =>
+        category.name.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredCategories(results);
+    } else {
+      setFilteredCategories(categories);
+    }
+  }, [query, categories]);
 
   return (
     <div>
@@ -30,7 +42,7 @@ const AdminManageCategory = () => {
           </tr>
         </thead>
         <tbody>
-          {categories.map((category, index) => (
+        {filteredCategories.map((category, index) => (
             <tr key={category.id}>
               <td>{index + 1}</td>
               <td>{category.name}</td>

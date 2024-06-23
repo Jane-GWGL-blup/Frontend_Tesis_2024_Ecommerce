@@ -1,11 +1,15 @@
 /* FOOTER */
-
+@import url('../variables.css');
 /* @media (max-width: 768px) {
     .footer {
         position: relative;
     }
 }
  */
+.text-color-footer{
+    color: var(--color-gold);
+}
+
 .section-help .nav-link {
     padding-left: 0;
     /* Elimina el padding izquierdo */

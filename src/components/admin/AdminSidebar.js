@@ -41,7 +41,7 @@ const AdminSidebar = ({ onLogout }) => {
           <NavDropdown
             title={
               <span>
-                <FontAwesomeIcon icon={faUser} className="px-2" title="User Admin" />
+                <FontAwesomeIcon icon={faUser} className="" title="User Admin" />
               </span>
             }
             id="basic-nav-dropdown"
@@ -52,30 +52,30 @@ const AdminSidebar = ({ onLogout }) => {
           </NavDropdown>
         </Nav>
         <div className='divider-admin' />
-        <Nav className="flex-column px-2">
+        <Nav className="flex-column ">
           <Nav.Item>
             <Nav.Link as={Link} to="/admin" className="d-flex align-items-center">
-              <FontAwesomeIcon icon={faHome} size="lg" alt="" /> {/* Icono para Inicio */}
-              <span className="d-none d-md-inline ml-2 mx-2">Dashboard</span> {/* Texto para pantallas pequeñas */}
+              <FontAwesomeIcon icon={faHome} size="lg" alt="Dashboard" /> {/* Icono para Inicio */}
+              <span className="d-none d-md-inline mx-2">Dashboard</span> {/* Texto para pantallas pequeñas */}
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link href="#" className="d-flex align-items-center">
               <FontAwesomeIcon icon={faClipboardList} size="lg" title="Orders" /> {/* Icono para Orders */}
-              <span className="d-none d-md-inline ml-2 mx-2">Orders</span> {/* Texto para pantallas pequeñas */}
+              <span className="d-none d-md-inline mx-2">Orders</span> {/* Texto para pantallas pequeñas */}
             </Nav.Link>
           </Nav.Item>
-          <section className="d-none d-md-inline ml-2 mx-2"><span>Managment</span></section>
+          <section className="d-none d-md-inline mx-2"><span>Managment</span></section>
           <Nav.Item>
             <Nav.Link as={Link} to="/admin/products" className="d-flex align-items-center">
               <FontAwesomeIcon icon={faBox} size="lg" title="Products" /> {/* Icono para Products */}
-              <span className="d-none d-md-inline ml-2 mx-2">Products</span> {/* Texto para pantallas pequeñas */}
+              <span className="d-none d-md-inline mx-2">Products</span> {/* Texto para pantallas pequeñas */}
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link as={Link} to="/admin/categories" className="d-flex align-items-center">
               <FontAwesomeIcon icon={faBox} size="lg" title="Categories" /> {/* Icono para Products */}
-              <span className="d-none d-md-inline ml-2 mx-2">Categories</span> {/* Texto para pantallas pequeñas */}
+              <span className="d-none d-md-inline mx-2">Categories</span> {/* Texto para pantallas pequeñas */}
             </Nav.Link>
           </Nav.Item>
           {/* Agregar más elementos del menú aquí */}

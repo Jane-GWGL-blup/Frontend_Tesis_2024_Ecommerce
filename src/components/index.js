@@ -1,10 +1,13 @@
 // src/components/index.js
+export { default as AdminLayout } from './admin/AdminLayout';
+export { default as StoreLayout } from './store/StoreLayout';
+
 export { default as AdminHeader } from './admin/AdminHeader';
 export { default as AdminSidebar } from './admin/AdminSidebar';
-export { default as AdminLayout } from './admin/AdminLayout';
 export { default as AdminDashboard } from './admin/AdminDashboard';
 export { default as AdminProductForm} from './admin/AdminProductForm';
 export { default as AdminManageProduct } from './admin/AdminManageProduct';
+export { default as AdminEditProductForm } from './admin/AdminEditProductForm';
 export { default as AdminCategoryForm} from './admin/AdminCategoryForm';
 export { default as AdminManageCategory } from './admin/AdminManageCategory';
 export { default as AdminEditCategoryForm } from './admin/AdminEditCategoryForm';
@@ -37,7 +40,15 @@ export { default as OrderDetail } from './user/OrderDetail';
 export { default as AddressForm } from './user/AddressForm';
  */
 
+export { default as SidebarCategoryStore } from './category/SidebarCategoryStore';
+export { default as CategoryListCarousel } from './category/CategoryListCarousel';
+
 //MODAL
 export {default as AlertModal } from './common/modals/AlertModal';
 
 //ADMINMODAL
+
+//CHARTS
+export {default as ConversionRateChart } from './admin/charts/ConversionRateChart';
+export {default as InventoryStatusChart } from './admin/charts/InventoryStatusChart';
+export {default as MonthlySalesChart } from './admin/charts/MonthlySalesChart';

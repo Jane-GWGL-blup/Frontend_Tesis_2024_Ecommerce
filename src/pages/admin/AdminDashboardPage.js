@@ -32,17 +32,7 @@ const AdminDashboardPage = () => {
         <h1>Welcome, {user.username}!</h1>
 
         <h2>Admin Dashboard</h2>
-        <div className='row'>
-            <div className='col'>
-
-            </div>
-            <div className='col'>
-
-            </div>
-            <div className='col-lg-4'>
-            <AdminDashboard />
-            </div>
-        </div>
+        <AdminDashboard />
 
     </div>
     );

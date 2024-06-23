@@ -1,0 +1,86 @@
+@import url('../variables.css');
+
+.sidebar {
+    height: 100vh;
+    /* Establecer la altura al 100% de la altura de la ventana */
+    width: 100%;
+    background-color: var(--color-ligth-grey);
+}
+
+.sidebar-sticky {
+    height: 100%;
+    /* Ajustar la altura del contenido al 100% del sidebar */
+}
+
+.section-category{
+    padding: 10% 10% 0;
+    color: var(--color-black);
+}
+
+
+
+.text-nav-color-category{
+    color: var(--color-gold);
+}
+
+.text-nav-color-category:hover{
+    color: var(--color-wine);
+}
+
+.text-nav-color-category:active, .text-nav-color-category:focus{
+    color: var(--color-wine);
+}
+
+.divider-category{
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-lead);
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* CategoryListCarousel */
+
+.banner-image-category-banner{
+    background: var(--background-gradient-menu);
+    width: 100%;
+    height: 40vh;
+    padding: 5px 0 5px 0;
+    border-radius: 20px;
+    object-fit: contain; /* Ajusta la imagen para que cubra el contenedor */
+  }
+  
+   .carousel-col {
+    margin-bottom: 20px; /* Espacio entre cada columna */
+  }
+  
+  
+  .carousel-content {
+    position: relative;
+  }
+  
+  .carousel-caption {
+    position: absolute;
+     /* Distancia desde la parte inferior del slide */
+    left: 0;
+    right: 0;
+    background-color: #00000080; /* Fondo semitransparente para mejorar legibilidad */
+    padding: 10px;
+    border-radius: 0 0 15px 15px;
+    
+  }
+  
+  .carousel-caption h3 {
+    margin-bottom: 0; /* Eliminar el margen inferior del título para ajustar mejor */
+  }
+
+  .button-category-home{
+    color: var(--color-white); /* Color del texto */
+    text-decoration: none;
+  }
+
+  .button-category-home:hover{
+    color: var(--color-gold); /* Color del texto */
+    text-decoration: none;
+  }
+  

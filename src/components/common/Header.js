@@ -1,14 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link} from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Dropdown, Badge, DropdownDivider } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faHome, faClipboardList, faBox, faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/components/header.css'
 
 const Header = ({ onLogout, cartItems }) => {
+
+
+
+
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" >
-    {/*   <div className="d-flex  align-items-center w-100"> */}
+    <Navbar className='header-store' expand="lg" >
+      {/*   <div className="d-flex  align-items-center w-100"> */}
       <Navbar.Brand as={Link} to="/">
         <span className="d-lg-none mx-2">*BRAND IMAGE P*</span> {/* Imagen para pantallas pequeñas */}
         <span className="d-none d-lg-inline mx-4">*BRAND IMAGE G*</span> {/* Imagen para pantallas grandes */}
@@ -19,7 +23,7 @@ const Header = ({ onLogout, cartItems }) => {
         {/* Dropdown del usuario para pantallas pequeñas*/}
         <Dropdown align="end" className="ml-2">
           <Dropdown.Toggle id="dropdown-user" className='user-dropdown-toggle'>
-            <FontAwesomeIcon icon={faUser} size="lg" className='icon-user'/>
+            <FontAwesomeIcon icon={faUser} size="lg" className='icon-nav-header-color' />
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item >
@@ -31,7 +35,7 @@ const Header = ({ onLogout, cartItems }) => {
             <Dropdown.Item >
               <span className="dropdown-item" >Perfil</span>
             </Dropdown.Item>
-            <DropdownDivider/>
+            <DropdownDivider />
             <Dropdown.Item >
               <Link onClick={onLogout} className=" dropdown-item text-dark">Logout</Link>
             </Dropdown.Item>
@@ -40,9 +44,9 @@ const Header = ({ onLogout, cartItems }) => {
 
         {/* Dropdown del Carrito de Compras para pantallas pequeñas*/}
         <Dropdown align="end" className="ml-2 mx-2">
-          <Dropdown.Toggle  id="dropdown-cart" className='cart-dropdown-toggle'>
-            <FontAwesomeIcon icon={faShoppingCart} size="lg" />
-            <Badge bg="secondary" pill className="ml-1">#</Badge>
+          <Dropdown.Toggle variant="success" id="dropdown-cart" className='cart-dropdown-toggle'>
+            <FontAwesomeIcon icon={faShoppingCart} size="lg" className='icon-nav-header-color'/>
+            <Badge bg="warning" pill className="ml-1">#</Badge>
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item as={Link} to="/checkout">Tu carrito esta vacio</Dropdown.Item>
@@ -56,63 +60,73 @@ const Header = ({ onLogout, cartItems }) => {
         {/*Navbar donde va productos, etc pantallas grandes*/}
         <Nav className="flex-row d-none d-lg-flex px-2 ">
           <Nav.Item>
-            <Nav.Link href="#" className="align-items-center">
-              <FontAwesomeIcon icon={faHome} size="lg" /> {/* Icono para Inicio */}
-              <span className="d-none d-md-inline ml-2 mx-2">Categorias</span> {/* imagen para pantallas pequeñas */}
-            </Nav.Link>
+            {/*             <Nav.Link href="#" className="align-items-center">
+              <FontAwesomeIcon icon={faHome} size="lg" /> /* Icono para Inicio 
+              <span className="d-none d-md-inline ml-2 mx-2">Categorias</span> /* imagen para pantallas pequeñas 
+            </Nav.Link> */}
+            <Dropdown  align="start" className="ml-2 mx-2">
+              <Dropdown.Toggle id="dropdown-cart" className='dropdown-toggle-header-category'  >
+              <FontAwesomeIcon icon={faHome} size="lg" className='icon-nav-header-color'/>
+              <span className="d-none d-md-inline ml-2 mx-2 text-nav-header">Categorias</span>
+              </Dropdown.Toggle>
+              <Dropdown.Menu className='dropdown-menu-categories-bg'>
+                <div className='dropdown-menu-categories'>
+                <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
+                </div>
+              </Dropdown.Menu>
+            </Dropdown>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link href="#" className="d-flex align-items-center">
-              <FontAwesomeIcon icon={faClipboardList} size="lg" /> {/* Icono para Orders */}
-              <span className="d-none d-md-inline ml-2 mx-2">Orders</span> {/* Texto para pantallas pequeñas */}
+              <FontAwesomeIcon icon={faClipboardList} size="lg" className='icon-nav-header-color'/> {/* Icono para Orders */}
+              <span className="d-none d-md-inline ml-2 mx-2 text-nav-header">Orders</span> {/* Texto para pantallas pequeñas */}
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link as={Link} to="/products" className="d-flex align-items-center">
-              <FontAwesomeIcon icon={faBox} size="lg" /> {/* Icono para Products */}
-              <span className="d-none d-md-inline ml-2 mx-2">Products</span> {/* Texto para pantallas pequeñas */}
+              <FontAwesomeIcon icon={faBox} size="lg" className='icon-nav-header-color'/> {/* Icono para Products */}
+              <span className="d-none d-md-inline ml-2 mx-2 text-nav-header">Products</span> {/* Texto para pantallas pequeñas */}
             </Nav.Link>
           </Nav.Item>
           {/* Agregar más elementos del menú aquí */}
         </Nav>
         {/* El buscador y el NavDropdown para pantallas grandes siempre estará a la derecha */}
         <div className="d-none d-lg-flex align-items-center" style={{ marginLeft: 'auto' }}>
-          <form className="form-inline my-2 my-lg-0 d-flex align-items-center py-2">
-            <input className="form-control mr-sm-2 mx-2" type="search" placeholder="Search" aria-label="Search" />
-            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+          <form className="form-inline my-2 my-lg-0 d-flex align-items-center py-2 search-header">
+            <input className="form-control mr-sm-2 mx-2 " type="search" placeholder="Search" aria-label="Search" />
+            <button className="btn btn-outline-success my-2 my-sm-0 icon-nav-header-color" type="submit">
               <FontAwesomeIcon icon={faSearch} />
             </button>
           </form>
           {/* Este es el NavDropdown del usuario*/}
-          <Nav>
-            <NavDropdown
-              title={
-                <span>
-                  <FontAwesomeIcon icon={faUser} className="px-2" /> {/*User icon */}
-                </span>
-              }
-              id="basic-nav-dropdown"
-              className="custom-dropdown ">
-              <NavDropdown.Item >
-                <Link to="/login" className="dropdown-item">Login</Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item >
-                <Link to="/register" className="dropdown-item">Register</Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item eventKey="2" >
-                <span className="dropdown-item" >Perfil</span>
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item >
-                <Nav.Link onClick={onLogout} className="text-dark">Logout</Nav.Link>
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
+          <Dropdown align="end" className="ml-2">
+          <Dropdown.Toggle id="dropdown-user" className='user-dropdown-toggle'>
+            <FontAwesomeIcon icon={faUser} size="lg" className='icon-nav-header-color' />
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item >
+              <Link to="/login" className="dropdown-item">Login</Link>
+            </Dropdown.Item>
+            <Dropdown.Item >
+              <Link to="/register" className="dropdown-item">Register</Link>
+            </Dropdown.Item>
+            <Dropdown.Item >
+              <span className="dropdown-item" >Perfil</span>
+            </Dropdown.Item>
+            <DropdownDivider />
+            <Dropdown.Item >
+              <Link onClick={onLogout} className=" dropdown-item text-dark">Logout</Link>
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+
           {/* Dropdown del Carrito de Compras  cartItems.length */}
           <Dropdown align="end" className="mx-3">
-            <Dropdown.Toggle variant="success" id="dropdown-cart">
-              <FontAwesomeIcon icon={faShoppingCart} size="lg" />
-              <Badge bg="secondary" pill className="ml-1">#</Badge>
+            <Dropdown.Toggle variant="success" id="dropdown-cart" className='cart-dropdown-toggle'>
+              <FontAwesomeIcon icon={faShoppingCart} size="lg" className='icon-nav-header-color' />
+              <Badge bg="warning" pill className="ml-1">#</Badge>
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
@@ -135,23 +149,38 @@ const Header = ({ onLogout, cartItems }) => {
         {/*Navbar donde va productos, etc pantallas pequeñas*/}
         <Nav className="flex-column d-lg-none d-lg-flex px-2 mx-4">
           {/* El buscador */}
-          <form className="form-inline my-2 my-lg-0 d-flex align-items-center mx-2 py-2">
+          <form className="form-inline my-2 my-lg-0 d-flex align-items-center mx-2 py-2 search-header">
             <input className="form-control mr-sm-2 mx-2" type="search" placeholder="Search" aria-label="Search" />
-            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+            <button className="btn btn-outline-success my-2 my-sm-0 icon-nav-header-color" type="submit">
               <FontAwesomeIcon icon={faSearch} />
             </button>
           </form>
           <Nav.Item>
             <Nav.Link href="#" className="d-flex align-items-center">
-              <FontAwesomeIcon icon={faClipboardList} size="lg" /> {/* Icono para Orders */}
-              <span className="d-md-inline ml-2 mx-2">Orders</span> {/* Texto para pantallas pequeñas */}
+              <FontAwesomeIcon icon={faClipboardList} size="lg" className='icon-nav-header-color'/> {/* Icono para Orders */}
+              <span className="d-md-inline ml-2 mx-2 text-nav-header">Orders</span> {/* Texto para pantallas pequeñas */}
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link href="#" className="d-flex align-items-center ">
-              <FontAwesomeIcon icon={faBox} size="lg" /> {/* Icono para Products */}
-              <span className="d-md-inline ml-2 mx-2">Products</span> {/* Texto para pantallas pequeñas */}
+              <FontAwesomeIcon icon={faBox} size="lg" className='icon-nav-header-color'/> {/* Icono para Products */}
+              <span className="d-md-inline ml-2 mx-2 text-nav-header">Products</span> {/* Texto para pantallas pequeñas */}
             </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+          <Dropdown align="start" >
+              <Dropdown.Toggle id="dropdown-cart" className='dropdown-toggle-header-category'>
+              <FontAwesomeIcon icon={faHome} size="lg" className='icon-nav-header-color'/>
+              <span className="d-md-inline ml-2 mx-2 text-nav-header">Categorias</span>
+              </Dropdown.Toggle>
+              <Dropdown.Menu className='dropdown-menu-categories-ss-bg'>
+                <div className='dropdown-menu-categories-ss'>
+                <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
+                </div>
+              </Dropdown.Menu>
+            </Dropdown>
           </Nav.Item>
           {/* Agregar más elementos del menú aquí */}
         </Nav>

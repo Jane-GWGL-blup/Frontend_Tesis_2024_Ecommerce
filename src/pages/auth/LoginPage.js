@@ -39,9 +39,7 @@ const LoginPage = () => {
 
   return (
     <div>
-      <Header />
       <LoginForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
-      <Footer />
       <AlertModal
       show={showModal}
       handleClose={handleCloseModal}
