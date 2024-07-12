@@ -1,9 +1,75 @@
 @import url('../variables.css');
 
+/* 
+.header-store{
+    background: var(--color-platinum);
+    background-image:repeating-linear-gradient(
+        45deg, 
+        rgba(0, 0, 0, 0.1), 
+        rgba(0, 0, 0, 0.1) 1px, 
+        transparent 1px, 
+        transparent 3px
+      ),
+      repeating-linear-gradient(
+        135deg, 
+        rgba(0, 0, 0, 0.1), 
+        rgba(0, 0, 0, 0.1) 1px, 
+        transparent 1px, 
+        transparent 3px
+      );
+    background-size: 4px 4px, 4px 4px;
+    background-position: 0 0, 20px 20px;
+    border-bottom: 5px groove var(--color-lead2);
+
+} */
 
 .header-store{
-    background: var(--background-header-store);
-    border-bottom: 5px groove var(--color-lead2);;
+    background-color: var(--color-platinum);
+    z-index: 1; 
+    
+}
+
+.header-store::before{
+    width: 100%;
+    height: 100%;
+    background: var(--color-platinum);
+    z-index: 0; 
+}
+
+.hair {
+    position: absolute;
+    background: var(--color-line);
+    width: 0.9px;
+    height: 6px;
+    border-radius: 50%;
+    opacity: 0.5;
+    z-index: -1; 
+
+}
+
+/* .hair:nth-child(1) { top: 10%; left: 20%; transform: rotate(30deg); }
+.hair:nth-child(2) { top: 20%; left: 30%; transform: rotate(60deg); }
+.hair:nth-child(3) { top: 30%; left: 40%; transform: rotate(90deg); }
+.hair:nth-child(4) { top: 40%; left: 50%; transform: rotate(120deg); }
+.hair:nth-child(5) { top: 50%; left: 60%; transform: rotate(150deg); }
+.hair:nth-child(6) { top: 60%; left: 70%; transform: rotate(180deg); }
+.hair:nth-child(7) { top: 70%; left: 80%; transform: rotate(210deg); }
+.hair:nth-child(8) { top: 80%; left: 90%; transform: rotate(240deg); }
+.hair:nth-child(9) { top: 80%; left: 35%; transform: rotate(270deg); }
+.hair:nth-child(10) { top: 20%; left: 40%; transform: rotate(300deg); }
+.hair:nth-child(11) { top: 80%; left: 50%; transform: rotate(330deg); }
+.hair:nth-child(12) { top: 40%; left: 60%; transform: rotate(360deg); }
+.hair:nth-child(13) { top: 43%; left: 65%; transform: rotate(30deg); }
+.hair:nth-child(14) { top: 15%; left: 70%; transform: rotate(60deg); }
+.hair:nth-child(15) { top: 25%; left: 25%; transform: rotate(120deg); }
+.hair:nth-child(16) { top: 35%; left: 45%; transform: rotate(150deg); }
+.hair:nth-child(17) { top: 45%; left: 25%; transform: rotate(180deg); }
+.hair:nth-child(18) { top: 56%; left: 75%; transform: rotate(210deg); }
+.hair:nth-child(19) { top: 30%; left: 55%; transform: rotate(240deg); } */
+
+.logo-store{
+    height: 60px;
+    border-radius: 40px;
 }
 
 .search-header input{
@@ -47,6 +113,7 @@
     border: none !important;
     /*     padding: 0 !important; */
     color: var(--color-gold);
+    
 }
 
 .cart-dropdown-toggle:hover {
@@ -56,7 +123,9 @@
 .dropdown-toggle-header-category {
     background-color: transparent !important;
     border: none !important;
-    color: var(--color-gold)
+    color: var(--color-gold);
+    padding-left: 0 !important;
+   
 }
 
 .dropdown-toggle-header-category:hover {
@@ -87,17 +156,19 @@
 .dropdown-menu-categories .dropdown-item:hover {
     color: var(--color-gold);
     background-color: transparent;
+  
 }
 
 .dropdown-menu-categories-ss-bg {
-    background: var(--background-gradient-menu);
-    margin-right: 40%;
+    background: var(--color-white);
+    margin-right: 50%;
+    
 }
 
-.dropdown-menu-categories-ss {
+/* .dropdown-menu-categories-ss {
     display: flex;
     padding: 0.5rem;
-}
+} */
 
 .dropdown-menu-categories-ss .dropdown-item {
     background-color: transparent !important;

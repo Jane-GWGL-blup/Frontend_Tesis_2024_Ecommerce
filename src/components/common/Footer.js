@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/components/footer.css'
+import logo from '../../images/logo.png';
 
 const Footer = () => {
   return (
@@ -12,9 +13,9 @@ const Footer = () => {
       <Container>
         <Row>
           <Col md={2}>
-            <p>
-              *Brand Image*
-            </p>
+         
+            <img src={logo} className='logo-store-footer'/>
+     
           </Col>
           <Col md={3}>
             <h5 className='text-color-footer'>About Us</h5>

@@ -33,3 +33,9 @@
     background-color: white;
     margin: 20px 0;
 }
+
+.logo-store-footer{
+    height: 50px;
+    margin-bottom: 2%;
+    border-radius: 40px;
+}

@@ -14,7 +14,15 @@ const HomePage = () => {
 
   const banners = [
     {
-      imageUrl: 'https://via.placeholder.com/1500x500',
+      imageUrl: 'https://t4.ftcdn.net/jpg/03/83/21/85/360_F_383218557_t5fC98hOdrg0hr4BsulCZ9mPX9a4uube.jpg',
+      ctaText: 'Ver Ofertas',
+    },
+    {
+      imageUrl: 'https://www.antevenio.com/wp-content/uploads/2016/04/20-ejemplos-de-banners-creativos.jpg',
+      ctaText: 'Ver Ofertas',
+    },
+    {
+      imageUrl: 'https://t3.ftcdn.net/jpg/04/65/46/52/360_F_465465254_1pN9MGrA831idD6zIBL7q8rnZZpUCQTy.jpg',
       ctaText: 'Ver Ofertas',
     },
     {

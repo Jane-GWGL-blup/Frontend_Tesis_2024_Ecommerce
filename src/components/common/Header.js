@@ -1,21 +1,61 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Dropdown, Badge, DropdownDivider } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faHome, faClipboardList, faBox, faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/components/header.css'
+import logo from '../../images/logo-2.png';
 
 const Header = ({ onLogout, cartItems }) => {
 
+  const hairPositions = [
+    { top: '10%', left: '20%', rotate: '30deg' },
+    { top: '20%', left: '30%', rotate: '60deg' },
+    { top: '30%', left: '40%', rotate: '90deg' },
+    { top: '40%', left: '50%', rotate: '120deg' },
+    { top: '50%', left: '60%', rotate: '150deg' },
+    { top: '60%', left: '70%', rotate: '180deg' },
+    { top: '70%', left: '80%', rotate: '210deg' },
+    { top: '80%', left: '90%', rotate: '240deg' },
+    { top: '80%', left: '35%', rotate: '270deg' },
+    { top: '20%', left: '40%', rotate: '300deg' },
+    { top: '80%', left: '50%', rotate: '330deg' },
+    { top: '10%', left: '60%', rotate: '360deg' },
+    { top: '43%', left: '65%', rotate: '30deg' },
+    { top: '15%', left: '70%', rotate: '60deg' },
+    { top: '25%', left: '25%', rotate: '120deg' },
+    { top: '35%', left: '45%', rotate: '150deg' },
+    { top: '45%', left: '25%', rotate: '180deg' },
+    { top: '56%', left: '75%', rotate: '210deg' },
+    { top: '30%', left: '55%', rotate: '240deg' },
+    { top: '80%', left: '45%', rotate: '140deg' },
+    { top: '50%', left: '35%', rotate: '150deg' },
+    { top: '70%', left: '65%', rotate: '210deg' },
+    { top: '70%', left: '58%', rotate: '270deg' },
+    { top: '10%', left: '90%', rotate: '270deg' },
+    { top: '35%', left: '80%', rotate: '210deg' },
+    { top: '5%', left: '85%', rotate: '330deg' },
+    { top: '10%', left: '76%', rotate: '360deg' },
+    { top: '80%', left: '85%', rotate: '360deg' },
+    { top: '70%', left: '10%', rotate: '210deg' },
+    { top: '90%', left: '15%', rotate: '270deg' },
+    { top: '75%', left: '23%', rotate: '180deg' },
+  ];
 
+  const renderHairDivs = () => {
+    return hairPositions.map((position, index) => (
+      <div key={index} className="hair" style={{ top: position.top, left: position.left, transform: `rotate(${position.rotate})` }}></div>
+    ));
+  };
 
 
   return (
     <Navbar className='header-store' expand="lg" >
+      {renderHairDivs()} {/* Renderiza los elementos .hair dinámicamente */}
       {/*   <div className="d-flex  align-items-center w-100"> */}
       <Navbar.Brand as={Link} to="/">
-        <span className="d-lg-none mx-2">*BRAND IMAGE P*</span> {/* Imagen para pantallas pequeñas */}
-        <span className="d-none d-lg-inline mx-4">*BRAND IMAGE G*</span> {/* Imagen para pantallas grandes */}
+        <span className="d-lg-none mx-2"><img src={logo} className='logo-store'/></span> {/* Imagen para pantallas pequeñas */}
+        <span className="d-none d-lg-inline mx-4"><img src={logo} className='logo-store'/></span> {/* Imagen para pantallas grandes */}
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" className='navbar-toggle ml-auto' />
       {/* Dropdown para pantallas pequeñas  */}
@@ -45,7 +85,7 @@ const Header = ({ onLogout, cartItems }) => {
         {/* Dropdown del Carrito de Compras para pantallas pequeñas*/}
         <Dropdown align="end" className="ml-2 mx-2">
           <Dropdown.Toggle variant="success" id="dropdown-cart" className='cart-dropdown-toggle'>
-            <FontAwesomeIcon icon={faShoppingCart} size="lg" className='icon-nav-header-color'/>
+            <FontAwesomeIcon icon={faShoppingCart} size="lg" className='icon-nav-header-color' />
             <Badge bg="warning" pill className="ml-1">#</Badge>
           </Dropdown.Toggle>
           <Dropdown.Menu>
@@ -64,29 +104,29 @@ const Header = ({ onLogout, cartItems }) => {
               <FontAwesomeIcon icon={faHome} size="lg" /> /* Icono para Inicio 
               <span className="d-none d-md-inline ml-2 mx-2">Categorias</span> /* imagen para pantallas pequeñas 
             </Nav.Link> */}
-            <Dropdown  align="start" className="ml-2 mx-2">
+            <Dropdown align="start" className="ml-2 mx-2">
               <Dropdown.Toggle id="dropdown-cart" className='dropdown-toggle-header-category'  >
-              <FontAwesomeIcon icon={faHome} size="lg" className='icon-nav-header-color'/>
-              <span className="d-none d-md-inline ml-2 mx-2 text-nav-header">Categorias</span>
+                <FontAwesomeIcon icon={faHome} size="lg" className='icon-nav-header-color' />
+                <span className="d-none d-md-inline ml-2 mx-2 text-nav-header">Categorias</span>
               </Dropdown.Toggle>
               <Dropdown.Menu className='dropdown-menu-categories-bg'>
                 <div className='dropdown-menu-categories'>
-                <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
-                <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
-                <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
                 </div>
               </Dropdown.Menu>
             </Dropdown>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link href="#" className="d-flex align-items-center">
-              <FontAwesomeIcon icon={faClipboardList} size="lg" className='icon-nav-header-color'/> {/* Icono para Orders */}
+              <FontAwesomeIcon icon={faClipboardList} size="lg" className='icon-nav-header-color' /> {/* Icono para Orders */}
               <span className="d-none d-md-inline ml-2 mx-2 text-nav-header">Orders</span> {/* Texto para pantallas pequeñas */}
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link as={Link} to="/products" className="d-flex align-items-center">
-              <FontAwesomeIcon icon={faBox} size="lg" className='icon-nav-header-color'/> {/* Icono para Products */}
+              <FontAwesomeIcon icon={faBox} size="lg" className='icon-nav-header-color' /> {/* Icono para Products */}
               <span className="d-none d-md-inline ml-2 mx-2 text-nav-header">Products</span> {/* Texto para pantallas pequeñas */}
             </Nav.Link>
           </Nav.Item>
@@ -102,27 +142,27 @@ const Header = ({ onLogout, cartItems }) => {
           </form>
           {/* Este es el NavDropdown del usuario*/}
           <Dropdown align="end" className="ml-2">
-          <Dropdown.Toggle id="dropdown-user" className='user-dropdown-toggle'>
-            <FontAwesomeIcon icon={faUser} size="lg" className='icon-nav-header-color' />
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            <Dropdown.Item >
-              <Link to="/login" className="dropdown-item">Login</Link>
-            </Dropdown.Item>
-            <Dropdown.Item >
-              <Link to="/register" className="dropdown-item">Register</Link>
-            </Dropdown.Item>
-            <Dropdown.Item >
-              <span className="dropdown-item" >Perfil</span>
-            </Dropdown.Item>
-            <DropdownDivider />
-            <Dropdown.Item >
-              <Link onClick={onLogout} className=" dropdown-item text-dark">Logout</Link>
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+            <Dropdown.Toggle id="dropdown-user" className='user-dropdown-toggle'>
+              <FontAwesomeIcon icon={faUser} size="lg" className='icon-nav-header-color' />
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item >
+                <Link to="/login" className="dropdown-item">Login</Link>
+              </Dropdown.Item>
+              <Dropdown.Item >
+                <Link to="/register" className="dropdown-item">Register</Link>
+              </Dropdown.Item>
+              <Dropdown.Item >
+                <span className="dropdown-item" >Perfil</span>
+              </Dropdown.Item>
+              <DropdownDivider />
+              <Dropdown.Item >
+                <Link onClick={onLogout} className=" dropdown-item text-dark">Logout</Link>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
 
-          {/* Dropdown del Carrito de Compras  cartItems.length */}
+          {/* Dropdown del Carrito de Compras para pantallas grandes cartItems.length */}
           <Dropdown align="end" className="mx-3">
             <Dropdown.Toggle variant="success" id="dropdown-cart" className='cart-dropdown-toggle'>
               <FontAwesomeIcon icon={faShoppingCart} size="lg" className='icon-nav-header-color' />
@@ -157,31 +197,31 @@ const Header = ({ onLogout, cartItems }) => {
           </form>
           <Nav.Item>
             <Nav.Link href="#" className="d-flex align-items-center">
-              <FontAwesomeIcon icon={faClipboardList} size="lg" className='icon-nav-header-color'/> {/* Icono para Orders */}
+              <FontAwesomeIcon icon={faClipboardList} size="lg" className='icon-nav-header-color' /> {/* Icono para Orders */}
               <span className="d-md-inline ml-2 mx-2 text-nav-header">Orders</span> {/* Texto para pantallas pequeñas */}
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link href="#" className="d-flex align-items-center ">
-              <FontAwesomeIcon icon={faBox} size="lg" className='icon-nav-header-color'/> {/* Icono para Products */}
+              <FontAwesomeIcon icon={faBox} size="lg" className='icon-nav-header-color' /> {/* Icono para Products */}
               <span className="d-md-inline ml-2 mx-2 text-nav-header">Products</span> {/* Texto para pantallas pequeñas */}
             </Nav.Link>
           </Nav.Item>
-          <Nav.Item>
-          <Dropdown align="start" >
+
+            <Dropdown align="start" >
               <Dropdown.Toggle id="dropdown-cart" className='dropdown-toggle-header-category'>
-              <FontAwesomeIcon icon={faHome} size="lg" className='icon-nav-header-color'/>
-              <span className="d-md-inline ml-2 mx-2 text-nav-header">Categorias</span>
+                <FontAwesomeIcon icon={faHome} size="lg" className='icon-nav-header-color' />
+                <span className="d-md-inline mx-2 text-nav-header">Categorias</span>
               </Dropdown.Toggle>
               <Dropdown.Menu className='dropdown-menu-categories-ss-bg'>
                 <div className='dropdown-menu-categories-ss'>
-                <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
-                <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
-                <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
+                  <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
                 </div>
               </Dropdown.Menu>
             </Dropdown>
-          </Nav.Item>
+   
           {/* Agregar más elementos del menú aquí */}
         </Nav>
 
