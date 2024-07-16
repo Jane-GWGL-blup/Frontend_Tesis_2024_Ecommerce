@@ -23,6 +23,7 @@ function App() {
         {/* Rutas de administración anidadas */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<AdminDashboardPage />} />
+          <Route path='dashboard' element={<AdminDashboardPage />} />
           <Route path="products" element={<ManageProductPage />} />
           <Route path="products/create" element={<ProductCreatePage />} />
           <Route path="products/edit/:id" element={<ProductEditPage />} />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ConversionRateChart, MonthlySalesChart, InventoryStatusChart } from '../../components/'
+import { ConversionRateChart, MonthlySalesChart, InventoryStatusChart, StatisticCard } from '../../components/'
 
 import '../../styles/components/admin.css';
 
@@ -45,14 +45,28 @@ const AdminDashboard = () => {
     <div className="admin-dashboard">
       <div className='row'>
         <div className='col'>
-          <div className="statistics">
+          <StatisticCard title="Nuevos Usuarios" value="150" />
+        </div>
+        <div className='col'>
+          <StatisticCard title="Total de Ventas Semanales" value="$2000" />
+        </div>
+        <div className='col'>
+          <StatisticCard title="Nuevas Órdenes" value="75" />
+        </div>
+        <div className='col'>
+          <StatisticCard title="Gastos Totales" value="$1200" />
+        </div>
+      </div>
+      <div className='row'>
+        <div className='col '>
+          <div className="statistics admin-component">
             <h3>Estadísticas de Ventas</h3>
             <div className="chart-container">
               <MonthlySalesChart />
             </div>
             <p>Total de ventas este año: $5000</p>
           </div>
-          <div className="statistics">
+          <div className="statistics admin-component">
             <h3>Tasa de Conversión</h3>
             <div className="chart-container">
               <ConversionRateChart />
@@ -60,7 +74,7 @@ const AdminDashboard = () => {
           </div>
         </div>
         <div className='col'>
-          <div className="statistics">
+          <div className="statistics admin-component">
             <h3>Estado del Inventario</h3>
             <div className="chart-container">
               <InventoryStatusChart />

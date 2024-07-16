@@ -62,7 +62,8 @@ const ProductCreatePage = () => {
 
   return (
     <div>
-      <h1>Create Product</h1>
+      <h2>Create Product</h2>
+      <div className='divider-admin'/>
       <AdminProductForm
         formData={formData}
         handleChange={handleChange}

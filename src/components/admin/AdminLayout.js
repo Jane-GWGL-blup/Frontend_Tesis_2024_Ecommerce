@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AdminHeader, AdminSidebar } from '../../components/';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 
-const AdminLayout = ({ onLogout, children }) => {
+const AdminLayout = ({  children }) => {
   const [searchResults, setSearchResults] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
@@ -16,10 +16,26 @@ const AdminLayout = ({ onLogout, children }) => {
     }
   };
 
+      // Estado local para la simulación de usuario
+      const [user, setUser] = useState({
+        id: 1,
+        username: 'AdminUser',
+        email: 'admin@example.com',
+        role: 'admin',
+        isLoggedIn: true
+    });
+
+ // Función para simular el cierre de sesión
+ const onLogout = () => {
+  setUser(null); // Establece el usuario como null
+  // También puedes realizar otras tareas como redirigir al usuario a la página de inicio de sesión
+  navigate('/login'); // Redirige a la página de inicio de sesión
+};
+
   return (
-    <div className='container-fluid'>
+    <div className='container-fluid admin-container'>
       <div className='row'>
-        <div className='col-md-2 col-2 bg-light'>
+        <div className='col-md-2 col-2 admin-sidebar'>
           <AdminSidebar />
         </div>
         <div className='col-md-10 col-10'>

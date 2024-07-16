@@ -1,12 +1,5 @@
-import React from 'react';
-import { useState } from 'react';
-/* import AdminHeader from '../../components/admin/AdminHeader';
-import AdminSidebar from '../../components/admin/AdminSidebar';
-import AdminDashboard from '../../components/admin/AdminDashboard'; */
-/* import {AdminHeader, AdminSidebar, AdminDashboard} from '../../components/'
- */
-
-import { AdminDashboard } from '../../components/'
+import React, { useState, useEffect } from 'react';
+import { AdminDashboard } from '../../components/';
 
 const AdminDashboardPage = () => {
     // Estado local para la simulación de usuario
@@ -18,23 +11,36 @@ const AdminDashboardPage = () => {
         isLoggedIn: true
     });
 
+    // Estado para rastrear si el administrador ha visitado la página por primera vez
+    const [showWelcome, setShowWelcome] = useState(false);
+
     // Simulando el cierre de sesión
     const logout = () => {
         setUser(null);
     }
+
+    useEffect(() => {
+        // Verificar si es la primera visita
+        const firstVisit = localStorage.getItem('firstVisit');
+
+        if (!firstVisit) {
+            // Mostrar mensaje de bienvenida si es la primera visita
+            setShowWelcome(true);
+            localStorage.setItem('firstVisit', 'false');
+        }
+    }, []);
 
     if (!user) {
         return <div>Please log in.</div>;
     }
 
     return (
-    <div>
-        <h1>Welcome, {user.username}!</h1>
-
-        <h2>Admin Dashboard</h2>
-        <AdminDashboard />
-
-    </div>
+        <div>
+            {showWelcome && <h2>Welcome, {user.username}!</h2>}
+            <h2>Dashboard</h2>
+            <div className='divider-admin'/>
+            <AdminDashboard />
+        </div>
     );
 };
 

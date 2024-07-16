@@ -17,7 +17,8 @@ const CategoryEditPage = () => {
 
   return (
     <div>
-      <h1>Edit Category</h1>
+      <h2>Edit Category</h2>
+      <div className='divider-admin'/>
       <AdminEditCategoryForm 
         categoryId={id}
         getCategoryData={getCategoryData}

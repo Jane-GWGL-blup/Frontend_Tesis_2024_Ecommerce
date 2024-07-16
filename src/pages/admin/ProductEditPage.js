@@ -16,7 +16,8 @@ const ProductEditPage = () => {
 
   return (
     <div>
-      <h1>Edit Product</h1>
+      <h2>Edit Product</h2>
+      <div className='divider-admin'/>
       <AdminEditProductForm 
         categoryId={id}
         getProductData={getProductData}

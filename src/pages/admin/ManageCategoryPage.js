@@ -29,7 +29,8 @@ const ManageCategoryPage = () => {
 
   return (
     <div>
-      <h1>Manage Categories</h1>
+      <h2>Manage Categories</h2>
+      <div className='divider-admin'/>
       <AdminManageCategory />
     </div>
   );

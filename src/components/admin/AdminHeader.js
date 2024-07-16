@@ -20,20 +20,10 @@ const AdminHeader = ({ onLogout, onSearch }) => {
 
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
-      <Navbar.Toggle aria-controls="basic-navbar-nav" className='mx-4' />
+    <Navbar /* bg="dark" variant="dark" */ className="admin-header" expand="lg">
+      <Navbar.Toggle aria-controls="basic-navbar-nav " className='mx-4 nav-toggle' />
 
-      <form className="d-lg-none form-inline my-2 my-lg-0 d-flex align-items-center mx-4 py-2 ml-auto " onSubmit={handleSearchSubmit}>
-        <input
-          className="form-control mr-sm-2 mx-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-          value={searchQuery}
-          onChange={handleSearchChange}
-        />
-        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+
 
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-between">
         {/* El buscador siempre estará a la derecha */}
@@ -49,12 +39,12 @@ const AdminHeader = ({ onLogout, onSearch }) => {
           <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         {/* Este NavDropdown estará a la izquierda en pantallas grandes */}
-        <Nav className="d-none d-lg-flex">
+        <Nav className="d-none d-lg-flex ">
 
           <NavDropdown
             title={
-              <span>
-                <FontAwesomeIcon icon={faUser} className="px-2" />
+              <span className='nav-item'>
+                <FontAwesomeIcon icon={faUser} className="px-2 " />
                 AdministradorG
               </span>
             }
@@ -71,9 +61,20 @@ const AdminHeader = ({ onLogout, onSearch }) => {
 
         {/* Este NavDropdown estará a la derecha en pantallas pequeñas */}
         <Nav className="d-lg-none">
+          <form className=" form-inline my-2 my-lg-0 d-flex align-items-center mx-4 py-2 ml-auto " onSubmit={handleSearchSubmit}>
+            <input
+              className="form-control mr-sm-2 mx-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
           <NavDropdown
             title={
-              <span>
+              <span className='nav-item'>
                 <FontAwesomeIcon icon={faUser} className="px-2" />
                 AdministradorP
               </span>

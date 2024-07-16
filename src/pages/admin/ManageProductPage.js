@@ -29,7 +29,8 @@ const ManageProductPage = () => {
 
   return (
     <div>
-      <h1>Manage Products</h1>
+      <h2>Manage Products</h2>
+      <div className='divider-admin'/>
       <AdminManageProduct />
     </div>
   );

@@ -52,3 +52,4 @@ export {default as AlertModal } from './common/modals/AlertModal';
 export {default as ConversionRateChart } from './admin/charts/ConversionRateChart';
 export {default as InventoryStatusChart } from './admin/charts/InventoryStatusChart';
 export {default as MonthlySalesChart } from './admin/charts/MonthlySalesChart';
+export {default as StatisticCard } from './admin/charts/StatisticCard';

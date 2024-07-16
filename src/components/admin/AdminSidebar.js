@@ -1,84 +1,165 @@
-import React from 'react';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Nav, NavDropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faClipboardList, faBox, faUser } from '@fortawesome/free-solid-svg-icons'; // Importar los iconos que necesites
-import '../../styles/components/admin.css'
+import { faHome, faClipboardList, faBox, faUser, faLayerGroup, faWrench } from '@fortawesome/free-solid-svg-icons';
+import '../../styles/components/admin.css';
+import logo from '../../images/logo-2.png'
+import logo2 from '../../images/logo.jpg'
 
 const AdminSidebar = ({ onLogout }) => {
+  const location = useLocation();
+
   // Estado local para la simulación de usuario
-  const [user, setUser] = useState({
+  const [user] = useState({
     id: 1,
     username: 'AdminUser',
     email: 'admin@example.com',
     role: 'admin',
-    isLoggedIn: true
+    isLoggedIn: true,
   });
 
+
+
   return (
-    <nav className="col-md-2 col-2 bg-light sidebar">
-      <div className="sidebar-sticky ">
-        {/* Este NavDropdown estará a la derecha en pantallas grandes */}
+    <nav className="col-md-2 col-2 sidebar">
+      <div className="sidebar-sticky">
         <Nav className="d-none d-lg-flex">
-          <NavDropdown
+        <img src={logo} className='logo-admin'/>
+{/*           <NavDropdown
             title={
               <span>
                 <FontAwesomeIcon icon={faUser} className="px-2" />
                 {user.username}
+                <img src={logo} className='logo-store'/>
               </span>
             }
             id="basic-nav-dropdown"
-            className="custom-dropdown admin-profile">
+            className="custom-dropdown admin-profile"
+          >
             <NavDropdown.Item as="div">
-              <Nav.Link onClick={onLogout} className="text-dark">Logout</Nav.Link>
+              <Nav.Link onClick={onLogout} className="text-dark">
+                Logout
+              </Nav.Link>
             </NavDropdown.Item>
-          </NavDropdown>
+          </NavDropdown> */}
         </Nav>
-
-        {/* Este NavDropdown estará a la derecha en pantallas pequeñas */}
+        {/* PARA PANTALLAS PEQUEÑAS */}
         <Nav className="d-lg-none">
-          <NavDropdown
+            <img src={logo2} className='logo-admin'/>
+{/*           <NavDropdown
             title={
               <span>
                 <FontAwesomeIcon icon={faUser} className="" title="User Admin" />
               </span>
             }
             id="basic-nav-dropdown"
-            className="custom-dropdown admin-profile">
+            className="custom-dropdown admin-profile"
+          >
             <NavDropdown.Item as="div">
-              <Nav.Link onClick={onLogout} className="text-dark">Logout</Nav.Link>
+              <Nav.Link onClick={onLogout} className="text-dark">
+                Logout
+              </Nav.Link>
             </NavDropdown.Item>
-          </NavDropdown>
+          </NavDropdown> */}
         </Nav>
-        <div className='divider-admin' />
-        <Nav className="flex-column ">
+        <div className="divider-admin" />
+        {/* PARA PANTALLAS GRANDES*/}
+        <Nav className=" d-none d-lg-flex">
+
           <Nav.Item>
-            <Nav.Link as={Link} to="/admin" className="d-flex align-items-center">
-              <FontAwesomeIcon icon={faHome} size="lg" alt="Dashboard" /> {/* Icono para Inicio */}
-              <span className="d-none d-md-inline mx-2">Dashboard</span> {/* Texto para pantallas pequeñas */}
-            </Nav.Link>
+            <NavLink
+              to="/admin/dashboard"
+              className="d-flex align-items-center nav-item nav-item-sidebar px-3"
+              activeClassName="active"
+            >
+              <FontAwesomeIcon icon={faHome} size="lg" alt="Dashboard" />
+              <span className="d-none d-md-inline mx-2">Dashboard</span>
+            </NavLink>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="#" className="d-flex align-items-center">
-              <FontAwesomeIcon icon={faClipboardList} size="lg" title="Orders" /> {/* Icono para Orders */}
-              <span className="d-none d-md-inline mx-2">Orders</span> {/* Texto para pantallas pequeñas */}
-            </Nav.Link>
+            <NavLink
+              to="/admin/orders"
+              className="d-flex align-items-center nav-item nav-item-sidebar px-3"
+              activeClassName="active"
+            >
+              <FontAwesomeIcon icon={faClipboardList} size="lg" title="Orders" />
+              <span className="d-none d-md-inline mx-2">Orders</span>
+            </NavLink>
           </Nav.Item>
-          <section className="d-none d-md-inline mx-2"><span>Managment</span></section>
+          <section className="d-flex align-items-center d-none d-md-inline mx-2 fw-bold admin-sidebar-management">
+            <span>Management
+            <FontAwesomeIcon icon={faWrench} size="lg" title="Managment" className='mx-2' />
+            <div className='divider-admin'/>
+            </span>
+          </section>
           <Nav.Item>
-            <Nav.Link as={Link} to="/admin/products" className="d-flex align-items-center">
-              <FontAwesomeIcon icon={faBox} size="lg" title="Products" /> {/* Icono para Products */}
-              <span className="d-none d-md-inline mx-2">Products</span> {/* Texto para pantallas pequeñas */}
-            </Nav.Link>
+            <NavLink
+              to="/admin/products"
+              className="d-flex align-items-center nav-item nav-item-sidebar px-3"
+              activeClassName="active"
+            >
+              <FontAwesomeIcon icon={faBox} size="lg" title="Products" />
+              <span className="d-none d-md-inline mx-2">Products</span>
+            </NavLink>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link as={Link} to="/admin/categories" className="d-flex align-items-center">
-              <FontAwesomeIcon icon={faBox} size="lg" title="Categories" /> {/* Icono para Products */}
-              <span className="d-none d-md-inline mx-2">Categories</span> {/* Texto para pantallas pequeñas */}
-            </Nav.Link>
+            <NavLink
+              to="/admin/categories"
+              className="d-flex align-items-center nav-item nav-item-sidebar px-3"
+              activeClassName="active"
+            >
+              <FontAwesomeIcon icon={faLayerGroup} size="lg" title="Categories" />
+              <span className="d-none d-md-inline mx-2">Categories</span>
+            </NavLink>
           </Nav.Item>
-          {/* Agregar más elementos del menú aquí */}
+
+
+        </Nav>
+        {/* PARA PANTALLAS PEQUEÑAS*/}
+        <Nav className='d-lg-none'>
+          <div >
+            <Nav.Item>
+              <NavLink
+                to="/admin/dashboard"
+                className="d-flex align-items-center nav-item nav-item-sidebar px-3 "
+                activeClassName="active"
+              >
+                <FontAwesomeIcon icon={faHome} size="lg" title="Dashboard" />
+              </NavLink>
+            </Nav.Item>
+            <Nav.Item>
+              <NavLink
+                to="/admin/orders"
+                className="d-flex align-items-center nav-item nav-item-sidebar px-3"
+                activeClassName="active"
+              >
+                <FontAwesomeIcon icon={faClipboardList} size="lg" title="Orders" />
+              </NavLink>
+            </Nav.Item>
+            <section className="mx-2 admin-sidebar-management px-2">
+              <FontAwesomeIcon icon={faWrench} size="lg" title="Managment" />
+            </section>
+              <div className='divider-admin'/>
+            <Nav.Item>
+              <NavLink
+                to="/admin/products"
+                className="d-flex align-items-center nav-item nav-item-sidebar px-3"
+                activeClassName="active"
+              >
+                <FontAwesomeIcon icon={faBox} size="lg" title="Products" />
+              </NavLink>
+            </Nav.Item>
+            <Nav.Item>
+              <NavLink
+                to="/admin/categories"
+                className="d-flex align-items-center nav-item nav-item-sidebar px-3"
+                activeClassName="active"
+              >
+                <FontAwesomeIcon icon={faLayerGroup} size="lg" title="Categories" />
+              </NavLink>
+            </Nav.Item>
+          </div>
         </Nav>
       </div>
     </nav>
@@ -86,6 +167,8 @@ const AdminSidebar = ({ onLogout }) => {
 };
 
 export default AdminSidebar;
+
+
 
 /* const AdminSidebar = () => {
   return (

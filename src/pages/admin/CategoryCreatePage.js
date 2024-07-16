@@ -55,7 +55,8 @@ const CategoryCreatePage = () => {
 
   return (
     <div>
-      <h1>Create Category</h1>
+      <h2>Create Category</h2>
+      <div className='divider-admin'/>
       <AdminCategoryForm
         formData={formData}
         handleChange={handleChange}
