@@ -1,17 +1,17 @@
 @import url('../variables.css');
 
-.logo-admin{
+.logo-admin {
     background-color: var(--color-white);
     margin-top: 5%;
     border-radius: 10px;
     width: 100%;
 }
 
-.admin-container{
+.admin-container {
     background: var(--color-light-grey);
 }
 
-.admin-component{
+.admin-component {
     background: var(--color-white);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -20,6 +20,15 @@
     margin-bottom: 10px;
 }
 
+.divider-admin {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-lead);
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* ADMIN HEADER ****************************************** */
 .admin-header {
     background: var(--color-dark-navy-blue);
 }
@@ -27,7 +36,7 @@
 .nav-item {
     color: var(--color-white);
     text-decoration: none;
-    
+
 }
 
 
@@ -50,24 +59,25 @@
 }
 
 
-/* ADMIN SIDEBAR */
+/* ADMIN SIDEBAR **************************************************/
 .admin-sidebar {
     background: var(--color-water-green);
     width: 16%;
     padding-left: 9px;
-   
+
 }
-.nav-item-sidebar{
-    padding-top:  10px;
+
+.nav-item-sidebar {
+    padding-top: 10px;
     padding-bottom: 10px;
 
-    
+
 }
 
 .nav-item-sidebar:hover {
     background-color: var(--color-dark-water-green);
     color: var(--color-navy-blue2);
-   
+
 }
 
 
@@ -92,11 +102,26 @@
     /* Ajustar la altura del contenido al 100% del sidebar */
 }
 
-.admin-sidebar-management{
+.admin-sidebar-management {
     margin-top: 15%;
 }
 
-/* BUTTONS */
+/* BUTTONS AND CHECKBOX*/
+.add-button-admin {
+    background: none !important;
+    color: var(--color-navy-blue);
+    font-weight: bold;
+    border: none;
+
+}
+
+.add-button-admin:hover {
+    background: none !important;
+    color: var(--color-water-green);
+    border: none;
+
+}
+
 .color-icon-edit {
     color: var(--color-yellow-gualda);
 
@@ -106,18 +131,32 @@
     color: var(--color-crimson);
 }
 
-.divider-admin {
-    width: 100%;
-    height: 1px;
-    background-color: var(--color-lead);
-    margin-top: 10px;
-    margin-bottom: 20px;
+.color-delete-admin {
+    color: var(--color-crimson);
+    
 }
+
+.selected-products-toolbar {
+    color: var(--color-navy-blue2);
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px 10px 20px;
+    background-color: var(--color-navy-blue3);
+    border-radius: 5px 5px 0 0;
+}
+
+.link-action{
+    text-decoration: none ;
+}
+
+
 /* ADMINHEADER */
 
 
 /* CHARTS */
-    /* STATISTIC CARD */
+/* STATISTIC CARD */
 .statistic-card {
     background-color: var(--color-white);
     padding: 20px;
@@ -125,13 +164,23 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin: 10px;
-  }
-  .statistic-card h3 {
+}
+
+.statistic-card h3 {
     margin-bottom: 10px;
     font-size: 1.2em;
-  }
-  .statistic-card p {
+}
+
+.statistic-card p {
     font-size: 1.5em;
     font-weight: bold;
-  }
-  
+}
+
+
+/* MANAGEMENT PRODUCTS*/
+.product-table {
+    margin-bottom: 2%;
+    border-radius: 10px;
+    overflow: hidden;
+    /* Para asegurar que el contenido de la tabla se ajuste al border-radius */
+}
