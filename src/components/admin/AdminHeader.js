@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import '../../styles/components/admin.css';
+import '../../styles/components/admin/admin-header.css';
 
 const AdminHeader = ({ onLogout, onSearch }) => {
 

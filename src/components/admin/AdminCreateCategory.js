@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Button} from 'react-bootstrap';
 
-const AdminCategoryForm = ({ formData, handleChange, handleSubmit, validated }) => {
+const AdminCreateCategory = ({ formData, handleChange, handleSubmit, validated }) => {
 
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
@@ -45,5 +45,5 @@ const AdminCategoryForm = ({ formData, handleChange, handleSubmit, validated }) 
   );
 };
 
-export default AdminCategoryForm;
+export default AdminCreateCategory;
 

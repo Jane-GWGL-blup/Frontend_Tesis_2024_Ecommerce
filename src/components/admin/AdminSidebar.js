@@ -3,9 +3,12 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { Nav, NavDropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faClipboardList, faBox, faUser, faLayerGroup, faWrench } from '@fortawesome/free-solid-svg-icons';
-import '../../styles/components/admin.css';
-import logo from '../../images/logo-2.png'
-import logo2 from '../../images/logo.jpg'
+import '../../styles/components/admin/admin-sidebar.css';
+/* import logo from '../../images/logo-2.png'
+import logo2 from '../../images/logo.jpg' */
+
+import logo from '../../images/logo.svg'
+import logo2 from '../../images/logo3.svg'
 
 const AdminSidebar = ({ onLogout }) => {
   const location = useLocation();
@@ -25,8 +28,8 @@ const AdminSidebar = ({ onLogout }) => {
     <nav className="col-md-2 col-2 sidebar">
       <div className="sidebar-sticky">
         <Nav className="d-none d-lg-flex">
-        <img src={logo} className='logo-admin'/>
-{/*           <NavDropdown
+          <img src={logo} className='logo-admin' />
+          {/*           <NavDropdown
             title={
               <span>
                 <FontAwesomeIcon icon={faUser} className="px-2" />
@@ -46,8 +49,8 @@ const AdminSidebar = ({ onLogout }) => {
         </Nav>
         {/* PARA PANTALLAS PEQUEÑAS */}
         <Nav className="d-lg-none">
-            <img src={logo2} className='logo-admin'/>
-{/*           <NavDropdown
+          <img src={logo2} className='logo-admin' />
+          {/*           <NavDropdown
             title={
               <span>
                 <FontAwesomeIcon icon={faUser} className="" title="User Admin" />
@@ -89,8 +92,8 @@ const AdminSidebar = ({ onLogout }) => {
           </Nav.Item>
           <section className="d-flex align-items-center d-none d-md-inline mx-2 fw-bold admin-sidebar-management">
             <span>Management
-            <FontAwesomeIcon icon={faWrench} size="lg" title="Managment" className='mx-2' />
-            <div className='divider-admin'/>
+              <FontAwesomeIcon icon={faWrench} size="lg" title="Managment" className='mx-2' />
+              <div className='divider-admin' />
             </span>
           </section>
           <Nav.Item>
@@ -140,7 +143,7 @@ const AdminSidebar = ({ onLogout }) => {
             <section className="mx-2 admin-sidebar-management px-2">
               <FontAwesomeIcon icon={faWrench} size="lg" title="Managment" />
             </section>
-              <div className='divider-admin'/>
+            <div className='divider-admin' />
             <Nav.Item>
               <NavLink
                 to="/admin/products"

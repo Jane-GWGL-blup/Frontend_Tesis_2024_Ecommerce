@@ -5,6 +5,8 @@ export const getProductData = async (productId) => {
       name: 'Sample Product',
       description: 'Sample Description',
       price: 20.99,
+      stock: 3,
+      image: 'https://via.placeholder.com/150',
     };
   };
   

@@ -4,7 +4,7 @@ import AdminHeader from '../../components/admin/AdminHeader';
 import AdminSidebar from '../../components/admin/AdminSidebar'; */
 /* import {AdminHeader, AdminSidebar, AdminProductForm}  from '../../components';
  */
-import {  AdminCategoryForm } from '../../components';
+import {  AdminCreateCategory } from '../../components';
 
 
 
@@ -57,7 +57,7 @@ const CategoryCreatePage = () => {
     <div>
       <h2>Create Category</h2>
       <div className='divider-admin'/>
-      <AdminCategoryForm
+      <AdminCreateCategory
         formData={formData}
         handleChange={handleChange}
         handleSubmit={handleSubmit}

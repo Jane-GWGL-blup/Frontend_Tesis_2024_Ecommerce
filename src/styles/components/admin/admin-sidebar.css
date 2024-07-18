@@ -1,0 +1,49 @@
+@import url('../../variables.css');
+
+/* ADMIN SIDEBAR **************************************************/
+
+.admin-sidebar {
+    background: var(--color-water-green);
+    width: 16%;
+    padding-left: 9px;
+
+}
+
+.nav-item-sidebar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+
+}
+
+.nav-item-sidebar:hover {
+    background-color: var(--color-dark-water-green);
+    color: var(--color-navy-blue2);
+
+}
+
+
+.nav-item-sidebar:active,
+.nav-item-sidebar:focus,
+.nav-item-sidebar.active {
+    background-color: var(--color-navy-blue2);
+    color: var(--color-white);
+}
+
+.sidebar {
+    height: 100vh;
+    /* Establecer la altura al 100% de la altura de la ventana */
+    width: 100%;
+
+
+}
+
+.sidebar-sticky {
+
+    height: 100%;
+    /* Ajustar la altura del contenido al 100% del sidebar */
+}
+
+.admin-sidebar-management {
+    margin-top: 15%;
+}

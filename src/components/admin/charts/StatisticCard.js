@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../styles/components/admin.css';
+import '../../../styles/components/admin/charts.css';
 
 const StatisticCard = ({ title, value }) => {
   return (

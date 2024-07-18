@@ -1,0 +1,20 @@
+@import url('../../variables.css');
+
+/* ADMIN HEADER ****************************************** */
+
+.admin-header {
+    background: var(--color-dark-navy-blue);
+}
+
+.nav-item-header:hover {
+    background-color: var(--color-navy-blue);
+    color: var(--color-gold);
+}
+
+
+.nav-item-header:active,
+.nav-item-header:focus,
+.nav-item-header.active {
+    background-color: var(--color-navy-blue);
+    color: var(--color-gold);
+}

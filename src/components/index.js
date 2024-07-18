@@ -5,10 +5,10 @@ export { default as StoreLayout } from './store/StoreLayout';
 export { default as AdminHeader } from './admin/AdminHeader';
 export { default as AdminSidebar } from './admin/AdminSidebar';
 export { default as AdminDashboard } from './admin/AdminDashboard';
-export { default as AdminProductForm} from './admin/AdminProductForm';
+export { default as AdminCreateProduct} from './admin/AdminCreateProduct';
 export { default as AdminManageProduct } from './admin/AdminManageProduct';
 export { default as AdminEditProductForm } from './admin/AdminEditProductForm';
-export { default as AdminCategoryForm} from './admin/AdminCategoryForm';
+export { default as AdminCreateCategory} from './admin/AdminCreateCategory';
 export { default as AdminManageCategory } from './admin/AdminManageCategory';
 export { default as AdminEditCategoryForm } from './admin/AdminEditCategoryForm';
 

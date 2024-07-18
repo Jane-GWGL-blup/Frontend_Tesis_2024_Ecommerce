@@ -36,7 +36,7 @@ const AdminManageProduct = () => {
   };
 
   const handleRowClick = (productId) => {
-    navigate(`/admin/products/details/${productId}`);
+    navigate(`/admin/products/edit/${productId}`);
   };
 
   return (
@@ -71,7 +71,7 @@ const AdminManageProduct = () => {
             <th>Description</th>
             <th>Price</th>
             <th>Stock</th>
-            <th>Edit </th>
+            {/* <th>Edit </th> */}
             {/* <th>Delete</th> */}
           </tr>
         </thead>
@@ -89,11 +89,11 @@ const AdminManageProduct = () => {
               <td onClick={() => handleRowClick(product.id)}>{product.description}</td>
               <td onClick={() => handleRowClick(product.id)}>{product.price}</td>
               <td onClick={() => handleRowClick(product.id)}>{product.stock}</td>
-              <td>
+{/*               <td>
                 <Link to={`/admin/products/edit/${product.id}`}>
                   <FontAwesomeIcon icon={faPencil} className="px-2 color-icon-edit" />
                 </Link>
-              </td>
+              </td> */}
 {/*               <td>
                 <Link to={"#"}>
                   <FontAwesomeIcon icon={faTrash} className="px-2 color-icon-delete" />

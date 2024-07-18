@@ -4,7 +4,7 @@ import AdminHeader from '../../components/admin/AdminHeader';
 import AdminSidebar from '../../components/admin/AdminSidebar'; */
 /* import {AdminHeader, AdminSidebar, AdminProductForm}  from '../../components';
  */
-import {  AdminProductForm } from '../../components';
+import {  AdminCreateProduct } from '../../components';
 
 
 const ProductCreatePage = () => {
@@ -64,7 +64,7 @@ const ProductCreatePage = () => {
     <div>
       <h2>Create Product</h2>
       <div className='divider-admin'/>
-      <AdminProductForm
+      <AdminCreateProduct
         formData={formData}
         handleChange={handleChange}
         handleImageChange={handleImageChange}

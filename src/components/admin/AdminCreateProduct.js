@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 
-const AdminProductForm = ({ formData, handleChange, handleSubmit, handleImageChange, validated }) => {
+const AdminCreateProduct = ({ formData, handleChange, handleSubmit, handleImageChange, validated }) => {
   const [previewImage, setPreviewImage] = useState(null);
 
   const handleImagePreview = (e) => {
@@ -17,7 +17,7 @@ const AdminProductForm = ({ formData, handleChange, handleSubmit, handleImageCha
   };
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form noValidate validated={validated} onSubmit={handleSubmit} className='form-admin'>
       <div className='row'>
         <div className='col'>
           <Form.Group controlId="productName">
@@ -94,5 +94,5 @@ const AdminProductForm = ({ formData, handleChange, handleSubmit, handleImageCha
   );
 };
 
-export default AdminProductForm;
+export default AdminCreateProduct;
 
