@@ -5,6 +5,11 @@ import ProductCard from './ProductCard';
 import '../../styles/components/product.css';
 
 const ProductList = ({ products, title }) => {
+
+  if (!products || products.length === 0) {
+    return <p>No products available</p>; // Muestra un mensaje si no hay productos
+  }
+  
   return (
     <section className="product-list">
       <h2>{title}</h2>

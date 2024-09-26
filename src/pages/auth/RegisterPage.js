@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import Footer from '../../components/common/Footer'
 import Header from '../../components/common/Header'
 import AlertModal from '../../components/common/modals/AlertModal'; */
-import { AlertModal, Footer, Header, RegisterForm } from '../../components';
+import { AlertModal, RegisterForm } from '../../components';
+import { registerUser } from '../../services/AuthService';
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
+    name: '',
     email: '',
     password: '',
     confirmPassword: ''
@@ -14,6 +16,7 @@ const RegisterPage = () => {
 
   // Para validación
   const [validated, setValidated] = useState(false);
+  const [nameError, setNameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
@@ -30,20 +33,27 @@ const RegisterPage = () => {
     });
 
     // Limpiar los errores específicos al cambiar el valor del campo
+    if (name === 'name') setNameError('');
     if (name === 'email') setEmailError('');
     if (name === 'password') setPasswordError('');
     if (name === 'confirmPassword') setConfirmPasswordError('');
   };
 
-  
 
-  const handleSubmit = (e) => {
-    const form = e.currentTarget;
+
+  const handleSubmit = async (e) => {
+
     e.preventDefault();
     e.stopPropagation();
 
     const passwordRegex = /^(?=.*[@*/-])[\w@*/-]{8,20}$/;
     let hasError = false;
+
+    // Validar name
+    if (!formData.name) {
+      setNameError('Please provide a name.');
+      hasError = true;
+    }
 
     // Validar email
     if (!formData.email) {
@@ -76,7 +86,41 @@ const RegisterPage = () => {
     }
 
     setValidated(true);
-    // Aquí podrías manejar el envío del formulario, por ejemplo, enviar los datos a una API
+
+    // Llamar a la API para registrar el usuario
+    try {
+      const response = await registerUser({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        confirmPassword: formData.confirmPassword
+      });
+      console.log('User registered:', response);
+      // Guardar el token si es necesario
+      localStorage.setItem('token', response.token);
+      // Redirigir o mostrar mensaje de éxito
+      setModalMessage('Registration successful!');
+      setShowModal(true);
+      // Redirigir o hacer lo que necesites aquí
+    } catch (error) {
+      console.error("Error details:", error.response.data); // Esto puede darte más información sobre el error
+
+
+      // Manejar diferentes tipos de errores
+      if (error.response) {
+        // Error de respuesta del servidor
+        setModalMessage(error.response.data.message || 'Error registering user. Please try again.');
+      } else if (error.request) {
+        // No se recibió respuesta
+        setModalMessage('No response from the server. Please check your connection.');
+      } else {
+        // Algo salió mal al configurar la solicitud
+        setModalMessage('Error setting up the request. Please try again.');
+      }
+
+      setShowModal(true);
+    }
+
     console.log('Datos del formulario:', formData);
   };
 
@@ -89,6 +133,7 @@ const RegisterPage = () => {
         formData={formData}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
+        nameError={nameError}
         emailError={emailError}
         passwordError={passwordError}
         confirmPasswordError={confirmPasswordError}
