@@ -5,6 +5,7 @@ import Header from '../../components/common/Header'
 import AlertModal from '../../components/common/modals/AlertModal'; */
 import { AlertModal, RegisterForm } from '../../components';
 import { registerUser } from '../../services/AuthService';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +14,9 @@ const RegisterPage = () => {
     password: '',
     confirmPassword: ''
   });
+
+  //navegavion
+  const navigate = useNavigate();
 
   // Para validación
   const [validated, setValidated] = useState(false);
@@ -98,7 +102,10 @@ const RegisterPage = () => {
       console.log('User registered:', response);
       // Guardar el token si es necesario
       localStorage.setItem('token', response.token);
+      //una vez registrado exitosamente se dirige a la pagina principal
+      navigate('/')
       // Redirigir o mostrar mensaje de éxito
+      
       setModalMessage('Registration successful!');
       setShowModal(true);
       // Redirigir o hacer lo que necesites aquí
