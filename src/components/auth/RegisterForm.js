@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container, Form, Button, Row } from 'react-bootstrap';
 import '../../styles/components/auth.css'
 
-const RegisterForm = ({ formData, handleChange, handleSubmit, validated, emailError, passwordError, confirmPasswordError }) => {
+const RegisterForm = ({ formData, handleChange, handleSubmit, validated, nameError, emailError, passwordError, confirmPasswordError }) => {
 
   return (
     <Container className='mt-5'>
@@ -12,6 +12,27 @@ const RegisterForm = ({ formData, handleChange, handleSubmit, validated, emailEr
         {/*Form for Register */}
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Row className="mb-3">
+            {/* NAME */}
+            <Form.Group className='mt-2'>
+              <Form.Label>
+                Name <span className="text-danger">*</span>
+              </Form.Label>
+              <Form.Control
+                type='name'
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder='Enter name'
+                required
+                isInvalid={!!nameError} />
+              <Form.Control.Feedback>
+                Looks good!
+              </Form.Control.Feedback>
+              <Form.Control.Feedback type="invalid">
+                {nameError || 'Please provide a name.'}
+              </Form.Control.Feedback>
+            </Form.Group>
+            {/* EMAIL */}
             <Form.Group className='mt-2'>
               <Form.Label>
                 Email <span className="text-danger">*</span>
@@ -31,6 +52,7 @@ const RegisterForm = ({ formData, handleChange, handleSubmit, validated, emailEr
                 {emailError || 'Please provide an email.'}
               </Form.Control.Feedback>
             </Form.Group>
+            {/* PASSWORD */}
             <Form.Group className='mt-2'>
               <Form.Label >
                 Password  <span className="text-danger">*
@@ -50,6 +72,7 @@ const RegisterForm = ({ formData, handleChange, handleSubmit, validated, emailEr
                 {passwordError || 'Please provide a password.'}
               </Form.Control.Feedback>
             </Form.Group>
+            {/* CONFIRM PASSWORD */}
             <Form.Group className='mt-2'>
               <Form.Label>
                 Confirm Password  <span className="text-danger">*</span>
