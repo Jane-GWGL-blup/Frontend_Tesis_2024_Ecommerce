@@ -52,7 +52,6 @@ const Header = ({ onLogout, cartItems }) => {
   return (
     <Navbar className='header-store' expand="lg" >
       {renderHairDivs()} {/* Renderiza los elementos .hair dinámicamente */}
-      {/*   <div className="d-flex  align-items-center w-100"> */}
       <Navbar.Brand as={Link} to="/">
         <span className="d-lg-none mx-2"><img src={logo} className='logo-store'/></span> {/* Imagen para pantallas pequeñas */}
         <span className="d-none d-lg-inline mx-4"><img src={logo} className='logo-store'/></span> {/* Imagen para pantallas grandes */}
@@ -100,10 +99,6 @@ const Header = ({ onLogout, cartItems }) => {
         {/*Navbar donde va productos, etc pantallas grandes*/}
         <Nav className="flex-row d-none d-lg-flex px-2 ">
           <Nav.Item>
-            {/*             <Nav.Link href="#" className="align-items-center">
-              <FontAwesomeIcon icon={faHome} size="lg" /> /* Icono para Inicio 
-              <span className="d-none d-md-inline ml-2 mx-2">Categorias</span> /* imagen para pantallas pequeñas 
-            </Nav.Link> */}
             <Dropdown align="start" className="ml-2 mx-2">
               <Dropdown.Toggle id="dropdown-cart" className='dropdown-toggle-header-category'  >
                 <FontAwesomeIcon icon={faHome} size="lg" className='icon-nav-header-color' />
@@ -202,7 +197,7 @@ const Header = ({ onLogout, cartItems }) => {
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="#" className="d-flex align-items-center ">
+            <Nav.Link as={Link} to="/products" className="d-flex align-items-center ">
               <FontAwesomeIcon icon={faBox} size="lg" className='icon-nav-header-color' /> {/* Icono para Products */}
               <span className="d-md-inline ml-2 mx-2 text-nav-header">Products</span> {/* Texto para pantallas pequeñas */}
             </Nav.Link>

@@ -1,4 +1,18 @@
-// Simulación de la API para obtener y actualizar categorías
+import axios from 'axios';
+
+import { API_URLS } from '../utils/api';
+//LISTADO DE TODOS LOS PRODUCTOS
+export const getAllCategories = async () => {
+  try {
+    const response = await axios.get(API_URLS.CATEGORIES);
+    return response.data;  // Esto asume que los productos están en data
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+    throw error;
+  }
+};
+
+//NOSIRVEN AUN
 export const getCategoryData = async (categoryId) => {
     // Aquí iría la llamada real a la API para obtener datos de la categoría
     return {

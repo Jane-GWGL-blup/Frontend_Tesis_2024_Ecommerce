@@ -11,7 +11,7 @@ const StoreLayout = ({ children }) => {
             <main>
                 <LoadingComponent>
                     {/* Contenido del HomePage */}
-                    <Outlet/> {children}
+                    <Outlet /> {children}
                 </LoadingComponent>
             </main>
             <Footer />

@@ -2,6 +2,7 @@
 export { default as AdminLayout } from './admin/AdminLayout';
 export { default as StoreLayout } from './store/StoreLayout';
 
+/* ADMIN */
 export { default as AdminHeader } from './admin/AdminHeader';
 export { default as AdminSidebar } from './admin/AdminSidebar';
 export { default as AdminDashboard } from './admin/AdminDashboard';
@@ -12,7 +13,8 @@ export { default as AdminCreateCategory} from './admin/AdminCreateCategory';
 export { default as AdminManageCategory } from './admin/AdminManageCategory';
 export { default as AdminEditCategoryForm } from './admin/AdminEditCategoryForm';
 
-
+/* AUTH */
+export { default as ProtectedRoute } from './auth/ProtectedRoute';
 export { default as LoginForm } from './auth/LoginForm';
 export { default as RegisterForm } from './auth/RegisterForm';
 export { default as ForgotPasswordForm } from './auth/ForgotPasswordForm';
@@ -43,7 +45,7 @@ export { default as AddressForm } from './user/AddressForm';
 export { default as SidebarCategoryStore } from './category/SidebarCategoryStore';
 export { default as CategoryListCarousel } from './category/CategoryListCarousel';
 
-//MODAL
+/* MODAL */
 export {default as AlertModal } from './common/modals/AlertModal';
 
 //ADMINMODAL

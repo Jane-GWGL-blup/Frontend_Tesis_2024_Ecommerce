@@ -4,17 +4,29 @@ import { Badge, Table, Button, Form } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencil, faPlus } from '@fortawesome/free-solid-svg-icons'; // Importar los iconos que necesites
 import '../../styles/components/admin.css'
+import { getAllProducts } from '../../services/ProductService'; // Importar el servicio
+
 
 const AdminManageProduct = () => {
 
-  const [products, setProducts] = useState([
-    { id: 1, name: 'Product 1', description: 'Description 1', price: 2.50, stock: 2 },
-    { id: 2, name: 'Product 2', description: 'Description 2', price: 3.50, stock: 5 },
-    // Agrega más categorías según sea necesario
-  ]);
-
+  const [products, setProducts] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const navigate = useNavigate();
+
+
+  useEffect(() => {
+    // Función para obtener productos
+    const fetchProducts = async () => {
+      try {
+        const productList = await getAllProducts(); // Obtener los productos desde la API
+        setProducts(productList); // Actualiza el estado con los productos
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts(); // Llama a la función al montar el componente
+  }, []);
 
   const handleCheckboxChange = (productId) => {
     setSelectedProducts((prevSelected) =>

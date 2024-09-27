@@ -4,16 +4,30 @@ import { Table, Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencil } from '@fortawesome/free-solid-svg-icons'; // Importar los iconos que necesites
 import '../../styles/components/admin.css'
+import { getAllCategories } from '../../services/CategoryService'; // Importar el servicio
 
 const AdminManageCategory = () => {
   const location = useLocation();
   const query = new URLSearchParams(location.search).get('search');
-  const [categories, setCategories] = useState([
-    { id: 1, name: 'Category 1', description: 'Description 1' },
-    { id: 2, name: 'Category 2', description: 'Description 2' },
-    // Agrega más categorías según sea necesario
-  ]);
+  const [categories, setCategories] = useState([]);
+  /*   const [selectedCategories, setSelectedCategories] = useState([]);
+   */
   const [filteredCategories, setFilteredCategories] = useState(categories);
+
+
+  useEffect(() => {
+    // Función para obtener productos
+    const fetchCategories = async () => {
+      try {
+        const categoryList = await getAllCategories(); // Obtener las categorias desde la API
+        setCategories(categoryList); // Actualiza el estado con las categorias
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchCategories(); // Llama a la función al montar el componente
+  }, []);
 
   useEffect(() => {
     if (query) {
@@ -42,7 +56,7 @@ const AdminManageCategory = () => {
           </tr>
         </thead>
         <tbody>
-        {filteredCategories.map((category, index) => (
+          {filteredCategories.map((category, index) => (
             <tr key={category.id}>
               <td>{index + 1}</td>
               <td>{category.name}</td>

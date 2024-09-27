@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+import { isAdmin, isAuthenticated } from './services/AuthService'; 
+
 import {
   HomePage, 
   RegisterPage, LoginPage, ForgotPasswordPage, ResetPasswordPage,
@@ -10,10 +12,15 @@ import {
 } from './pages'
 
 import {
-  StoreLayout, AdminLayout
+  StoreLayout, AdminLayout, ProtectedRoute
 } from './components/index'
 
 function App() {
+
+  // Verifica si el usuario está autenticado y si es admin
+  const isUserAuthenticated = isAuthenticated();
+  const isUserAdmin = isAdmin();
+
   return (
     <Router>
       <Routes>
@@ -22,14 +29,14 @@ function App() {
 
         {/* Rutas de administración anidadas */}
         <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<AdminDashboardPage />} />
-          <Route path='dashboard' element={<AdminDashboardPage />} />
-          <Route path="products" element={<ManageProductPage />} />
-          <Route path="products/create" element={<ProductCreatePage />} />
-          <Route path="products/edit/:id" element={<ProductEditPage />} />
-          <Route path="categories" element={<ManageCategoryPage />} />
-          <Route path="categories/create" element={<CategoryCreatePage />} />
-          <Route path="categories/edit/:id" element={<CategoryEditPage />} />
+          <Route index element={<ProtectedRoute element={<AdminDashboardPage />} isAllowed={isUserAdmin} />} />
+          <Route path='dashboard' element={<ProtectedRoute element={<AdminDashboardPage />} isAllowed={isUserAdmin} />} />
+          <Route path="products" element={<ProtectedRoute element={<ManageProductPage />} isAllowed={isUserAdmin} />} />
+          <Route path="products/create" element={<ProtectedRoute element={<ProductCreatePage />} isAllowed={isUserAdmin} />} />
+          <Route path="products/edit/:id" element={<ProtectedRoute element={<ProductEditPage />} isAllowed={isUserAdmin} />} />
+          <Route path="categories" element={<ProtectedRoute element={<ManageCategoryPage />} isAllowed={isUserAdmin} />} />
+          <Route path="categories/create" element={<ProtectedRoute element={<CategoryCreatePage />} isAllowed={isUserAdmin} />} />
+          <Route path="categories/edit/:id" element={<ProtectedRoute element={<CategoryEditPage />} isAllowed={isUserAdmin} />} />
         </Route>
 
         {/* Rutas de la tienda anidadas */}
@@ -37,15 +44,14 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="register" element={<RegisterPage />} />
           <Route path="login" element={<LoginPage />} />
-          <Route path="forgot-password" element={<ForgotPasswordPage />} />
-          <Route path="reset-password" element={<ResetPasswordPage/>} /> 
+{/*           <Route path="forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="reset-password" element={<ResetPasswordPage/>} />  */}
           <Route path="products" element={<ProductListPage />} />
-{/*           <Route path="product/:id" element={<ProductDetailPage />} /> */}
           <Route path="cart" element={<CartPage />} />
-{/*           <Route path="checkout" element={<CheckoutPage />} />
-          <Route path="profile" element={<UserProfilePage />} />
-          <Route path="orders" element={<OrderHistoryPage />} />
-          <Route path="order/:id" element={<OrderDetailPage />} /> */}
+          {/* Rutas de usuario normal protegidas */}
+          {/* <Route path="profile" element={<ProtectedRoute element={<UserProfilePage />} isAllowed={isUserAuthenticated} />} />
+          <Route path="orders" element={<ProtectedRoute element={<OrderHistoryPage />} isAllowed={isUserAuthenticated} />} />
+          <Route path="order/:id" element={<ProtectedRoute element={<OrderDetailPage />} isAllowed={isUserAuthenticated} />} /> */}
         </Route>
 
       </Routes>

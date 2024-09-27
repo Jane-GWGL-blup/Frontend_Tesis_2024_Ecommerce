@@ -13,9 +13,9 @@ const Footer = () => {
       <Container>
         <Row>
           <Col md={2}>
-         
-            <img src={logo} className='logo-store-footer'/>
-     
+
+            <img src={logo} className='logo-store-footer' />
+
           </Col>
           <Col md={3}>
             <h5 className='text-color-footer'>About Us</h5>
@@ -44,7 +44,16 @@ const Footer = () => {
           <Col md={2}>
             <h5 className='text-color-footer'>Follow Us</h5>
             <div>
-              <a href="https://facebook.com" className="text-white m-3">
+              <Nav.Link href="https://facebook.com" target="_blank" className="text-white m-3">
+                <FontAwesomeIcon icon={faFacebook} size="2x" />
+              </Nav.Link>
+              <Nav.Link href="https://twitter.com" target="_blank" className="text-white m-3">
+                <FontAwesomeIcon icon={faTwitter} size="2x" />
+              </Nav.Link>
+              <Nav.Link href="https://www.instagram.com/almajewellery26/" target="_blank" className="text-white m-3">
+                <FontAwesomeIcon icon={faInstagram} size="2x" />
+              </Nav.Link>
+              {/*  <a href="https://facebook.com" className="text-white m-3">
                 <FontAwesomeIcon icon={faFacebook} size="2x" />
               </a>
               <a href="https://twitter.com" className="text-white m-3">
@@ -52,11 +61,11 @@ const Footer = () => {
               </a>
               <a href="https://www.instagram.com/almajewellery26/" className="text-white m-3">
                 <FontAwesomeIcon icon={faInstagram} size="2x" />
-              </a>
+              </a> */}
             </div>
           </Col>
         </Row>
-        <div className='divider'/>
+        <div className='divider' />
         <Row className="mt-4">
           <Col className="text-center">
             <p className="mb-0">&copy; 2024 MyCompany. All rights reserved.</p>

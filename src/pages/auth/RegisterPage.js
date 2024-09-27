@@ -1,8 +1,4 @@
 import React, { useState } from 'react';
-/* import RegisterForm from '../../components/auth/RegisterForm'
-import Footer from '../../components/common/Footer'
-import Header from '../../components/common/Header'
-import AlertModal from '../../components/common/modals/AlertModal'; */
 import { AlertModal, RegisterForm } from '../../components';
 import { registerUser } from '../../services/AuthService';
 import { useNavigate } from 'react-router-dom';
@@ -28,6 +24,7 @@ const RegisterPage = () => {
   // Para el modal de alerta
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
+  const [modalTitle, setModalTitle] = useState(''); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -105,7 +102,7 @@ const RegisterPage = () => {
       //una vez registrado exitosamente se dirige a la pagina principal
       navigate('/')
       // Redirigir o mostrar mensaje de éxito
-      
+      setModalTitle('Registro exitoso'); // Título de éxito
       setModalMessage('Registration successful!');
       setShowModal(true);
       // Redirigir o hacer lo que necesites aquí
@@ -125,6 +122,7 @@ const RegisterPage = () => {
         setModalMessage('Error setting up the request. Please try again.');
       }
 
+      setModalTitle('Error en el registro'); // Mantén el título de error
       setShowModal(true);
     }
 
@@ -148,7 +146,7 @@ const RegisterPage = () => {
       <AlertModal
         show={showModal}
         handleClose={handleCloseModal}
-        title='Error en el registro'
+        title={modalTitle}
         message={modalMessage}
       />
     </div>
