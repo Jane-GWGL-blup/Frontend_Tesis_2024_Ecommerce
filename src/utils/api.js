@@ -6,5 +6,6 @@ export const API_URLS = {
   AUTH_REGISTER: `${BASE_URL}/register`,
   PRODUCTS: `${BASE_URL}/products`,
   USERS: `${BASE_URL}/users`,
+  AUTH_LOGIN:`${BASE_URL}/login`
   // Agrega otras rutas de la API según sea necesario
 };

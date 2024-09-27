@@ -12,3 +12,13 @@ export const registerUser = async (userData) => {
       throw error;
     }
   };
+
+  export const loginUser = async(userData) =>{
+    try {
+      const response = await axios.post(API_URLS.AUTH_LOGIN,userData);
+      return response.data
+    } catch (error) {
+      console.error("Error logging in:",error)
+      throw error;
+    }
+  }
