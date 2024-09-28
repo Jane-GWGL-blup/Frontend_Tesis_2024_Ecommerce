@@ -4,9 +4,10 @@ const BASE_URL = process.env.REACT_APP_API_URL;  // Cambia esta URL por la base 
 
 export const API_URLS = {
   AUTH_REGISTER: `${BASE_URL}/register`,
+  AUTH_LOGIN:`${BASE_URL}/login`,
   PRODUCTS: `${BASE_URL}/products`,
+  PRODUCTS_EDIT: `${BASE_URL}/products/:id`,
   CATEGORIES: `${BASE_URL}/categories`,
   USERS: `${BASE_URL}/users`,
-  AUTH_LOGIN:`${BASE_URL}/login`
   // Agrega otras rutas de la API según sea necesario
 };

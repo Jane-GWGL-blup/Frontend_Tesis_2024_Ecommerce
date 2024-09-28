@@ -16,19 +16,6 @@ export const registerUser = async (userData) => {
 export const loginUser = async (userData) => {
   try {
     const response = await axios.post(API_URLS.AUTH_LOGIN, userData);
-    // Guarda tanto el token como el rol en localStorage
-    /*     localStorage.setItem('token', response.data.token);
-        localStorage.setItem('user', JSON.stringify({ role: response.data.role })); */
-    // Asegúrate de que estás guardando un objeto completo del usuario
-    const userDataToStore = {
-      role: response.data.role,  // Asegúrate de que esta propiedad exista
-      // Agrega aquí otros datos relevantes del usuario si es necesario
-      email: response.data.email, // Supón que también devuelve el email
-      name: response.data.name, // Supón que también devuelve el nombre
-    };
-
-    localStorage.setItem('token', response.data.token);
-    localStorage.setItem('user', JSON.stringify(userDataToStore)); // Almacena el objeto completo
     return response.data
   } catch (error) {
     console.error("Error logging in:", error)

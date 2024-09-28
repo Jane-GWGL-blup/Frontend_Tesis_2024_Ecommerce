@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Table, Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faPencil } from '@fortawesome/free-solid-svg-icons'; // Importar los iconos que necesites
+import { faTrash, faPencil, faPlus } from '@fortawesome/free-solid-svg-icons'; // Importar los iconos que necesites
 import '../../styles/components/admin.css'
 import { getAllCategories } from '../../services/CategoryService'; // Importar el servicio
 
@@ -42,8 +42,12 @@ const AdminManageCategory = () => {
 
   return (
     <div>
-      <div>
-        <Button as={Link} to="/admin/categories/create" variant='outline-primary'> Add category </Button>
+      <div className='d-flex justify-content-between align-items-center'>
+        <div />
+        <Button as={Link} to="/admin/categories/create" className='add-button-admin' >
+          <FontAwesomeIcon icon={faPlus} className='mx-2' />
+          ADD CATEGORY
+        </Button>
       </div>
       <Table responsive>
         <thead>

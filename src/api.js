@@ -1,4 +1,4 @@
-// api.js
+// api.js no vale
 export const fakeApiCallToSendResetEmail = (email) => {
     return new Promise((resolve) => {
       setTimeout(() => {
