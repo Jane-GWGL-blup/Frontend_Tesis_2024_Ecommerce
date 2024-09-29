@@ -53,8 +53,9 @@ const AdminHeader = ({ onLogout, onSearch }) => {
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item as="div">
-              <Nav.Link as={Link} to="/" onClick={onLogout} className="text-dark">Logout</Nav.Link>
+            <NavDropdown.Item  onClick={onLogout}>
+              Logout
+              {/*<Nav.Link as={Link} to="/" onClick={onLogout} className="text-dark">Logout</Nav.Link>*/}
             </NavDropdown.Item>
           </NavDropdown>
         </Nav>
@@ -84,8 +85,9 @@ const AdminHeader = ({ onLogout, onSearch }) => {
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item as="div">
-              <Nav.Link onClick={onLogout} className="text-dark">Logout</Nav.Link>
+            <NavDropdown.Item onClick={onLogout}>
+              Logout
+              {/* <Nav.Link onClick={onLogout} className="text-dark">Logout</Nav.Link> */}
             </NavDropdown.Item>
           </NavDropdown>
         </Nav>

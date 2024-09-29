@@ -13,15 +13,19 @@ export const getAllProducts = async () => {
     throw error;
   }
 };
-  
+ 
+export const updateProductData = async (productId, productData) => {
+  try {
+    const response = await axios.put(API_URLS.PRODUCTS_EDIT(productId), productData);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating product:", error);
+    throw error;
+  }
+};
+
 //AUN NO SIRVEN
-  export const updateProductData = async (productId, data) => {
-    // Aquí iría la llamada real a la API para actualizar datos de la categoría
-    console.log(`Updating product ${productId} with data:`, data);
-    return {
-      success: true,
-    };
-  };
+
 
 export const getProductData = async (productId) => {
     // Aquí iría la llamada real a la API para obtener datos de la categoría

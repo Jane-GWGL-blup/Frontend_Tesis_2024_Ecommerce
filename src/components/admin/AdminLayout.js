@@ -1,11 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import { AdminHeader, AdminSidebar } from '../../components/';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { logout, isAuthenticated } from '../../services/AuthService';
 
 const AdminLayout = ({  children }) => {
   const [searchResults, setSearchResults] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
+
+
+  const handleLogout = () => {
+    logout(); // Llama a la función de logout
+    navigate('/'); // Redirige a la página de inicio o a la ruta que desees
+  };
 
   const handleSearch = (query) => {
     console.log('Buscando:', query);
@@ -16,21 +23,13 @@ const AdminLayout = ({  children }) => {
     }
   };
 
-      // Estado local para la simulación de usuario
-      const [user, setUser] = useState({
-        id: 1,
-        username: 'AdminUser',
-        email: 'admin@example.com',
-        role: 'admin',
-        isLoggedIn: true
-    });
+  useEffect(() => {
+    const isUserAuthenticated = isAuthenticated();
+    if (!isUserAuthenticated) {
+      navigate('/'); // Redirige si el usuario no está autenticado
+    }
+  }, [navigate]);
 
- // Función para simular el cierre de sesión
- const onLogout = () => {
-  setUser(null); // Establece el usuario como null
-  // También puedes realizar otras tareas como redirigir al usuario a la página de inicio de sesión
-  navigate('/login'); // Redirige a la página de inicio de sesión
-};
 
   return (
     <div className='container-fluid admin-container'>
@@ -42,7 +41,7 @@ const AdminLayout = ({  children }) => {
           <div className='row'>
             <div className='col-md-12'>
               <AdminHeader 
-                onLogout={onLogout} 
+                onLogout={handleLogout} 
                 onSearch={handleSearch}
               />
             </div>
