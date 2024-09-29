@@ -48,6 +48,8 @@ const LoginPage = () => {
         email: formData.email,
         password: formData.password
       })
+      
+      
       /*       // Redirigir según el rol del usuario
             const user = JSON.parse(localStorage.getItem('user'));
             if (user && user.role === 'admin') {
@@ -59,14 +61,15 @@ const LoginPage = () => {
       const userString = localStorage.getItem('user');
       if (userString) {
         const user = JSON.parse(userString);
-        if (user.role === 'ADMIN') {
+        if (user.role === "ADMIN") {
           navigate('/admin/dashboard'); // Redirigir al dashboard de admin
         } else {
-          navigate('/'); // Redirigir a la página principal
+          navigate('/'); //Redirigir a la página principal
         }
       } else {
         console.error('User data is not available in localStorage');
       }
+      
 
     } catch (error) {
       console.log("Error logging in:", error.response.data);
