@@ -1,3 +1,4 @@
+//services/AuthService.js
 import axios from 'axios';
 
 import { API_URLS } from '../utils/api';
@@ -38,8 +39,6 @@ export const logout = () => {
   // Aquí puedes eliminar el token del localStorage o cualquier otro mecanismo de autenticación
   localStorage.removeItem('token');
   localStorage.removeItem('user');
-  // Puedes hacer otras limpiezas si es necesario
-  localStorage.clear(); 
 };
 
 // Función para verificar si el usuario es un administrador
@@ -59,10 +58,46 @@ export const isAdmin = () => {
 };
 
 // Función para verificar si hay un usuario autenticado
+
 export const isAuthenticated = () => {
   const token = localStorage.getItem('token');
-  return !!token; // Retorna true si hay un token, false de lo contrario
+  if (token === null) {
+    console.log("token",token)
+    return false;
+  } else {
+    console.log("token",token)
+    try {
+       // Decodifica la parte del payload del token (JWT), que contiene la información del usuario
+      const decodedToken = JSON.parse(atob(token.split('.')[1]));
+       // Verifica si el token ha expirado comparando la propiedad 'exp' con la fecha actual
+      if (decodedToken.exp < Date.now() / 1000) {
+        return false;
+      } else {
+        return true;
+      }
+    } catch (error) {
+      return false;
+    }
+  }
+  /*
+      const token = localStorage.getItem('token');
+  console.log('Token:', token); // Verifica el valor del token
+    const isAuth = token !== null; 
+    console.log('Is Authenticated:', isAuth); // Verifica el estado de autenticación
+    return isAuth;  */
 };
+
+/* export const isAuthenticated = () => {
+  const token = localStorage.getItem('token');
+  console.log("Token present:", token); // Para depurar
+  return !!token; // Retorna true si hay un token
+}; */
+
+
+/* export const isAuthenticated = () => {
+  const token = localStorage.getItem('token');
+  return !!token; // Retorna true si hay un token, false de lo contrario
+}; */
 
 /* export const isAuthenticated = () => {
   const token = localStorage.getItem('token'); // O el método que estés usando
