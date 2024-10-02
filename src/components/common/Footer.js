@@ -53,15 +53,6 @@ const Footer = () => {
               <Nav.Link href="https://www.instagram.com/almajewellery26/" target="_blank" className="text-white m-3">
                 <FontAwesomeIcon icon={faInstagram} size="2x" />
               </Nav.Link>
-              {/*  <a href="https://facebook.com" className="text-white m-3">
-                <FontAwesomeIcon icon={faFacebook} size="2x" />
-              </a>
-              <a href="https://twitter.com" className="text-white m-3">
-                <FontAwesomeIcon icon={faTwitter} size="2x" />
-              </a>
-              <a href="https://www.instagram.com/almajewellery26/" className="text-white m-3">
-                <FontAwesomeIcon icon={faInstagram} size="2x" />
-              </a> */}
             </div>
           </Col>
         </Row>

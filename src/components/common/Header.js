@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Dropdown, Badge, DropdownDivider } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faHome, faClipboardList, faBox, faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faHome, faClipboardList, faBox, faSearch, faShoppingCart, faLinkSlash } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/components/header.css'
 import logo from '../../images/logo-2.png';
 
-const Header = ({ onLogout, cartItems }) => {
+const Header = ({ onLogout, isAuthenticated }) => {
 
   const hairPositions = [
     { top: '10%', left: '20%', rotate: '30deg' },
@@ -48,15 +47,18 @@ const Header = ({ onLogout, cartItems }) => {
     ));
   };
 
+  console.log('Is Authenticated:', isAuthenticated); // Para depurar
 
   return (
     <Navbar className='header-store' expand="lg" >
       {renderHairDivs()} {/* Renderiza los elementos .hair dinámicamente */}
       <Navbar.Brand as={Link} to="/">
-        <span className="d-lg-none mx-2"><img src={logo} className='logo-store'/></span> {/* Imagen para pantallas pequeñas */}
-        <span className="d-none d-lg-inline mx-4"><img src={logo} className='logo-store'/></span> {/* Imagen para pantallas grandes */}
+        <span className="d-lg-none mx-2"><img src={logo} className='logo-store' /></span> {/* Imagen para pantallas pequeñas */}
+        <span className="d-none d-lg-inline mx-4"><img src={logo} className='logo-store' /></span> {/* Imagen para pantallas grandes */}
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" className='navbar-toggle ml-auto' />
+
+
       {/* Dropdown para pantallas pequeñas  */}
       <div className="d-lg-none d-flex align-items-center ml-auto">
         {/* Dropdown del usuario para pantallas pequeñas*/}
@@ -64,20 +66,32 @@ const Header = ({ onLogout, cartItems }) => {
           <Dropdown.Toggle id="dropdown-user" className='user-dropdown-toggle'>
             <FontAwesomeIcon icon={faUser} size="lg" className='icon-nav-header-color' />
           </Dropdown.Toggle>
+
+
           <Dropdown.Menu>
-            <Dropdown.Item >
-              <Link to="/login" className="dropdown-item">Login</Link>
-            </Dropdown.Item>
-            <Dropdown.Item >
-              <Link to="/register" className="dropdown-item">Register</Link>
-            </Dropdown.Item>
-            <Dropdown.Item >
-              <span className="dropdown-item" >Perfil</span>
-            </Dropdown.Item>
-            <DropdownDivider />
-            <Dropdown.Item >
-              <Link onClick={onLogout} className=" dropdown-item text-dark">Logout</Link>
-            </Dropdown.Item>
+            {/* Solo mostrar Login y Register si el usuario no está autenticado para pantallas grandes*/}
+            {isAuthenticated ? (
+              <>
+                <Dropdown.Item >
+                  <span className="dropdown-item" >Perfil</span>
+                </Dropdown.Item>
+                <DropdownDivider />
+                <Dropdown.Item onClick={onLogout}>
+                  Logout
+                </Dropdown.Item>
+
+
+              </>
+            ) : (
+              <>
+                <Dropdown.Item >
+                  <Link to="/login" className="dropdown-item">Login</Link>
+                </Dropdown.Item>
+                <Dropdown.Item >
+                  <Link to="/register" className="dropdown-item">Register</Link>
+                </Dropdown.Item>
+              </>
+            )}
           </Dropdown.Menu>
         </Dropdown>
 
@@ -92,9 +106,8 @@ const Header = ({ onLogout, cartItems }) => {
           </Dropdown.Menu>
         </Dropdown>
       </div>
-      {/* </div> */}
 
-      {/* ELEMENTOS QUE VAN A COLAPSAR  */}
+      {/* ELEMENTOS QUE VAN A COLAPSAR - PANTALLAS PEQUEÑAS */}
       <Navbar.Collapse id="basic-navbar-nav" className="align-items-center">
         {/*Navbar donde va productos, etc pantallas grandes*/}
         <Nav className="flex-row d-none d-lg-flex px-2 ">
@@ -129,6 +142,7 @@ const Header = ({ onLogout, cartItems }) => {
         </Nav>
         {/* El buscador y el NavDropdown para pantallas grandes siempre estará a la derecha */}
         <div className="d-none d-lg-flex align-items-center" style={{ marginLeft: 'auto' }}>
+
           <form className="form-inline my-2 my-lg-0 d-flex align-items-center py-2 search-header">
             <input className="form-control mr-sm-2 mx-2 " type="search" placeholder="Search" aria-label="Search" />
             <button className="btn btn-outline-success my-2 my-sm-0 icon-nav-header-color" type="submit">
@@ -141,19 +155,28 @@ const Header = ({ onLogout, cartItems }) => {
               <FontAwesomeIcon icon={faUser} size="lg" className='icon-nav-header-color' />
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item >
-                <Link to="/login" className="dropdown-item">Login</Link>
-              </Dropdown.Item>
-              <Dropdown.Item >
-                <Link to="/register" className="dropdown-item">Register</Link>
-              </Dropdown.Item>
-              <Dropdown.Item >
-                <span className="dropdown-item" >Perfil</span>
-              </Dropdown.Item>
-              <DropdownDivider />
-              <Dropdown.Item >
-                <Link onClick={onLogout} className=" dropdown-item text-dark">Logout</Link>
-              </Dropdown.Item>
+              {/* Solo mostrar Login y Register si el usuario no está autenticado */}
+              {isAuthenticated ? (
+                <>
+                  <Dropdown.Item >
+                    <span className="dropdown-item" >Perfil</span>
+                  </Dropdown.Item>
+                  <DropdownDivider />
+                  <Dropdown.Item onClick={onLogout}>
+                    Logout
+                  </Dropdown.Item>
+
+                </>
+              ) : (
+                <>
+                  <Dropdown.Item >
+                    <Link to="/login" className="dropdown-item">Login</Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item >
+                    <Link to="/register" className="dropdown-item">Register</Link>
+                  </Dropdown.Item>
+                </>
+              )}
             </Dropdown.Menu>
           </Dropdown>
 
@@ -203,20 +226,20 @@ const Header = ({ onLogout, cartItems }) => {
             </Nav.Link>
           </Nav.Item>
 
-            <Dropdown align="start" >
-              <Dropdown.Toggle id="dropdown-cart" className='dropdown-toggle-header-category'>
-                <FontAwesomeIcon icon={faHome} size="lg" className='icon-nav-header-color' />
-                <span className="d-md-inline mx-2 text-nav-header">Categorias</span>
-              </Dropdown.Toggle>
-              <Dropdown.Menu className='dropdown-menu-categories-ss-bg'>
-                <div className='dropdown-menu-categories-ss'>
-                  <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
-                </div>
-              </Dropdown.Menu>
-            </Dropdown>
-   
+          <Dropdown align="start" >
+            <Dropdown.Toggle id="dropdown-cart" className='dropdown-toggle-header-category'>
+              <FontAwesomeIcon icon={faHome} size="lg" className='icon-nav-header-color' />
+              <span className="d-md-inline mx-2 text-nav-header">Categorias</span>
+            </Dropdown.Toggle>
+            <Dropdown.Menu className='dropdown-menu-categories-ss-bg'>
+              <div className='dropdown-menu-categories-ss'>
+                <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
+                <Dropdown.Item as={Link} to="/necklace" className='dropdown-item '>Collar</Dropdown.Item>
+              </div>
+            </Dropdown.Menu>
+          </Dropdown>
+
           {/* Agregar más elementos del menú aquí */}
         </Nav>
 

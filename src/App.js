@@ -48,7 +48,7 @@ function App() {
           <Route path="reset-password" element={<ResetPasswordPage/>} />  */}
           <Route path="products" element={<ProductListPage />} />
           <Route path="cart" element={<CartPage />} />
-          {/* Rutas de usuario normal protegidas */}
+          {/* Rutas de usuario normal protegidas que se usaran despues*/}
           {/* <Route path="profile" element={<ProtectedRoute element={<UserProfilePage />} isAllowed={isUserAuthenticated} />} />
           <Route path="orders" element={<ProtectedRoute element={<OrderHistoryPage />} isAllowed={isUserAuthenticated} />} />
           <Route path="order/:id" element={<ProtectedRoute element={<OrderDetailPage />} isAllowed={isUserAuthenticated} />} /> */}

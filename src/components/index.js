@@ -23,6 +23,7 @@ export { default as ResetPasswordForm } from './auth/ResetPasswordForm';
 export { default as CartItem } from './cart/CartItem';
 export { default as CartSummary } from './cart/CartSummary';
 
+/* COMMON */
 export { default as Banner } from './common/Banner';
 export { default as Header } from './common/Header';
 export { default as Footer } from './common/Footer';
