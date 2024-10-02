@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Dropdown, Badge, DropdownDivider } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -5,7 +6,7 @@ import { faUser, faHome, faClipboardList, faBox, faSearch, faShoppingCart, faLin
 import '../../styles/components/header.css'
 import logo from '../../images/logo-2.png';
 
-const Header = ({ onLogout, isAuthenticated }) => {
+const Header = ({ onLogout }) => {
 
   const hairPositions = [
     { top: '10%', left: '20%', rotate: '30deg' },
@@ -47,7 +48,7 @@ const Header = ({ onLogout, isAuthenticated }) => {
     ));
   };
 
-  console.log('Is Authenticated:', isAuthenticated); // Para depurar
+  /*  console.log('Is Authenticated2:', isAuthenticated); */ // Para depurar
 
   return (
     <Navbar className='header-store' expand="lg" >
@@ -70,28 +71,27 @@ const Header = ({ onLogout, isAuthenticated }) => {
 
           <Dropdown.Menu>
             {/* Solo mostrar Login y Register si el usuario no está autenticado para pantallas grandes*/}
-            {isAuthenticated ? (
-              <>
-                <Dropdown.Item >
-                  <span className="dropdown-item" >Perfil</span>
-                </Dropdown.Item>
-                <DropdownDivider />
-                <Dropdown.Item onClick={onLogout}>
-                  Logout
-                </Dropdown.Item>
-
-
+            {/*       {!isAuthenticated ? (
+              <> */}
+            <Dropdown.Item as={Link} to="/login">
+              <div className="dropdown-item">Login</div>
+            </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/register" >
+              <div className="dropdown-item">Register</div>
+            </Dropdown.Item>
+            {/* 
               </>
             ) : (
-              <>
-                <Dropdown.Item >
-                  <Link to="/login" className="dropdown-item">Login</Link>
-                </Dropdown.Item>
-                <Dropdown.Item >
-                  <Link to="/register" className="dropdown-item">Register</Link>
-                </Dropdown.Item>
-              </>
-            )}
+              <> */}
+            <Dropdown.Item >
+              <span className="dropdown-item" >Perfil</span>
+            </Dropdown.Item>
+            <DropdownDivider />
+            <Dropdown.Item onClick={onLogout}>
+              Logout
+            </Dropdown.Item>
+            {/*         </>
+            )} */}
           </Dropdown.Menu>
         </Dropdown>
 
@@ -156,27 +156,28 @@ const Header = ({ onLogout, isAuthenticated }) => {
             </Dropdown.Toggle>
             <Dropdown.Menu>
               {/* Solo mostrar Login y Register si el usuario no está autenticado */}
-              {isAuthenticated ? (
-                <>
-                  <Dropdown.Item >
-                    <span className="dropdown-item" >Perfil</span>
-                  </Dropdown.Item>
-                  <DropdownDivider />
-                  <Dropdown.Item onClick={onLogout}>
-                    Logout
-                  </Dropdown.Item>
-
-                </>
+              {/*      {!isAuthenticated ? (
+                <> */}
+              {/* Mostrar Login y Register si el usuario no está autenticado */}
+              <Dropdown.Item as={Link} to="/login">
+                <div className="dropdown-item">Login</div>
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/register" >
+                <div className="dropdown-item">Register</div>
+              </Dropdown.Item>
+              {/*              </>
               ) : (
-                <>
-                  <Dropdown.Item >
-                    <Link to="/login" className="dropdown-item">Login</Link>
-                  </Dropdown.Item>
-                  <Dropdown.Item >
-                    <Link to="/register" className="dropdown-item">Register</Link>
-                  </Dropdown.Item>
-                </>
-              )}
+                <> */}
+              {/* Mostrar Perfil y Logout si el usuario está autenticado */}
+              <Dropdown.Item >
+                <span className="dropdown-item" >Perfil</span>
+              </Dropdown.Item>
+              <DropdownDivider />
+              <Dropdown.Item onClick={onLogout}>
+                Logout
+              </Dropdown.Item>
+              {/*     </>
+              )} */}
             </Dropdown.Menu>
           </Dropdown>
 
