@@ -1,7 +1,7 @@
 import axios from 'axios';
-
 import { API_URLS } from '../utils/api';
-//LISTADO DE TODOS LOS PRODUCTOS
+
+//LISTADO DE TODOS LOS GATEGORIAS
 export const getAllCategories = async () => {
   try {
     const response = await axios.get(API_URLS.CATEGORIES);
@@ -12,20 +12,64 @@ export const getAllCategories = async () => {
   }
 };
 
-//NOSIRVEN AUN
-export const getCategoryData = async (categoryId) => {
-    // Aquí iría la llamada real a la API para obtener datos de la categoría
-    return {
-      name: 'Sample Category',
-      description: 'Sample Description',
-    };
-  };
-  
-  export const updateCategoryData = async (categoryId, data) => {
-    // Aquí iría la llamada real a la API para actualizar datos de la categoría
-    console.log(`Updating category ${categoryId} with data:`, data);
-    return {
-      success: true,
-    };
-  };
+//CREATE CATEGORY
+export const createCategory = async (categoryData) =>{
+  try {
+    const response = await axios.post(API_URLS.CATEGORIES,categoryData,{
+      headers:{
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }
+    })
+    return response.data
+  } catch (error) {
+    console.error('Error al crear la categoría', error);
+    throw error;
+  }
+}
+//modificar categoria
+export const updateCategory = async (categoryId,categoryData) =>{
+  try {
+    const response = await axios.put(`${API_URLS.CATEGORIES}/${categoryId}`,categoryData,{
+      headers:{
+        Authorization:`Bearer ${localStorage.getItem('token')}`
+      }
+    })
+    return response.data
+  } catch (error) {
+    console.error('Error al actualizar la categoría', error);
+    throw error;
+  }
+}
+// Eliminar categoría
+export const deleteCategory = async (categoryId) => {
+  try {
+    const response = await axios.delete(`${API_URLS.CATEGORIES}/${categoryId}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error al eliminar la categoría', error);
+    throw error;
+  }
+};
+
+// Obtener datos de la categoría por ID
+export const getCategoryById = async (categoryId) => {
+  try {
+    const token = localStorage.getItem('token'); // Obtener el token
+    const response = await axios.get(`/api/categories/${categoryId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`, // Enviando el token en la cabecera de autorización
+      },
+    });
+    return response.data; // Devolver la data de la categoría
+  } catch (error) {
+    console.error('Error fetching category:', error);
+    throw error; // Manejar el error
+  }
+};
+
+
   

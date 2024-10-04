@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Table, Button, Form } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faPlus } from '@fortawesome/free-solid-svg-icons'; // Importar los iconos que necesites
+import { faTrash, faPlus,faPencil } from '@fortawesome/free-solid-svg-icons'; // Importar los iconos que necesites
 import '../../styles/components/admin.css'
 import { getAllProducts } from '../../services/ProductService'; // Importar el servicio
 
@@ -83,8 +83,8 @@ const AdminManageProduct = () => {
             <th>Description</th>
             <th>Price</th>
             <th>Stock</th>
-            {/* <th>Edit </th> */}
-            {/* <th>Delete</th> */}
+            <th>Edit </th> 
+            <th>Delete</th> 
           </tr>
         </thead>
         <tbody>
@@ -101,16 +101,16 @@ const AdminManageProduct = () => {
               <td onClick={() => handleRowClick(product.id)}>{product.description}</td>
               <td onClick={() => handleRowClick(product.id)}>{product.price}</td>
               <td onClick={() => handleRowClick(product.id)}>{product.stock}</td>
-{/*               <td>
+               <td>
                 <Link to={`/admin/products/edit/${product.id}`}>
                   <FontAwesomeIcon icon={faPencil} className="px-2 color-icon-edit" />
                 </Link>
-              </td> */}
-{/*               <td>
+              </td> 
+               <td>
                 <Link to={"#"}>
                   <FontAwesomeIcon icon={faTrash} className="px-2 color-icon-delete" />
                 </Link>
-              </td> */}
+              </td> 
             </tr>
           ))}
         </tbody>

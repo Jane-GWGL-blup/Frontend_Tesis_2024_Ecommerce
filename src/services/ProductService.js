@@ -13,6 +13,22 @@ export const getAllProducts = async () => {
     throw error;
   }
 };
+
+//crear productos
+export const createProduct = async (productData) =>{
+  try {
+    const response = await axios.post(API_URLS.PRODUCTS, productData,{
+      headers:{
+        //'Content-Type':'multipart/form-data', //si estas subiendo imagenes
+        Authorization: `Bearer ${localStorage.getItem('token')}` //suponiendo que guarda el token en el local storage
+      }
+    })
+    return response.data
+  } catch (error) {
+    console.error("Error creating product:", error);
+    throw error;
+  }
+}
  
 export const updateProductData = async (productId, productData) => {
   try {
