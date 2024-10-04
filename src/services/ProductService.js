@@ -3,7 +3,7 @@
 import axios from 'axios';
 
 import { API_URLS } from '../utils/api';
-//LISTADO DE TODOS LOS PRODUCTOS
+//LISTADO DE TODOS LOS PRODUCTOS PUEDE VER ADMIN Y USER
 export const getAllProducts = async () => {
   try {
     const response = await axios.get(API_URLS.PRODUCTS);
@@ -14,6 +14,7 @@ export const getAllProducts = async () => {
   }
 };
  
+//SOLO LO VE ADMIN
 export const updateProductData = async (productId, productData) => {
   try {
     const response = await axios.put(API_URLS.PRODUCTS_EDIT(productId), productData);
