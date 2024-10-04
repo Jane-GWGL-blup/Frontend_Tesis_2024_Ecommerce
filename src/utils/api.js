@@ -8,6 +8,6 @@ export const API_URLS = {
   PRODUCTS: `${BASE_URL}/products`,
   PRODUCTS_EDIT: (id) => `${BASE_URL}/products/${id}`, // Hacer que sea una función que reciba el ID
   CATEGORIES: `${BASE_URL}/categories`,
-  USERS: `${BASE_URL}/users`,
+  USER_DATA: (id) => `${BASE_URL}/users/${id}`,
   // Agrega otras rutas de la API según sea necesario
 };

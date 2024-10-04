@@ -17,16 +17,24 @@ export const registerUser = async (userData) => {
 export const loginUser = async (userData) => {
   try {
     const response = await axios.post(API_URLS.AUTH_LOGIN, userData);
+    // Verifica si la respuesta contiene el token
+    if (!response.data.token) {
+      throw new Error("Token no recibido en la respuesta.");
+    }
+    // Asegúrate de que estás almacenando el token correctamente
+    /* localStorage.setItem('token', response.data.token); */
+
     // Asegúrate de que estás guardando un objeto completo del usuario
     const userDataToStore = {
-      role: response.data.role,  // Asegúrate de que esta propiedad exista
-      // Agrega aquí otros datos relevantes del usuario si es necesario
-      email: response.data.email, // Supón que también devuelve el email
-      name: response.data.name, // Supón que también devuelve el nombre
+      id: response.data.id,
+      role: response.data.role,
+      email: response.data.email,
+      name: response.data.name,
     };
 
-    localStorage.setItem('token', response.data.token);
-    localStorage.setItem('user', JSON.stringify(userDataToStore)); // Almacena el objeto completo
+    localStorage.setItem('userId', response.data.id);
+    localStorage.setItem('user', JSON.stringify(userDataToStore));  // Almacena el objeto completo
+
     return response.data
   } catch (error) {
     console.error("Error logging in:", error)
@@ -61,47 +69,68 @@ export const isAdmin = () => {
 
 export const isAuthenticated = () => {
   const token = localStorage.getItem('token');
-  if (token === null) {
-    console.log("token",token)
-    return false;
-  } else {
-    console.log("token",token)
-    try {
-       // Decodifica la parte del payload del token (JWT), que contiene la información del usuario
-      const decodedToken = JSON.parse(atob(token.split('.')[1]));
-       // Verifica si el token ha expirado comparando la propiedad 'exp' con la fecha actual
-      if (decodedToken.exp < Date.now() / 1000) {
-        return false;
-      } else {
-        return true;
-      }
-    } catch (error) {
-      return false;
-    }
+  if (!token) {
+    console.log("Token no encontrado.");
+    return null; // Cambiar a null para que sea más explícito
   }
-  /*
-      const token = localStorage.getItem('token');
-  console.log('Token:', token); // Verifica el valor del token
-    const isAuth = token !== null; 
-    console.log('Is Authenticated:', isAuth); // Verifica el estado de autenticación
-    return isAuth;  */
+
+  try {
+    const decodedToken = JSON.parse(atob(token.split('.')[1]));
+    if (decodedToken.exp < Date.now() / 1000) {
+      console.log("Token expirado.");
+      return null; // Retornar null si ha expirado
+    }
+    return token; // Retornar el token si es válido
+  } catch (error) {
+    console.error("Error al decodificar el token:", error);
+    return null; // Retornar null si hay un error
+  }
+
 };
 
-/* export const isAuthenticated = () => {
-  const token = localStorage.getItem('token');
-  console.log("Token present:", token); // Para depurar
-  return !!token; // Retorna true si hay un token
-}; */
+// Función para realizar llamadas a la API solo si el usuario está autenticado
+
+export const authenticatedApiCall = async (url, method = 'GET', data = null) => {
+  const token = isAuthenticated();
+  if (!token) {
+    throw new Error('User is not authenticated');
+  }
+
+  const config = {
+    method,
+    headers: {
+      Authorization: `Bearer ${token}`,  // Incluye el token correctamente
+      'Content-Type': 'application/json',
+    },
+    ...(method !== 'GET' && { data: JSON.stringify(data) }),
+  };
+  console.log("Config de la solicitud:", config); // Añadir este log para depurar
+
+  try {
+    const response = await axios(url, config);
+    return response.data;
+  } catch (error) {
+       // Si recibes un error 401, puedes manejar la redirección aquí
+       if (error.response && error.response.status === 401) {
+        // Redirigir al login o manejar la lógica de logout
+        console.error('Unauthorized request:', error);
+    }
+    throw error; 
+  }
+};
 
 
-/* export const isAuthenticated = () => {
-  const token = localStorage.getItem('token');
-  return !!token; // Retorna true si hay un token, false de lo contrario
-}; */
 
-/* export const isAuthenticated = () => {
-  const token = localStorage.getItem('token'); // O el método que estés usando
-  return token !== null; // Devuelve true si hay un token
-}; */
+export const fetchUserData = async (userId) => {
+  try {
+    const userData = await authenticatedApiCall(API_URLS.USER_DATA(userId), 'GET');
+    return userData;
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    throw error; // Opcional: volver a lanzar el error si es necesario
+  }
+};
+
+
 
 

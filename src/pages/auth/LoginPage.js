@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../../contexts/UserContext';
 import { useNavigate } from 'react-router-dom';
-import { loginUser, logout } from '../../services/AuthService';
+import { loginUser } from '../../services/AuthService';
 import { AlertModal, LoginForm } from '../../components';
 
 const LoginPage = () => {
+  //Actualiza el estado de autenticacion
+  const { updateAuthStatus } = useContext(UserContext);
+
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -34,15 +38,30 @@ const LoginPage = () => {
       };
 
       // Guardar el token y el usuario en localStorage
+      localStorage.setItem('userId', result.id);
       localStorage.setItem('token', result.token);
       localStorage.setItem('user', JSON.stringify(userDataToStore));
 
-      // Redirigir según el rol del usuario
-      if (userDataToStore.role === 'ADMIN') {
-        navigate('/admin/dashboard'); // Redirigir al dashboard de admin
-      } else {
-        navigate('/'); // Redirigir a la página principal para usuarios normales
-      }
+
+      // Actualizar el estado de autenticación en el contexto
+      updateAuthStatus({
+        isAuthenticated: true,
+        userData: userDataToStore
+      });
+
+      // Mostrar modal de éxito
+      setModalTitle('Login Success');
+      setModalMessage('You have successfully logged in!');
+      setShowModal(true);
+
+      // Redirigir según el rol del usuario después de cerrar el modal
+      setTimeout(() => {
+        if (userDataToStore.role === 'ADMIN') {
+          navigate('/admin/dashboard'); // Redirigir al dashboard de admin
+        } else {
+          navigate('/'); // Redirigir a la página principal para usuarios normales
+        }
+      }, 3000); // Redirigir después de 2 segundos (ajusta el tiempo según lo necesites)
     } else {
       console.error('Login failed: Invalid response from server');
     }
@@ -56,14 +75,14 @@ const LoginPage = () => {
       setModalTitle('Login error');
       setModalMessage('Please provide an email.');
       setShowModal(true);
-      hasError=true;
+      hasError = true;
     }
     //validar contraseña
     if (!formData.password) {
       setModalTitle('Login error');
       setModalMessage('Please provide a password.');
       setShowModal(true);
-      hasError=true;
+      hasError = true;
     }
 
     if (hasError) return;
