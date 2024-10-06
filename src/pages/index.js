@@ -20,6 +20,5 @@ export { default as ResetPasswordPage } from './auth/ResetPasswordPage';
 export { default as CartPage } from './cart/CartPage';
 
 
-/* export { default as ProductDetailPage } from './product/ProductDetailPage';
- */
+export { default as ProductDetailPage } from './product/ProductDetailPage';
 export { default as ProductListPage } from './product/ProductListPage';

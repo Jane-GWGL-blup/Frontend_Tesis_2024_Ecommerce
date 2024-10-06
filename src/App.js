@@ -8,6 +8,7 @@ import {
   HomePage,
   RegisterPage, LoginPage, ForgotPasswordPage, ResetPasswordPage,
   AdminDashboardPage, ManageProductPage, ManageCategoryPage, ProductCreatePage, CategoryCreatePage,
+  ProductDetailPage,
   CategoryEditPage, ProductEditPage,
   CartPage, ProductListPage, ManageUserPage,UserCreatePage } from './pages'
 
@@ -53,6 +54,7 @@ function App() {
             {/*           <Route path="forgot-password" element={<ForgotPasswordPage />} />
           <Route path="reset-password" element={<ResetPasswordPage/>} />  */}
             <Route path="products" element={<ProductListPage />} />
+            <Route path="products/detail/:productName" element={<ProductDetailPage />} />
             <Route path="cart" element={<CartPage />} />
             {/* Rutas de usuario normal protegidas que se usaran despues*/}
             {/* <Route path="profile" element={<ProtectedRoute element={<UserProfilePage />} isAllowed={isUserAuthenticated} />} />

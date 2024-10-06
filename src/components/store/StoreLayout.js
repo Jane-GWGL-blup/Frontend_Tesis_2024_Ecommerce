@@ -14,7 +14,7 @@ const StoreLayout = () => {
         setAuthenticated(false);
         logout(); // Llama a la función de logout
         console.log('La función logout se está llamando');
-        navigate('/products'); // Redirige a la página de inicio o a la ruta que desees
+        navigate('/'); // Redirige a la página de inicio o a la ruta que desees
     };
 
     return (

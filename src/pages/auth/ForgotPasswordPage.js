@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { Header, Footer, ForgotPasswordForm, AlertModal } from '../../components/'
-import { fakeApiCallToSendResetEmail } from '../../api'; 
+/* import { fakeApiCallToSendResetEmail } from '../../api';  */
 
 const ForgotPasswordPage = () => {
   const [modalShow, setModalShow] = useState(false);
@@ -9,7 +9,7 @@ const ForgotPasswordPage = () => {
 
   const handleClose = () => setModalShow(false);
 
-  const handleSubmit = async (e, email) => {
+/*   const handleSubmit = async (e, email) => {
     e.preventDefault();
     try {
       await fakeApiCallToSendResetEmail(email); // Llamada a la API real
@@ -21,11 +21,11 @@ const ForgotPasswordPage = () => {
       setModalMessage('An error occurred. Please try again.');
       setModalShow(true);
     }
-  };
+  }; */
 
   return (
     <div>
-      <ForgotPasswordForm handleSubmit={handleSubmit} />
+     {/*  <ForgotPasswordForm handleSubmit={handleSubmit} /> */}
       <AlertModal show={modalShow} handleClose={handleClose} title={modalTitle} message={modalMessage} />
     </div>
   )

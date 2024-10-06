@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ResetPasswordForm, AlertModal } from '../../components';
-import { fakeApiCallToResetPassword } from '../../api';
+/* import { fakeApiCallToResetPassword } from '../../api'; */
 
 const ResetPasswordPage = () => {
   const [modalShow, setModalShow] = useState(false);
@@ -15,7 +15,7 @@ const ResetPasswordPage = () => {
 
   const handleClose = () => setModalShow(false);
 
-  const handleSubmit = async (e, password, confirmPassword) => {
+ /*  const handleSubmit = async (e, password, confirmPassword) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       setModalTitle('Error');
@@ -34,11 +34,11 @@ const ResetPasswordPage = () => {
       setModalMessage('An error occurred. Please try again.');
       setModalShow(true);
     }
-  };
+  }; */
 
   return (
     <div>
-      <ResetPasswordForm handleSubmit={handleSubmit} />
+      {/* <ResetPasswordForm handleSubmit={handleSubmit} /> */}
       <AlertModal show={modalShow} handleClose={handleClose} title={modalTitle} message={modalMessage} />
 
     </div>

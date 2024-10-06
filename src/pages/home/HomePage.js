@@ -1,16 +1,28 @@
-import React from 'react';
-/* import Header from '../../components/common/Header';
-import Footer from '../../components/common/Footer';
-import LoadingComponent from '../../components/common/Spinner';
-import Banner from '../../components/common/Banner';
-import ProductList from '../../components/product/ProductList'; */
+import React, { useContext, useState, useEffect } from 'react';
+import { UserContext } from '../../contexts/UserContext';
+import { useLocation } from 'react-router-dom'; // Importa useLocation
+
 import {
-  Header, Footer, LoadingComponent,
   Banner, ProductList,
   CategoryListCarousel
 } from '../../components';
 
 const HomePage = () => {
+  const { userData, authenticated } = useContext(UserContext);
+  const [messageVisible, setMessageVisible] = useState(false); // Estado para controlar la visibilidad del mensaje
+  const location = useLocation(); // Inicializa useLocation
+
+
+  useEffect(() => {
+    if (authenticated && userData) {
+      setMessageVisible(true); // Mostrar el mensaje al iniciar sesión
+    }
+  }, [authenticated, userData]);
+
+  useEffect(() => {
+    // Cuando cambie la ubicación, oculta el mensaje
+    setMessageVisible(false);
+  }, [location]); // Dependencia en location para detectar cambios de ruta
 
   const banners = [
     {
@@ -82,26 +94,13 @@ const HomePage = () => {
   ];
 
 
-  /*   const banners = [
-      {
-        imageUrl: 'https://via.placeholder.com/1500x500',
-        title: '¡Gran Venta de Verano!',
-        subtitle: 'Aprovecha nuestras increíbles ofertas en productos seleccionados.',
-        ctaText: 'Compra Ahora',
-        ctaLink: '/shop',
-      },
-      {
-        imageUrl: 'https://www.antevenio.com/wp-content/uploads/2016/04/20-ejemplos-de-banners-creativos.jpg',
-        title: '¡Ofertas Exclusivas!',
-        subtitle: 'Descuentos solo por tiempo limitado.',
-        ctaText: 'Ver Ofertas',
-        ctaLink: '/offers',
-      },
-   
-    ]; */
-
   return (
     <div>
+      {messageVisible && (
+        <div className='welcome-message'>
+          <h2>Hi, <span>{userData.name}</span>! Welcome to Alma Jewellery</h2> 
+        </div>
+      )}
       <Banner banners={banners} />
       <div className="container">
         <ProductList products={featuredProducts} title="Featured Products" />
@@ -113,17 +112,3 @@ const HomePage = () => {
 }
 
 export default HomePage;
-
-{/* <div>
-<Header />
-<main>
-  <LoadingComponent>
-    <Banner banners={banners} />
-    <div className="container">
-      <ProductList products={featuredProducts} title="Featured Products" />
-      <ProductList products={newProducts} title="New Arrivals" />
-    </div>
-  </LoadingComponent>
-</main>
-<Footer />
-</div> */}

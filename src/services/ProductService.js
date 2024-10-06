@@ -3,6 +3,8 @@
 import axios from 'axios';
 
 import { API_URLS } from '../utils/api';
+import { slugify } from '../utils/stringUtils';
+
 //LISTADO DE TODOS LOS PRODUCTOS PUEDE VER ADMIN Y USER
 export const getAllProducts = async () => {
   try {
@@ -74,3 +76,41 @@ export const getProductById = async (productId) => {
   }
 };
   
+
+
+// Obtener producto por nombre (slug)
+export const getProductBySlug = async (slug) => {
+  try {
+    const allProducts = await getAllProducts();
+    const product = allProducts.find(p => slugify(p.name) === slugify(slug)); // Usa slugify para comparar
+
+    if (!product) {
+      throw new Error('Producto no encontrado');
+    }
+
+    const response = await getProductById(product.id);
+    return response;
+  } catch (error) {
+    console.error('Error fetching product by slug:', error);
+    throw error;
+  }
+};
+/* export const getProductBySlug = async (slug) => {
+  try {
+    // Primero obtén todos los productos para buscar el que coincida con el nombre
+    const allProducts = await getAllProducts(); 
+    const product = allProducts.find(p => p.name.toLowerCase() === slug.toLowerCase());
+
+    if (!product) {
+      throw new Error('Producto no encontrado');
+    }
+
+    // Si encontramos el producto, usamos el ID para obtener los detalles completos
+    const response = await getProductById(product.id);
+    return response; // Regresamos los detalles completos del producto
+  } catch (error) {
+    console.error('Error fetching product by slug:', error);
+    throw error;
+  }
+}; */
+

@@ -37,6 +37,7 @@ export { default as ProductCard } from './product/ProductCard';
 /* export { default as ProductDetail } from './product/ProductDetail';
  */
 export { default as ProductList } from './product/ProductList';
+export { default as ProductDetail } from './product/ProductDetail';
 /* export { default as ProductReview } from './product/ProductReview';
  */
 /* export { default as UserProfile } from './user/UserProfile';

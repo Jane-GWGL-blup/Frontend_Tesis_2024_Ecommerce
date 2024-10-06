@@ -120,7 +120,7 @@ export const authenticatedApiCall = async (url, method = 'GET', data = null) => 
 
 export const fetchUserData = async (userId) => {
   try {
-    const userData = await authenticatedApiCall(API_URLS.USER_DATA(userId), 'GET');
+    const userData = await authenticatedApiCall(`${API_URLS.USERS}/${userId}`, 'GET');
     return userData;
   } catch (error) {
     console.error("Error fetching user data:", error);

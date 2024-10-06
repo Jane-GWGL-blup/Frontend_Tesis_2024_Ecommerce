@@ -1,9 +1,9 @@
 /* 30/05/24 */
-/* ProductCard para cada producto individual. */
+
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
-
-
+import { Link } from 'react-router-dom';
+import { slugify } from '../../utils/stringUtils';
 
 const ProductCard = ({ product }) => {
   return(
@@ -13,7 +13,7 @@ const ProductCard = ({ product }) => {
         <Card.Title>{product.name}</Card.Title>
 {/*         <Card.Text>{product.description}</Card.Text> */}
         <Card.Text>{product.price}</Card.Text>
-        <Button variant="primary">View Details</Button>
+        <Button as={Link} to={`/products/detail/${slugify(product.name)}`}  variant="primary">View Details</Button>
       </Card.Body>
     </Card>
   );

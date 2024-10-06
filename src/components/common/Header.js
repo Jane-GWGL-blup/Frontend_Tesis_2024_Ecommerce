@@ -170,7 +170,7 @@ const Header = ({ onLogout, isAuthenticated, user}) => {
                 <>
                   {/* Mostrar Perfil y Logout si el usuario está autenticado */}
                   <Dropdown.Item >
-                    <span className="dropdown-item" >Perfil</span>
+                  <span className="dropdown-item" >{user?.name}</span>
                   </Dropdown.Item>
                   <DropdownDivider />
                   <Dropdown.Item onClick={onLogout}>

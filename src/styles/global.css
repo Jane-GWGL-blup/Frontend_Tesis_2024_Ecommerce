@@ -1,5 +1,5 @@
 /* src/styles/global.css */
-
+@import url('variables.css');
 body, html {
     margin: 0;
     padding: 0;
@@ -28,3 +28,21 @@ main {
     flex: 1;
   }
   
+.welcome-message{
+  position: fixed; /* O absolute dependiendo de tu diseño */
+  top: 25%;
+  left: 50%;
+  color: var(--color-black);
+  transform: translate(-50%, -50%); /* Centrar el contenedor */
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+  padding: 20px; /* Espaciado alrededor del mensaje */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+  z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+  text-align: center; /* Centrar el texto */
+
+  span{
+    color: var(--color-burgundy)
+  }
+  
+}
