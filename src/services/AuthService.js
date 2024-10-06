@@ -110,12 +110,9 @@ export const authenticatedApiCall = async (url, method = 'GET', data = null) => 
     const response = await axios(url, config);
     return response.data;
   } catch (error) {
-       // Si recibes un error 401, puedes manejar la redirección aquí
-       if (error.response && error.response.status === 401) {
-        // Redirigir al login o manejar la lógica de logout
-        console.error('Unauthorized request:', error);
-    }
-    throw error; 
+    // Manejar el error de manera más detallada
+    console.error('Error en la llamada a la API:', error.response ? error.response.data : error.message);
+    throw error;
   }
 };
 

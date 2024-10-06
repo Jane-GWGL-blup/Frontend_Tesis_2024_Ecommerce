@@ -1,14 +1,18 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { AdminHeader, AdminSidebar } from '../../components/';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { logout, isAuthenticated } from '../../services/AuthService';
+import { UserContext } from '../../contexts/UserContext'; // Importa el contexto
+
 
 const AdminLayout = ({  children }) => {
+  const { userData, authenticated, setAuthenticated } = useContext(UserContext); // Accede al contexto
   const [searchResults, setSearchResults] = useState([]);
   const navigate = useNavigate();
 
 
   const handleLogout = () => {
+    setAuthenticated(false);
     logout(); // Llama a la función de logout
     navigate('/'); // Redirige a la página de inicio o a la ruta que desees
   };
