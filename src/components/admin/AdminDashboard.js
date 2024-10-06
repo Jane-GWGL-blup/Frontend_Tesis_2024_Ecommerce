@@ -3,42 +3,7 @@ import { ConversionRateChart, MonthlySalesChart, InventoryStatusChart, Statistic
 
 import '../../styles/components/admin.css';
 
-/* import { useEffect, useRef } from 'react';
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend,
-  } from 'chart.js';
-import { Bar, Line } from 'react-chartjs-2';
 
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend
-  ); */
-
-
-/* export const chartOptions = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Chart.js Line Chart',
-      },
-    },
-  }; */
 
 const AdminDashboard = () => {
   return (
@@ -87,6 +52,7 @@ const AdminDashboard = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 

@@ -59,7 +59,10 @@ export const deleteCategory = async (categoryId) => {
 export const getCategoryById = async (categoryId) => {
   try {
     const token = localStorage.getItem('token'); // Obtener el token
-    const response = await axios.get(`/api/categories/${categoryId}`, {
+    if(!token){
+      throw new Error('No se encontro el tokenen el localStorage')
+    }
+    const response = await axios.get(`${API_URLS.CATEGORIES}/${categoryId}`, {
       headers: {
         Authorization: `Bearer ${token}`, // Enviando el token en la cabecera de autorización
       },

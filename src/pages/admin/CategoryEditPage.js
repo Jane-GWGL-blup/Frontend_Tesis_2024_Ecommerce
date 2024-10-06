@@ -21,8 +21,8 @@ const CategoryEditPage = () => {
         console.log('Datos de la categoría:', category); // Añade este log
         if (category) {
           setFormData({
-            name: category.name || '',  
-            description: category.description || '' 
+            name: category.name ,  
+            description: category.description  
           });
         }
         setLoading(false);
