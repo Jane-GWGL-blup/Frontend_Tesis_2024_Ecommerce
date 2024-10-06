@@ -4,7 +4,7 @@ import { Table, Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencil, faPlus } from '@fortawesome/free-solid-svg-icons'; // Importar los iconos que necesites
 import '../../styles/components/admin.css'
-import { getAllCategories } from '../../services/CategoryService'; // Importar el servicio
+import { deleteCategory, getAllCategories } from '../../services/CategoryService'; // Importar el servicio
 
 const AdminManageCategory = () => {
   const location = useLocation();
@@ -40,6 +40,19 @@ const AdminManageCategory = () => {
     }
   }, [query, categories]);
 
+  const handleDelete = async (categoryId) =>{
+    if (window.confirm('Are you sure you want to delete this category?')) {
+      try {
+        await deleteCategory(categoryId);
+        setCategories(categories.filter(category =>category.id !== categoryId)); //filtramos la categoria eliminada
+        alert('Category deleted successfully!')
+      } catch (error) {
+        console.error('Error deleting category: ',error);
+        alert('Error deleting category')
+      }
+    }
+  }
+
   return (
     <div>
       <div className='d-flex justify-content-between align-items-center'>
@@ -71,7 +84,7 @@ const AdminManageCategory = () => {
                 </Link>
               </td>
               <td>
-                <Link to={"#"}>
+                <Link onClick={() => handleDelete(category.id)}>
                   <FontAwesomeIcon icon={faTrash} className="px-2 color-icon-delete" />
                 </Link>
               </td>

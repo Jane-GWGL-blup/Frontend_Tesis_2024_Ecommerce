@@ -9,12 +9,12 @@ import {
   RegisterPage, LoginPage, ForgotPasswordPage, ResetPasswordPage,
   AdminDashboardPage, ManageProductPage, ManageCategoryPage, ProductCreatePage, CategoryCreatePage,
   CategoryEditPage, ProductEditPage,
-  CartPage, ProductListPage
-} from './pages'
+  CartPage, ProductListPage, ManageUserPage,UserCreatePage } from './pages'
 
 import {
   StoreLayout, AdminLayout, ProtectedRoute
 } from './components/index'
+
 
 function App() {
 
@@ -40,6 +40,9 @@ function App() {
             <Route path="categories" element={<ProtectedRoute element={<ManageCategoryPage />} isAllowed={isUserAdmin} />} />
             <Route path="categories/create" element={<ProtectedRoute element={<CategoryCreatePage />} isAllowed={isUserAdmin} />} />
             <Route path="categories/edit/:id" element={<ProtectedRoute element={<CategoryEditPage />} isAllowed={isUserAdmin} />} />
+            <Route path="users" element={<ProtectedRoute element={<ManageUserPage/>} isAllowed={isUserAdmin} />} />
+            <Route path="users/create" element={<ProtectedRoute element={<UserCreatePage/>} isAllowed={isUserAdmin} />} />
+
           </Route>
 
           {/* Rutas de la tienda anidadas */}

@@ -13,11 +13,30 @@ export const getAllProducts = async () => {
     throw error;
   }
 };
- 
-//SOLO LO VE ADMIN
-export const updateProductData = async (productId, productData) => {
+
+//crear productos
+export const createProduct = async (productData) =>{
   try {
-    const response = await axios.put(API_URLS.PRODUCTS_EDIT(productId), productData);
+    const response = await axios.post(API_URLS.PRODUCTS, productData,{
+      headers:{
+        Authorization: `Bearer ${localStorage.getItem('token')}` //suponiendo que guarda el token en el local storage
+      }
+    })
+    return response.data
+  } catch (error) {
+    console.error("Error creating product:", error);
+    throw error;
+  }
+}
+
+//actualizar producto
+export const updateProduct = async (productId, productData) => {
+  try {
+    const response = await axios.put(`${API_URLS.PRODUCTS}/${productId}`, productData,{
+      headers:{
+        Authorization:`Bearer ${localStorage.getItem('token')}`,
+      }
+    });
     return response.data;
   } catch (error) {
     console.error("Error updating product:", error);
@@ -25,17 +44,33 @@ export const updateProductData = async (productId, productData) => {
   }
 };
 
-//AUN NO SIRVEN
+//Eliminar producto
+export const deleteProduct = async (productId) =>{
+  try{
+    const response = await axios.delete(`${API_URLS.PRODUCTS}/${productId}`,{
+      headers:{
+        Authorization:`Bearer ${localStorage.getItem('token')}`,
+      }
+    })
+    return response.data
+  }catch(error){
+    console.error('Error deleting product:',error)
+    throw error
+  }
+}
 
-
-export const getProductData = async (productId) => {
-    // Aquí iría la llamada real a la API para obtener datos de la categoría
-    try {
-      const response = await axios.get(API_URLS);
-      return response.data;  // Esto asume que los productos están en data
-    } catch (error) {
-      console.error("Error fetching products:", error);
-      throw error;
-    }
-  };
+// Obtener producto por ID
+export const getProductById = async (productId) => {
+  try {
+    const response = await axios.get(`${API_URLS.PRODUCTS}/${productId}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching product:', error);
+    throw error;
+  }
+};
   

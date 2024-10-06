@@ -1,47 +1,83 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Button} from 'react-bootstrap';
+import { Form, Button,Alert} from 'react-bootstrap';
+import { createCategory } from '../../services/CategoryService';
 
-const AdminCreateCategory = ({ formData, handleChange, handleSubmit, validated }) => {
+const AdminCreateCategory = () => {
+  const [categoryData,setCategoryData] = useState({
+    name:'',
+    description:''
+  });
+  const [error,setError] = useState('');
+  const [success,setSuccess] = useState('');
+
+  const handleChange = (e) =>{
+    const {name,value} = e.target;
+    setCategoryData({
+      ...categoryData,
+      [name]:value
+    })
+  }
+
+  const handleSubmit = async (e) =>{
+    e.preventDefault()
+    try {
+      const response = await createCategory(categoryData);
+      setSuccess('Categoria creada con exito');
+      setCategoryData({
+        name:'',
+        description:''
+      })
+      setError('')
+    } catch (error) {
+      setError('Error al crear la categoría');
+      setSuccess('');
+    }
+  }
+
 
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
-      <Form.Group controlId="categoryName">
-        <Form.Label>Name</Form.Label>
-        <Form.Control
-          type="text"
-          name="categoryName"
-          value={formData.categoryName}
-          onChange={handleChange}
-          required
-        />
-        <Form.Control.Feedback type="invalid">
-          Please provide a category name.
-        </Form.Control.Feedback>
-      </Form.Group>
+    <div>
+      <h2>Crear nueva categoría</h2>
+      {success && <Alert variant="success">{success}</Alert>}
+      {error && <Alert variant="danger">{error}</Alert>}
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="categoryName">
+          <Form.Label>Nombre de la categoría</Form.Label>
+          <Form.Control
+            type="text"
+            name="name"
+            value={categoryData.name}
+            onChange={handleChange}
+            placeholder="Ingresa el nombre de la categoría"
+            required
+          />
+          <Form.Control.Feedback type="invalid">
+            Por favor proporciona un nombre para la categoría.
+          </Form.Control.Feedback>
+        </Form.Group>
 
-      <Form.Group controlId="categoryDescription">
-        <Form.Label>Description</Form.Label>
-        <Form.Control
-          as="textarea"
-          rows={3}
-          name="categoryDescription"
-          value={formData.categoryDescription}
-          onChange={handleChange}
-          required
-        />
-        <Form.Control.Feedback type="invalid">
-          Please provide a category description.
-        </Form.Control.Feedback>
-      </Form.Group>
+        <Form.Group controlId="categoryDescription">
+          <Form.Label>Descripción de la categoría</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            name="description"
+            value={categoryData.description}
+            onChange={handleChange}
+            placeholder="Ingresa una descripción para la categoría"
+            required
+          />
+          <Form.Control.Feedback type="invalid">
+            Por favor proporciona una descripción para la categoría.
+          </Form.Control.Feedback>
+        </Form.Group>
 
-      <Button className='m-2' variant="primary" type="submit">
-        Submit
-      </Button>
-      <Button className='m-2' variant="danger" as={Link} to="/admin/categories">
-        Close
-      </Button>
-    </Form>
+        <Button variant="primary" type="submit" className='mt-3'>
+          Crear categoría
+        </Button>
+      </Form>
+    </div>
   );
 };
 

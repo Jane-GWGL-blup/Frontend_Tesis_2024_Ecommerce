@@ -1,97 +1,99 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { getAllCategories } from '../../services/CategoryService';
 
-const AdminCreateProduct = ({ formData, handleChange, handleSubmit, handleImageChange, validated }) => {
-  const [previewImage, setPreviewImage] = useState(null);
 
-  const handleImagePreview = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewImage(reader.result);
-      };
-      reader.readAsDataURL(file);
+const AdminCreateProduct = ({ formData,handleChange,handleSubmit }) => {
+  const [categories,setCategories] = useState([]);
+
+  useEffect(() =>{
+    const fetchCategories = async () => {
+      try {
+        const categoryList = await getAllCategories()
+        setCategories(categoryList)
+      } catch (error) {
+        console.error('Error fetching categories:', error)
+      }
     }
-  };
-
+    fetchCategories()
+  },[])
+  
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit} className='form-admin'>
-      <div className='row'>
-        <div className='col'>
-          <Form.Group controlId="productName">
+    <Form onSubmit={handleSubmit}>
+      {/* Nombre del Producto */}
+      <Form.Group controlId="productName">
+        <Form.Label>Product Name</Form.Label>
+        <Form.Control
+          type="text"
+          name="name"
+          value={formData.name || ''}
+          onChange={handleChange}
+          required
+        />
+      </Form.Group>
 
-            <Form.Label>Product Name</Form.Label>
-            <Form.Control
-              type="text"
-              name="productName"
-              value={formData.productName}
-              onChange={handleChange}
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Please provide a product name.
-            </Form.Control.Feedback>
-          </Form.Group>
+      {/* Descripción del Producto */}
+      <Form.Group controlId="productDescription">
+        <Form.Label>Description</Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={3}
+          name="description"
+          value={formData.description || ''}
+          onChange={handleChange}
+          required
+        />
+      </Form.Group>
 
-          <Form.Group controlId="productDescription">
-            <Form.Label>Product Description</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={3}
-              name="productDescription"
-              value={formData.productDescription}
-              onChange={handleChange}
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Please provide a product description.
-            </Form.Control.Feedback>
-          </Form.Group>
+      {/* Precio del Producto */}
+      <Form.Group controlId="productPrice">
+        <Form.Label>Price</Form.Label>
+        <Form.Control
+          type="number"
+          name="price"
+          value={formData.price || ''}
+          onChange={handleChange}
+          required
+        />
+      </Form.Group>
 
-          <Form.Group controlId="productPrice">
-            <Form.Label>Product Price</Form.Label>
-            <Form.Control
-              type="number"
-              name="productPrice"
-              value={formData.productPrice}
-              onChange={handleChange}
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Please provide a product price.
-            </Form.Control.Feedback>
-          </Form.Group>
-        </div>
-        <div className='col'>
-          <Form.Group controlId="productImage">
-            <Form.Label>Product Image</Form.Label>
-            <Form.Control
-              type="file"
-              accept="image/*"
-              onChange={(e) => {
-                handleImagePreview(e);
-                handleImageChange(e);
-              }}
-              required
-            />
-            {previewImage && <img src={previewImage} alt="Product Preview" style={{ maxWidth: '200px', marginTop: '10px' }} />}
-            <Form.Control.Feedback type="invalid">
-              Please provide a product image.
-            </Form.Control.Feedback>
-          </Form.Group>
-        </div>
-      </div>
+      {/* Stock del Producto */}
+      <Form.Group controlId="productStock">
+        <Form.Label>Stock</Form.Label>
+        <Form.Control
+          type="number"
+          name="stock"
+          value={formData.stock || ''}
+          onChange={handleChange}
+          required
+        />
+      </Form.Group>
 
-      <Button className='m-2' variant="primary" type="submit">
-        Submit
-      </Button>
-      <Button className='m-2' variant="danger" as={Link} to="/admin/products">
-        Close
+      {/* Selección de Categoría */}
+      <Form.Group controlId="productCategory">
+        <Form.Label>Category</Form.Label>
+        <Form.Control
+          as="select"
+          name="categoryId"
+          value={formData.categoryId || ''}
+          onChange={handleChange}
+          required
+        >
+          <option value="">Select a category</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </Form.Control>
+      </Form.Group>
+
+      <Button variant="primary" type="submit">
+        Save Product
       </Button>
     </Form>
   );
+  
 };
 
 export default AdminCreateProduct;

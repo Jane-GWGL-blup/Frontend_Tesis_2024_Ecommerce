@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Nav, NavDropdown } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faClipboardList, faBox, faUser, faLayerGroup, faWrench } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/components/admin/admin-sidebar.css';
@@ -9,16 +9,8 @@ import logo from '../../images/logo.svg';
 import logo2 from '../../images/logo3.svg';
 
 const AdminSidebar = () => {
-  const location = useLocation();
+  
 
-  // Estado local para la simulación de usuario
-  const [user] = useState({
-    id: 1,
-    username: 'AdminUser',
-    email: 'admin@example.com',
-    role: 'admin',
-    isLoggedIn: true,
-  });
 
   return (
     <nav className="col-md-2 col-2 sidebar">
@@ -42,6 +34,17 @@ const AdminSidebar = () => {
             >
               <FontAwesomeIcon icon={faHome} size="lg" alt="Dashboard" />
               <span className="d-none d-md-inline mx-2">Dashboard</span>
+            </NavLink>
+          </Nav.Item>
+          <Nav.Item>
+            <NavLink
+              to="/admin/users"
+              className={({ isActive }) => 
+                `d-flex align-items-center nav-item nav-item-sidebar px-3 ${isActive ? 'active' : ''}`
+              }
+            >
+              <FontAwesomeIcon icon={faUser} size="lg" title="Orders" />
+              <span className="d-none d-md-inline mx-2">users</span>
             </NavLink>
           </Nav.Item>
           <Nav.Item>

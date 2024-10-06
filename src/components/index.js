@@ -12,6 +12,8 @@ export { default as AdminEditProductForm } from './admin/AdminEditProductForm';
 export { default as AdminCreateCategory} from './admin/AdminCreateCategory';
 export { default as AdminManageCategory } from './admin/AdminManageCategory';
 export { default as AdminEditCategoryForm } from './admin/AdminEditCategoryForm';
+export { default as AdminManageUsers } from './admin/AdminManageUsers';
+export { default as AdminCreateUserForm } from './admin/AdminCreateUserForm';
 
 /* AUTH */
 export { default as ProtectedRoute } from './auth/ProtectedRoute';
