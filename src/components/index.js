@@ -14,6 +14,11 @@ export { default as AdminManageCategory } from './admin/AdminManageCategory';
 export { default as AdminEditCategoryForm } from './admin/AdminEditCategoryForm';
 export { default as AdminManageUsers } from './admin/AdminManageUsers';
 export { default as AdminCreateUserForm } from './admin/AdminCreateUserForm';
+export { default as AdminManageOrders } from './admin/AdminManageOrders';
+export { default as AdminOrderDetails } from './admin/AdminOrderDetails';
+export { default as InvoiceDetails } from './admin/InvoiceDetails';
+export { default as InvoiceTable } from './admin/InvoiceTable';
+
 
 /* AUTH */
 export { default as ProtectedRoute } from './auth/ProtectedRoute';

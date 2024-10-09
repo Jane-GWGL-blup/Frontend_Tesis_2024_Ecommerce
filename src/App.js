@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { UserProvider } from './contexts/UserContext';
 
@@ -6,11 +6,11 @@ import { isAdmin, isAuthenticated } from './services/AuthService';
 
 import {
   HomePage,
-  RegisterPage, LoginPage, ForgotPasswordPage, ResetPasswordPage,
+  RegisterPage, LoginPage,
   AdminDashboardPage, ManageProductPage, ManageCategoryPage, ProductCreatePage, CategoryCreatePage,
   ProductDetailPage,
   CategoryEditPage, ProductEditPage,
-  CartPage, ProductListPage, ManageUserPage,UserCreatePage } from './pages'
+  CartPage, ProductListPage, ManageUserPage,UserCreatePage,AdminManageOrdersPage,AdminOrderDetailsPage,InvoiceDetailsPage,InvoiceListPage } from './pages'
 
 import {
   StoreLayout, AdminLayout, ProtectedRoute
@@ -43,6 +43,10 @@ function App() {
             <Route path="categories/edit/:id" element={<ProtectedRoute element={<CategoryEditPage />} isAllowed={isUserAdmin} />} />
             <Route path="users" element={<ProtectedRoute element={<ManageUserPage/>} isAllowed={isUserAdmin} />} />
             <Route path="users/create" element={<ProtectedRoute element={<UserCreatePage/>} isAllowed={isUserAdmin} />} />
+            <Route path="orders" element={<ProtectedRoute element={<AdminManageOrdersPage/>} isAllowed={isUserAdmin} />} />
+            <Route path="orders/:id" element={<ProtectedRoute element={<AdminOrderDetailsPage/>} isAllowed={isUserAdmin} />} />
+            <Route path="invoices/:id" element={<ProtectedRoute element={<InvoiceDetailsPage/>} isAllowed={isUserAdmin} />} />
+            <Route path="invoices/" element={<ProtectedRoute element={<InvoiceListPage/>} isAllowed={isUserAdmin} />} />
 
           </Route>
 

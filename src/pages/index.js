@@ -9,6 +9,10 @@ export { default as ProductCreatePage} from './admin/ProductCreatePage';
 export { default as ProductEditPage } from './admin/ProductEditPage';
 export { default as CategoryCreatePage } from './admin/CategoryCreatePage';
 export { default as CategoryEditPage } from './admin/CategoryEditPage';
+export { default as AdminManageOrdersPage } from './admin/AdminManageOrdersPage';
+export { default as AdminOrderDetailsPage } from './admin/AdminOrderDetailsPage';
+export { default as InvoiceListPage } from './admin/InvoiceListPage';
+export { default as InvoiceDetailsPage } from './admin/InvoiceDetailsPage';
 
 
 
