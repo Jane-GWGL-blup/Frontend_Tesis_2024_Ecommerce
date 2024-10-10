@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const InvoiceTable = ({ invoices, onDownload }) => {
   return (
@@ -10,6 +11,7 @@ const InvoiceTable = ({ invoices, onDownload }) => {
           <th>Invoice Number</th>
           <th>Total Amount</th>
           <th>Date</th>
+          <th>User</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -20,7 +22,11 @@ const InvoiceTable = ({ invoices, onDownload }) => {
             <td>{invoice.invoiceNumber}</td>
             <td>${invoice.totalAmount.toFixed(2)}</td>
             <td>{new Date(invoice.createdAt).toLocaleDateString()}</td>
+            <td>{invoice.order?.user?.name || 'No User'}</td>
             <td>
+              <Link to={`/admin/invoices/${invoice.id}`}>
+                <Button variant="info">View Details</Button>
+              </Link>
               <Button onClick={() => onDownload(invoice.id)}>Download PDF</Button>
             </td>
           </tr>

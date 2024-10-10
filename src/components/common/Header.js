@@ -102,7 +102,7 @@ const Header = ({ onLogout, isAuthenticated, user}) => {
             <Badge bg="warning" pill className="ml-1">#</Badge>
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item as={Link} to="/checkout">Tu carrito esta vacio</Dropdown.Item>
+            <Dropdown.Item as={Link} to="/cart">Tu carrito esta vacio</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </div>

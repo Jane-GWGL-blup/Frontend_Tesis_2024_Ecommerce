@@ -1,48 +1,84 @@
 // src/services/CartService.js
-/* import axios from 'axios';
+import axios from 'axios';
+import {
+  API_URLS
+} from '../utils/api';
 
-const BASE_URL = 'http://localhost:5000/api/cart';
-
-const CartService = {
-  getCartItems: async () => {
-    try {
-      const response = await axios.get(BASE_URL);
-      return response.data;
-    } catch (error) {
-      console.error('Error fetching cart items:', error);
-      throw error;
-    }
-  },
-
-  addCartItem: async (cartItem) => {
-    try {
-      const response = await axios.post(BASE_URL, cartItem);
-      return response.data;
-    } catch (error) {
-      console.error('Error adding cart item:', error);
-      throw error;
-    }
-  },
-
-  removeCartItem: async (productId) => {
-    try {
-      const response = await axios.delete(`${BASE_URL}/${productId}`);
-      return response.data;
-    } catch (error) {
-      console.error('Error removing cart item:', error);
-      throw error;
-    }
-  },
-
-  updateCartItem: async (productId, quantity) => {
-    try {
-      const response = await axios.put(`${BASE_URL}/${productId}`, { quantity });
-      return response.data;
-    } catch (error) {
-      console.error('Error updating cart item:', error);
-      throw error;
-    }
+//Obtener el carrito de un usuario
+export const getUserCart = async () => {
+  try {
+    const response = await axios.get(API_URLS.CART, {
+      headers: {
+        Authorization: `$Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching cart:', error);
+    throw error;
   }
-};
+}
 
-export default CartService; */
+//Agregar un producto al carrito
+export const addItemToCart = async (productId, quantity) => {
+  try {
+    const response = await axios.post(API_URLS.CART, {
+      productId,
+      quantity
+    }, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error adding item to cart:', error);
+    throw error;
+  }
+}
+
+//Actualizar la cantidad de un producto en el carrito
+export const updateCartItemQuantity = async (productId,quantity) =>{
+  try {
+    const response = await axios.put(API_URLS.CART,{productId,quantity}, {
+      headers:{
+        Authorization:`Bearer ${localStorage.getItem('token')}`
+      }
+    })
+    return response.data
+  } catch (error) {
+    console.error('Error upsating cart item quantity:', error)
+    throw error
+  }
+}
+
+//Eliminar un producto del carrito
+export const removeItemFromCart = async (productId) => {
+  try {
+    const response = await axios.delete(API_URLS.CART,{
+      headers:{
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      },
+      data:{productId}
+    }) 
+    return response.data
+  } catch (error) {
+    console.error('Error removing item from cart:',error)
+    throw error
+  }
+}
+
+//vaciar el carrito
+export const clearCart = async ()=>{
+  try {
+    const response = await axios.post(`${API_URLS.CART}/clear`,{},{
+      headers:{
+        Authorization:`Bearer ${localStorage.getItem('token')}`
+      }
+    })
+    return response.data;
+  } catch (error) {
+    console.error('Error clearing cart:',error)
+    throw error
+  }
+}

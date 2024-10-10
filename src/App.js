@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { UserProvider } from './contexts/UserContext';
+import { CartProvider } from './contexts/CartContext';
 
 import { isAdmin, isAuthenticated } from './services/AuthService';
 
@@ -26,6 +27,7 @@ function App() {
 
   return (
     <UserProvider>
+      <CartProvider>
       <Router>
         <Routes>
 
@@ -68,6 +70,7 @@ function App() {
 
         </Routes>
       </Router>
+      </CartProvider>
     </UserProvider>
   );
 };

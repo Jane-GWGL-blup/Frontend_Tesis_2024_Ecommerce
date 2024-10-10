@@ -11,6 +11,7 @@ export const API_URLS = {
   CATEGORIES: `${BASE_URL}/categories`,
   USERS: `${BASE_URL}/users`,
   ORDERS: `${BASE_URL}/orders`,
-  INVOICES: `${BASE_URL}/invoices`
+  INVOICES: `${BASE_URL}/invoices`,
+  CART:`${BASE_URL}/cart`
   // Agrega otras rutas de la API según sea necesario
 };

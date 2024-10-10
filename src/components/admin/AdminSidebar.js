@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faClipboardList, faBox, faUser, faLayerGroup, faWrench } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faClipboardList, faBox, faUser, faLayerGroup, faWrench, faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/components/admin/admin-sidebar.css';
 
 import logo from '../../images/logo.svg';
@@ -58,6 +58,19 @@ const AdminSidebar = () => {
               <span className="d-none d-md-inline mx-2">Orders</span>
             </NavLink>
           </Nav.Item>
+          <Nav.Item>
+            <NavLink
+              to="/admin/invoices"
+              className={({ isActive }) => 
+                `d-flex align-items-center nav-item nav-item-sidebar px-3 ${isActive ? 'active' : ''}`
+              }
+            >
+              <FontAwesomeIcon icon={faClipboardCheck} size="lg" title="Orders" />
+              <span className="d-none d-md-inline mx-2">Invoices</span>
+            </NavLink>
+          </Nav.Item>
+
+
           <section className="d-flex align-items-center d-none d-md-inline mx-2 fw-bold admin-sidebar-management">
             <span>Management
               <FontAwesomeIcon icon={faWrench} size="lg" title="Managment" className='mx-2' />

@@ -15,29 +15,30 @@ export const getAllInvoices = async () => {
         throw error;
     }
 };
-// Descargar una factura en formato PDF
+// Descargar el PDF de la factura
 export const downloadInvoicePDF = async (invoiceId) => {
-    try {
-      const response = await axios.get(`${API_URLS.INVOICES}/${invoiceId}/download`, {
-        responseType: 'blob',  // Para manejar archivos binarios (PDF)
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
-      });
-  
-      // Crear un enlace para descargar el archivo PDF
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', `invoice-${invoiceId}.pdf`); // Nombre del archivo PDF
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-    } catch (error) {
-      console.error('Error downloading invoice PDF:', error);
-      throw error;
-    }
-  };
+  try {
+    const token = localStorage.getItem('token'); // Obtener el token de localStorage
+    const response = await axios.get(`${API_URLS.INVOICES}/${invoiceId}/download`, {
+      headers: {
+        Authorization: `Bearer ${token}`, // Agregar el token en el encabezado
+      },
+      responseType: 'blob',  // Importante para manejar archivos binarios
+    });
+
+    // Crear una URL para descargar el archivo
+    const url = window.URL.createObjectURL(new Blob([response.data]));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `invoice-${invoiceId}.pdf`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } catch (error) {
+    console.error('Error downloading invoice PDF:', error);
+    throw error;
+  }
+};
 // Obtener una factura por ID
 export const getInvoiceById = async (invoiceId) => {
     try {
