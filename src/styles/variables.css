@@ -29,6 +29,10 @@
     --color-cream: #F5F5DC;
     --color-platinum: #E2DCD1;
     --color-line: #141a128f;
+    --color-dark-green: #006400;
+    --color-olive-green: #808000;
+    --color-emerald-green: #50C878;
+    --color-ligth-green: #90EE90;
     --background-gradient-menu: radial-gradient(circle, rgba(244,194,194,1) 0%, rgba(109,7,26,0.9505703422053232) 90%);
     --background-header-store: linear-gradient(209deg, rgba(122,102,89,1) 0%, rgba(111,93,79,1) 25%, rgba(121,101,88,1) 37.5%, rgba(69,56,47,1) 50%, rgba(111,92,80,1) 75%, rgba(67,54,45,1) 100%);
     --fiber-background-gradient1: radial-gradient(circle, rgba(255,255,255,0.2) 1px, rgba(0,0,0,0) 1px);

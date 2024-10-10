@@ -1,28 +1,128 @@
 /* ProductList.css */
 /* para que los productos se muestren correctamente en filas y columnas. */
 .product-list {
-    margin: 20px 0;
-  }
-  
-  .product-list h2 {
-    margin-bottom: 20px;
-  }
-  
-  .product-list .row {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .product-list .col-md-4 {
-    margin-bottom: 20px;
-  }
-  
-  .card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-  }
-  
+  margin: 20px 0;
+}
+
+.product-list h2 {
+  margin-bottom: 20px;
+}
+
+.product-list .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-list .col-md-4 {
+  margin-bottom: 20px;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+
+/* PRODUCT DETAIL */
+.detail-product {
+  max-width: 1200px;
+  /* Max width for the product detail */
+  margin: 0 auto;
+  /* Center the container */
+  padding: 25px;
+  /* Espaciado interno */
+}
+
+.detail-product-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 400px;
+  /* Ancho deseado */
+  height: 400px;
+  /* Altura deseada */
+  margin-top: 10px;
+  box-shadow: 1px 0 3px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+
+.detail-product-image {
+  width: 100%;
+  /* Llenar el ancho del contenedor */
+  height: 100%;
+  /* Mantener la proporción original */
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.detail-product-image.zoomed {
+  transform: scale(2);
+  /* Nivel de zoom, ajusta según prefieras */
+  transform-origin: center;
+}
+
+/* DETAIL PRODUCT INFO */
+
+.detail-product__info {
+  margin: 20px 20px 20px 20px;
+}
+
+.divider-detail-product{
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-lead);
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.detail-product__add-to-cart {
+  border-radius: 20px;
+  border-color: var(--color-olive-green);
+  padding: 2%;
+  background-color: var(--color-dark-green);
+  color: var(--color-white)
+}
+
+.detail-product__add-to-cart:hover{
+  background-color: var(--color-emerald-green);
+  border-color: var(--color-olive-green);
+}
+
+
+.detail-product-accordion__description {
+  border-bottom: 1px inset black;
+  /* Borde inferior negro */
+  overflow: hidden;
+  /* Evitar desbordamiento */
+  padding-right: 20px;
+  margin-top: 20px;
+}
+
+.detail-product-accordion__description .accordion-header:hover {
+  background-color: transparent; /* Cambiar el color de fondo a transparente en hover */
+}
+
+.detail-product-accordion__description .accordion-header {
+  border: none; /* Sin bordes para el encabezado */
+}
+
+.detail-product-accordion__description .accordion-item {
+  border: none; /* Sin bordes para los elementos del acordeón */
+}
+
+.detail-product-accordion__description .accordion-button {
+  box-shadow: none; /* Sin sombra para los botones */
+}
+
+/* Estilo del botón del acordeón cuando está expandido */
+.detail-product-accordion__description .accordion-button:not(.collapsed) {
+  background-color: transparent; /* Mantener el fondo transparente */
+}
