@@ -201,7 +201,7 @@ const Header = ({ onLogout, isAuthenticated, user}) => {
             {cartItems.length > 0 && (
               <Dropdown.Item as={Link} to="/checkout">Ir al pago</Dropdown.Item>
             )} */}
-              <Dropdown.Item as={Link} to="/checkout">Tu carrito esta vacio</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/cart">Tu carrito esta vacio</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </div>

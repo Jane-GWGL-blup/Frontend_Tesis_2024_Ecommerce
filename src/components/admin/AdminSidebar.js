@@ -115,6 +115,17 @@ const AdminSidebar = () => {
             </Nav.Item>
             <Nav.Item>
               <NavLink
+                to="/admin/users"
+                className={({ isActive }) => 
+                  `d-flex align-items-center nav-item nav-item-sidebar px-3 ${isActive ? 'active' : ''}`
+                }
+              >
+                <FontAwesomeIcon icon={faUser} size="lg" title="Orders" />
+                
+              </NavLink>
+            </Nav.Item>
+            <Nav.Item>
+              <NavLink
                 to="/admin/orders"
                 className={({ isActive }) => 
                   `d-flex align-items-center nav-item nav-item-sidebar px-3 ${isActive ? 'active' : ''}`
@@ -123,6 +134,16 @@ const AdminSidebar = () => {
                 <FontAwesomeIcon icon={faClipboardList} size="lg" title="Orders" />
               </NavLink>
             </Nav.Item>
+            <Nav.Item>
+            <NavLink
+              to="/admin/invoices"
+              className={({ isActive }) => 
+                `d-flex align-items-center nav-item nav-item-sidebar px-3 ${isActive ? 'active' : ''}`
+              }
+            >
+              <FontAwesomeIcon icon={faClipboardCheck} size="lg" title="Orders" />
+            </NavLink>
+          </Nav.Item>
             <section className="mx-2 admin-sidebar-management px-2">
               <FontAwesomeIcon icon={faWrench} size="lg" title="Managment" />
             </section>
