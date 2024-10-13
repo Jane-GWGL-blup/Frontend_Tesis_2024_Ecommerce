@@ -23,6 +23,7 @@ const StoreLayout = () => {
                 onLogout={handleLogout}
                 isAuthenticated={authenticated}
                 user={userData}
+                /* cartItems={cartItems || []} */
             />
             <main>
                 <LoadingComponent>

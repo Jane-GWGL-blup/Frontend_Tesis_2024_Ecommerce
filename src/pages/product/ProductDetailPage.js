@@ -1,13 +1,16 @@
 // src/pages/ProductDetailPage.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getAllProducts, getProductBySlug } from '../../services/ProductService'; // Usamos la función para obtener todos los productos
+import {  getProductBySlug } from '../../services/ProductService'; // Usamos la función para obtener todos los productos
 import { ProductDetail } from '../../components';
+
+
 
 const ProductDetailPage = () => {
   const { productName } = useParams(); // Obtenemos el slug de la URL
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
+  
 
 
   useEffect(() => {
@@ -29,7 +32,7 @@ const ProductDetailPage = () => {
   }
 
   return (
-    <div className="product-detail-page">
+    <div className="container product-detail-page">
       <h1>Product Details</h1>
       <ProductDetail product={product} />
     </div>

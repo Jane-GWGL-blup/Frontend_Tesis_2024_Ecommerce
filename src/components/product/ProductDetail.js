@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Accordion, Button } from 'react-bootstrap';
 import { LoadingComponent } from '../../components';
+import { addItemToCart } from '../../services/CartService';
 
 
 const ProductDetail = ({ product }) => {
@@ -8,6 +9,7 @@ const ProductDetail = ({ product }) => {
     const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
     const [isZoomed, setIsZoomed] = useState(false);
     const [buttonColor, setButtonColor] = useState('var(--color-dark-green)'); // Color inicial del botón (verde)
+    const [message, setMessage] = useState(''); // Para el mensaje de éxito
 
 
     const handleMouseEnter = () => {
@@ -25,12 +27,26 @@ const ProductDetail = ({ product }) => {
         setIsZoomed(false);
     };
 
-    const handleButtonClick = () => {
-        setButtonColor('var(--color-emerald-green)'); // Cambiar a un verde diferente al hacer clic
-        // Restaurar el color original después de 1 segundo (1000 ms)
-        setTimeout(() => {
-            setButtonColor('var(--color-dark-green)'); // Volver al color original
-        }, 1000);
+    const handleButtonClick = async () => {
+        try {
+            setButtonColor('var(--color-emerald-green)'); // Cambiar a un verde diferente al hacer clic
+            
+            // Asegúrate de que product.id esté disponible
+            console.log('Agregando al carrito:', { productId: product.id, quantity: 1 });
+            
+            await addItemToCart(product.id, 1); // Agrega el producto al carrito
+            
+            setMessage('Producto agregado al carrito!'); // Mensaje de éxito
+    
+            // Restaurar el color original después de 1 segundo (1000 ms)
+            setTimeout(() => {
+                setButtonColor('var(--color-dark-green)'); // Volver al color original
+                setMessage(''); // Limpiar el mensaje
+            }, 1000);
+        } catch (error) {
+            console.error('Error adding product to cart:', error);
+            setMessage('Error al agregar el producto al carrito.');
+        }
     };
 
     if (!product) return <LoadingComponent />
@@ -67,6 +83,7 @@ const ProductDetail = ({ product }) => {
                         >
                             Add to Cart
                         </Button>
+                        {message && <p className="cart-message">{message}</p>} {/* Mensaje de éxito */}
 
                     </div>
                 </div>

@@ -27,7 +27,7 @@ export { default as RegisterForm } from './auth/RegisterForm';
 export { default as ForgotPasswordForm } from './auth/ForgotPasswordForm';
 export { default as ResetPasswordForm } from './auth/ResetPasswordForm';
 
-export { default as CartItem } from './cart/CartItem';
+export { default as CartTable } from './cart/CartTable';
 export { default as CartSummary } from './cart/CartSummary';
 
 /* COMMON */
