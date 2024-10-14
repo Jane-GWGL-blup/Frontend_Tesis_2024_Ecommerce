@@ -27,42 +27,30 @@ const CartPage = () => {
     // Si la nueva cantidad es menor que 1, no hacemos nada.
     if (newQuantity < 1) return;
 
-    /*     try {
-          await updateCartItemQuantity(itemId, newQuantity);
-          const updatedCart = cart.items.map(item =>
-            item.id === itemId ? { ...item, quantity: newQuantity } : item
-          );
-          setCart({ ...cart, items: updatedCart }); */
-    /*     try {
-          await updateCartItemQuantity(itemId, newQuantity);
-          // Aquí actualizamos el carrito localmente
-          const updatedCart = {
-            ...cart,
-            items: cart.items.map(item =>
-              item.id === itemId ? { ...item, quantity: newQuantity } : item
-            )
-          };
-          setCart(updatedCart);  */
-
     try {
-      await updateCartItemQuantity(itemId, newQuantity);
-
-      // Actualizamos el carrito en el contexto
-      setCart(prevCart => ({
-        ...prevCart,
-        items: prevCart.items.map(item =>
-          item.id === itemId ? { ...item, quantity: newQuantity } : item
-        )
-      }));
-    } catch (error) {
+      const response = await updateCartItemQuantity(itemId, newQuantity);
+      console.log('API Response:', response);
+      console.log(itemId)
+      // Verificamos si el conteo es mayor que 0 para asegurar que la actualización fue exitosa
+      if (response.count > 0) {
+        setCart(prevCart => ({
+          ...prevCart,
+          items: prevCart.items.map(item =>
+            item.product.id === itemId ? { ...item, quantity: newQuantity } : item
+          )
+        }));
+      }
+    }
+    catch (error) {
       console.error('Error updating item quantity:', error);
     }
   };
 
   const handleRemoveItem = async (itemId) => {
+    console.log("Removing item with ID:", itemId); 
     try {
       await removeItemFromCart(itemId);
-      const updateCart = cart.items.filter(item => item.id !== itemId)
+      const updateCart = cart.items.filter(item => item.product.id !== itemId)
       setCart({ ...cart, items: updateCart })
     } catch (error) {
       console.error('Error removing item fron cart:', error)
@@ -99,7 +87,6 @@ const CartPage = () => {
           <h3 className="text-center">Summary</h3>
         </div>
       </div>
-
     </div>
   );
 };

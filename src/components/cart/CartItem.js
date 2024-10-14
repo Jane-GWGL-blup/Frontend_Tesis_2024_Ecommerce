@@ -16,7 +16,7 @@ const CartItem = ({ item, handleQuantityChange, handleRemoveItem }) => {
         <Button
           variant="secondary"
           size="sm"
-          onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
+          onClick={() => handleQuantityChange(item.product.id, item.quantity - 1)}
         >
           -
         </Button>
@@ -24,15 +24,19 @@ const CartItem = ({ item, handleQuantityChange, handleRemoveItem }) => {
         <Button
           variant="secondary"
           size="sm"
-          onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
+          onClick={() => handleQuantityChange(item.product.id, item.quantity + 1)}
         >
           +
         </Button>
       </td>
       <td>{item.product.price}</td>
-      <td></td>
+
       <td className='text-center'>
-        <FontAwesomeIcon onClick={() => handleRemoveItem(item.id)} icon={faTrash} size="lg" className='icon-nav-cart-color' />
+        <FontAwesomeIcon
+          onClick={() => handleRemoveItem(item.product.id)}
+          icon={faTrash}
+          size="lg"
+          className='icon-nav-cart-color' />
       </td>
     </tr>
   );

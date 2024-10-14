@@ -11,7 +11,6 @@ const CartTable = ({ items, handleQuantityChange, handleRemoveItem }) => {
           <th>Description</th>
           <th>Quantity</th>
           <th>Unit Price</th>
-          <th>Total Price</th>
           <th>Actions</th>
         </tr>
       </thead>
