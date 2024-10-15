@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faClipboardList, faBox, faUser, faLayerGroup, faWrench, faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faClipboardList, faBox, faUser, faLayerGroup, faWrench, faClipboardCheck,faWaveSquare } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/components/admin/admin-sidebar.css';
 
 import logo from '../../images/logo.svg';
@@ -99,6 +99,17 @@ const AdminSidebar = () => {
               <span className="d-none d-md-inline mx-2">Categories</span>
             </NavLink>
           </Nav.Item>
+          <Nav.Item>
+            <NavLink
+              to="/admin/discounts"
+              className={({ isActive }) => 
+                `d-flex align-items-center nav-item nav-item-sidebar px-3 ${isActive ? 'active' : ''}`
+              }
+            >
+              <FontAwesomeIcon icon={faWaveSquare} size="lg" title="Categories" />
+              <span className="d-none d-md-inline mx-2">Discounts</span>
+            </NavLink>
+          </Nav.Item>
         </Nav>
         {/* PARA PANTALLAS PEQUEÑAS*/}
         <Nav className='d-lg-none'>
@@ -168,6 +179,16 @@ const AdminSidebar = () => {
                 <FontAwesomeIcon icon={faLayerGroup} size="lg" title="Categories" />
               </NavLink>
             </Nav.Item>
+            <Nav.Item>
+            <NavLink
+              to="/admin/discounts"
+              className={({ isActive }) => 
+                `d-flex align-items-center nav-item nav-item-sidebar px-3 ${isActive ? 'active' : ''}`
+              }
+            >
+              <FontAwesomeIcon icon={faWaveSquare} size="lg" title="Categories" />
+            </NavLink>
+          </Nav.Item>
           </div>
         </Nav>
       </div>

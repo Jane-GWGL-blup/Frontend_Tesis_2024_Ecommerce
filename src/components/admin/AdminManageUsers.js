@@ -137,6 +137,9 @@ const AdminManageUsers = () =>{
                 </Form.Select>
               </td>
               <td>
+                <Link to={`/admin/users/${user.id}/orders`} className="btn btn-info">
+                  View Orders
+                </Link>
                 <Button variant="danger" onClick={() => handleDelete(user.id)}>
                   Delete
                 </Button>

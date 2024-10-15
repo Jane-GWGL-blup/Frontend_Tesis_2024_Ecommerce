@@ -11,7 +11,9 @@ import {
   AdminDashboardPage, ManageProductPage, ManageCategoryPage, ProductCreatePage, CategoryCreatePage,
   ProductDetailPage,
   CategoryEditPage, ProductEditPage,
-  CartPage, ProductListPage, ManageUserPage,UserCreatePage,AdminManageOrdersPage,AdminOrderDetailsPage,InvoiceDetailsPage,InvoiceListPage } from './pages'
+  CartPage, ProductListPage, ManageUserPage,UserCreatePage,AdminManageOrdersPage,AdminOrderDetailsPage,InvoiceDetailsPage,InvoiceListPage, 
+  UserOrderHistoryPagePage,AdminManageDiscountsPage,AdminCreateDiscountPage,DiscountEditPage,
+  UserOrderHistoryPage} from './pages'
 
 import {
   StoreLayout, AdminLayout, ProtectedRoute
@@ -32,6 +34,7 @@ function App() {
         <Routes>
 
           {/* Rutas para productos accesibles por usuarios y administradores */}
+          <Route path="users/userid/orders" element={<ProtectedRoute element={<UserOrderHistoryPage/>} isAllowed={isUserAdmin} />} />
 
           {/* Rutas de administración anidadas */}
           <Route path="/admin" element={<AdminLayout />}>
@@ -47,8 +50,13 @@ function App() {
             <Route path="users/create" element={<ProtectedRoute element={<UserCreatePage/>} isAllowed={isUserAdmin} />} />
             <Route path="orders" element={<ProtectedRoute element={<AdminManageOrdersPage/>} isAllowed={isUserAdmin} />} />
             <Route path="orders/:id" element={<ProtectedRoute element={<AdminOrderDetailsPage/>} isAllowed={isUserAdmin} />} />
+            
             <Route path="invoices/:id" element={<ProtectedRoute element={<InvoiceDetailsPage/>} isAllowed={isUserAdmin} />} />
-            <Route path="invoices/" element={<ProtectedRoute element={<InvoiceListPage/>} isAllowed={isUserAdmin} />} />
+            <Route path="invoices" element={<ProtectedRoute element={<InvoiceListPage/>} isAllowed={isUserAdmin} />} />
+            {/* Rutas para la gestión de descuentos */}
+            <Route path="discounts" element={<ProtectedRoute element={<AdminManageDiscountsPage/>} isAllowed={isUserAdmin} />} />
+            <Route path="discounts/create" element={<ProtectedRoute element={<AdminCreateDiscountPage/>} isAllowed={isUserAdmin} />} />
+            <Route path="discounts/edit/:id" element={<ProtectedRoute element={<DiscountEditPage/>} isAllowed={isUserAdmin} />} />
 
           </Route>
 

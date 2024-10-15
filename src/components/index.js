@@ -18,6 +18,8 @@ export { default as AdminManageOrders } from './admin/AdminManageOrders';
 export { default as AdminOrderDetails } from './admin/AdminOrderDetails';
 export { default as InvoiceDetails } from './admin/InvoiceDetails';
 export { default as InvoiceTable } from './admin/InvoiceTable';
+export { default as AdminManageDiscounts } from './admin/AdminManageDiscounts';
+export { default as AdminDiscountForm } from './admin/AdminDiscountForm';
 
 
 /* AUTH */

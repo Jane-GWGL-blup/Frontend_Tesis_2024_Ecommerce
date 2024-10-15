@@ -11,8 +11,12 @@ export { default as CategoryCreatePage } from './admin/CategoryCreatePage';
 export { default as CategoryEditPage } from './admin/CategoryEditPage';
 export { default as AdminManageOrdersPage } from './admin/AdminManageOrdersPage';
 export { default as AdminOrderDetailsPage } from './admin/AdminOrderDetailsPage';
+export { default as UserOrderHistoryPage } from './admin/UserOrderHistoryPage';
 export { default as InvoiceListPage } from './admin/InvoiceListPage';
 export { default as InvoiceDetailsPage } from './admin/InvoiceDetailsPage';
+export { default as AdminManageDiscountsPage } from './admin/AdminManageDiscountsPage';
+export { default as AdminCreateDiscountPage } from './admin/AdminCreateDiscountPage';
+export { default as DiscountEditPage } from './admin/DiscountEditPage';
 
 
 
