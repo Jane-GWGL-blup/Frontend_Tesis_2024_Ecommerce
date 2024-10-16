@@ -182,27 +182,10 @@ const Header = ({ onLogout, isAuthenticated, user}) => {
           </Dropdown>
 
           {/* Dropdown del Carrito de Compras para pantallas grandes cartItems.length */}
-          <Dropdown align="end" className="mx-3">
+          <Dropdown align="end" className="mx-3" as={Link} to="/cart">
             <Dropdown.Toggle variant="success" id="dropdown-cart" className='cart-dropdown-toggle'>
               <FontAwesomeIcon icon={faShoppingCart} size="lg" className='icon-nav-header-color' />
-              <Badge bg="warning" pill className="ml-1">#</Badge>
             </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              {/*             {cartItems.length === 0 ? (
-              <Dropdown.Item href="#">Tu carrito está vacío</Dropdown.Item>
-            ) : (
-              cartItems.map((item, index) => (
-                <Dropdown.Item href="#" key={index}>
-                  {item.name} - ${item.price}
-                </Dropdown.Item>
-              ))
-            )}
-            {cartItems.length > 0 && (
-              <Dropdown.Item as={Link} to="/checkout">Ir al pago</Dropdown.Item>
-            )} */}
-              <Dropdown.Item as={Link} to="/cart">Tu carrito esta vacio</Dropdown.Item>
-            </Dropdown.Menu>
           </Dropdown>
         </div>
         {/*Navbar donde va productos, etc pantallas pequeñas*/}
