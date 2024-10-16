@@ -73,3 +73,18 @@ export const getDiscountById = async (discountId) => {
       throw error;
     }
   };
+
+// Aplicar código de descuento
+export const applyDiscountCode = async (code) => {
+    try {
+      const response = await axios.get(`${API_URLS.DISCOUNTS}/code/${code}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error applying discount:', error);
+      throw error;
+    }
+}

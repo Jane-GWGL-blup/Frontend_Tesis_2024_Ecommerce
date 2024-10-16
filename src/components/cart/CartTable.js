@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card,Button,Row,Col } from 'react-bootstrap';
-import "../../styles/components/cart.css"
+import "../../styles/components/cart.css";
 
 
 const CartTable = ({ items, handleQuantityChange, handleRemoveItem }) => {
