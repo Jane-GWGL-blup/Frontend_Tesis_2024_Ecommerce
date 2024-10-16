@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Accordion, Button } from 'react-bootstrap';
+import { Accordion, Button, Toast, Form } from 'react-bootstrap';
 import { LoadingComponent } from '../../components';
 import { addItemToCart } from '../../services/CartService';
 
@@ -9,7 +9,8 @@ const ProductDetail = ({ product }) => {
     const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
     const [isZoomed, setIsZoomed] = useState(false);
     const [buttonColor, setButtonColor] = useState('var(--color-dark-green)'); // Color inicial del botón (verde)
-    const [message, setMessage] = useState(''); // Para el mensaje de éxito
+    const [showToast, setShowToast] = useState(false);
+    const [quantity, setQuantity] = useState(1); // Estado para la cantidad
 
 
     const handleMouseEnter = () => {
@@ -30,23 +31,28 @@ const ProductDetail = ({ product }) => {
     const handleButtonClick = async () => {
         try {
             setButtonColor('var(--color-emerald-green)'); // Cambiar a un verde diferente al hacer clic
-            
+
             // Asegúrate de que product.id esté disponible
-            console.log('Agregando al carrito:', { productId: product.id, quantity: 1 });
-            
-            await addItemToCart(product.id, 1); // Agrega el producto al carrito
-            
-            setMessage('Producto agregado al carrito!'); // Mensaje de éxito
-    
+            console.log('Agregando al carrito:', { productId: product.id, quantity});
+
+            await addItemToCart(product.id, quantity); // Agrega el producto al carrito
+
+            setShowToast(true);
+
             // Restaurar el color original después de 1 segundo (1000 ms)
             setTimeout(() => {
                 setButtonColor('var(--color-dark-green)'); // Volver al color original
-                setMessage(''); // Limpiar el mensaje
+                setShowToast(false);
             }, 1000);
         } catch (error) {
             console.error('Error adding product to cart:', error);
-            setMessage('Error al agregar el producto al carrito.');
+
         }
+    };
+
+    const handleQuantityChange = (e) => {
+        const value = Math.max(1, Math.min(e.target.value, product.stock)); // Asegura que la cantidad esté entre 1 y el stock disponible
+        setQuantity(value);
     };
 
     if (!product) return <LoadingComponent />
@@ -76,14 +82,45 @@ const ProductDetail = ({ product }) => {
                         <h2>{product.name}</h2>
                         <div className='divider-detail-product' />
                         <p className="detail-product__price">${product.price.toFixed(2)}</p>
+                        {product.stock > 0 ? (
+                            <>
+                                <p>Disponibilidad: {product.stock} en stock</p>
+                                <Form.Group controlId="quantity">
+                                    <Form.Label>Cantidad</Form.Label>
+                                    <Form.Control
+                                        type="number"
+                                        value={quantity}
+                                        onChange={handleQuantityChange}
+                                        min="1"
+                                        max={product.stock}
+                                        className="quantity-input"
+                                    />
+                                </Form.Group>
+                            </>
+                        ) : (
+                            <p className="text-danger">Agotado</p>
+                        )}
                         <Button
                             className="detail-product__add-to-cart"
                             style={{ backgroundColor: buttonColor, borderColor: buttonColor }} // Cambia el color del botón
                             onClick={handleButtonClick} // Maneja el clic en el botón
+                            disabled={product.stock === 0} // Deshabilitar el botón si no hay stock
                         >
                             Add to Cart
                         </Button>
-                        {message && <p className="cart-message">{message}</p>} {/* Mensaje de éxito */}
+
+                        {/* Toast */}
+                        <div className="toast-container">
+                            <Toast
+                                show={showToast}
+                                onClose={() => setShowToast(false)}
+                                autohide
+                                delay={3000}
+                                className="toast-custom"
+                            >
+                                <Toast.Body>Product added to cart!</Toast.Body>
+                            </Toast>
+                        </div>
 
                     </div>
                 </div>

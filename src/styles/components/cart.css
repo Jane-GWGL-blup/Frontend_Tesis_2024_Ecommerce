@@ -26,3 +26,53 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
+.cart-summary {
+  /* Asegúrate de que el card use todo el ancho disponible */
+  width: 100%;
+  margin-top: 62px; /* Espacio superior para separación */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .cart-summary {
+    margin-top: 30px; /* Menos margen en dispositivos pequeños */
+  }
+}
+
+
+/* MINI CART - ITEMS HEADER*/
+.mini-cart-items {
+  max-height: 400px; /* Limita la altura del menú */
+  overflow-y: auto; /* Agrega desplazamiento si hay muchos productos */
+}
+
+.mini-cart-items .card {
+  border: none; /* Estilo de borde */
+}
+
+.mini-cart-items .card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Efecto de sombra al pasar el mouse */
+}
+
+.mini-cart-title{
+  font-size: 1.1rem;
+}
+
+.mini-cart-item{
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 4px;
+}
+
+.mini-cart-item span{
+  font-weight: 400;
+}
+
+
+/* .mini-cart-btn :disabled{
+  background-color: var(--color-light-grey2);
+
+} */
+
+

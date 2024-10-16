@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useCart } from '../../contexts/CartContext'
 import { getUserCart, updateCartItemQuantity, removeItemFromCart, clearCart } from "../../services/CartService";
-import { Button,Card,Form } from "react-bootstrap";
-import { CartTable } from "../../components";
+import { Button, Card, Form } from "react-bootstrap";
+import { CartTable, CartSummary } from "../../components";
 import { applyDiscountCode } from "../../services/DiscountService"; // Importar la función para aplicar el descuento
-import "../../styles/components/cart.css"
+
 
 
 const CartPage = () => {
   const { cart, setCart } = useCart();
   const [loading, setLoading] = useState(true);
   const [discountCode, setDiscountCode] = useState('')
-  const [discount,setDiscount] = useState(null)
+  const [discount, setDiscount] = useState(null)
   useEffect(() => {
     const fetchCart = async () => {
       try {
@@ -67,7 +67,7 @@ const CartPage = () => {
     return cart.items.reduce((acc, item) => acc + item.product.price * item.quantity, 0).toFixed(2);
   };
 
-  const handleApplyDiscount = async () =>{
+  const handleApplyDiscount = async () => {
     try {
       const appliedDiscount = await applyDiscountCode(discountCode); // Llamar al servicio para aplicar el descuento
       setDiscount(appliedDiscount); // Guardar el descuento en el estado
@@ -96,27 +96,14 @@ const CartPage = () => {
             <Button variant="danger" onClick={handleClearCart} className="mt-3">Clear Cart</Button>
           )}
         </div>
-        <div className="col-md-4">
-          <Card className="p-3">
-            <h3 className="text-center">Summary</h3>
-            <p>Total Items: {cart.items.length}</p>
-            <p>Total Price: ${calculateTotal()}</p>
-            <Form>
-              <Form.Group controlId="discountCode">
-                <Form.Label>Discount Code</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter discount code"
-                  value={discountCode}
-                  onChange={(e) => setDiscountCode(e.target.value)}
-                />
-              </Form.Group>
-              <Button variant="primary" onClick={handleApplyDiscount} className="mt-2">
-                Apply Discount
-              </Button>
-            </Form>
-            <Button variant="success" className="w-100 mt-3">Proceed to Checkout</Button>
-          </Card>
+        <div className="col-md-4 d-flex align-items-start">
+          <CartSummary
+            totalItems={cart.items.length}
+            totalPrice={calculateTotal()}
+            discountCode={discountCode}
+            setDiscountCode={setDiscountCode}
+            handleApplyDiscount={handleApplyDiscount}
+          />
         </div>
       </div>
     </div>
