@@ -9,7 +9,7 @@ export const getUserCart = async () => {
   try {
     const response = await axios.get(API_URLS.CART, {
       headers: {
-        Authorization: `$Bearer ${localStorage.getItem('token')}`
+        Authorization: `Bearer ${localStorage.getItem('token')}`
       }
     });
     return response.data;

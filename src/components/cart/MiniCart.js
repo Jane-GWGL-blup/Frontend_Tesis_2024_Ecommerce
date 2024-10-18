@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Dropdown, Badge, Card, Row, Button, Col } from 'react-bootstrap';
-import { useCart } from '../../contexts/CartContext'; // Asegúrate de la ruta correcta
+import { useCart } from '../../contexts/CartContext';
 
 const MiniCart = () => {
-    const { cart, setCart } = useCart(); // Accede al estado del carrito
+    const { cart, loading } = useCart(); // Accede al estado del carrito y la bandera de carga
 
+    if (loading) {
+        // Mostrar un estado de carga si el carrito aún no está listo
+        return <Badge bg="warning" pill>Loading...</Badge>;
+    }
 
     return (
         <Dropdown align="end" className="mx-2">
@@ -30,14 +34,11 @@ const MiniCart = () => {
                                             <Card.Title className=''>{item.product.name}</Card.Title>
                                             <Card.Text>
                                                 <div className="d-flex align-items-center ">
-
                                                     <p className='mini-cart-item'>Cantidad: <span>{item.quantity}</span></p>
                                                     <p className='mini-cart-item'>Precio:<span> ${item.product.price.toFixed(2)}</span></p>
-
                                                 </div>
                                             </Card.Text>
-                                            {/*                                             <p>Precio: ${item.product.price.toFixed(2)}</p>
- */}                                        </Col>
+                                        </Col>
                                     </Row>
                                 </Card.Body>
                             </Card>

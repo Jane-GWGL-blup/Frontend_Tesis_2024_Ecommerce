@@ -1,17 +1,19 @@
 import axios from 'axios'
-import { API_URLS } from '../utils/api'
+import {
+    API_URLS
+} from '../utils/api'
 
 //obtener todos los descuentois
-export const getAllDiscounts= async () =>{
+export const getAllDiscounts = async () => {
     try {
-        const response = await axios.get(API_URLS.DISCOUNTS,{
+        const response = await axios.get(API_URLS.DISCOUNTS, {
             headers: {
-                Authorization:`Bearer ${localStorage.getItem('token')}`
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         })
         return response.data
     } catch (error) {
-        console.error('Error fetching discounts:',error)        
+        console.error('Error fetching discounts:', error)
         throw error
     }
 }
@@ -62,29 +64,29 @@ export const deleteDiscount = async (discountId) => {
 };
 export const getDiscountById = async (discountId) => {
     try {
-      const response = await axios.get(`${API_URLS.DISCOUNTS}/${discountId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-      return response.data;
+        const response = await axios.get(`${API_URLS.DISCOUNTS}/${discountId}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+        return response.data;
     } catch (error) {
-      console.error(`Error fetching discount with id ${discountId}:`, error);
-      throw error;
+        console.error(`Error fetching discount with id ${discountId}:`, error);
+        throw error;
     }
-  };
+};
 
 // Aplicar código de descuento
 export const applyDiscountCode = async (code) => {
     try {
-      const response = await axios.get(`${API_URLS.DISCOUNTS}/code/${code}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-      return response.data;
+        const response = await axios.get(`${API_URLS.DISCOUNTS}/code/${code}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+        return response.data;
     } catch (error) {
-      console.error('Error applying discount:', error);
-      throw error;
+        console.error('Error applying discount:', error);
+        throw error;
     }
 }

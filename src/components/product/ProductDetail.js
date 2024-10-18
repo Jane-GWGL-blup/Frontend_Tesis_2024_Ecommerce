@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { Accordion, Button, Toast, Form } from 'react-bootstrap';
 import { LoadingComponent } from '../../components';
 import { addItemToCart } from '../../services/CartService';
+import { useCart } from '../../contexts/CartContext';
 
 
 const ProductDetail = ({ product }) => {
-
+    const { addToCart } = useCart(); // Obtén la función addToCart del contexto
     const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
     const [isZoomed, setIsZoomed] = useState(false);
     const [buttonColor, setButtonColor] = useState('var(--color-dark-green)'); // Color inicial del botón (verde)
@@ -30,25 +31,26 @@ const ProductDetail = ({ product }) => {
 
     const handleButtonClick = async () => {
         try {
-            setButtonColor('var(--color-emerald-green)'); // Cambiar a un verde diferente al hacer clic
-
-            // Asegúrate de que product.id esté disponible
-            console.log('Agregando al carrito:', { productId: product.id, quantity});
-
-            await addItemToCart(product.id, quantity); // Agrega el producto al carrito
-
-            setShowToast(true);
-
-            // Restaurar el color original después de 1 segundo (1000 ms)
-            setTimeout(() => {
-                setButtonColor('var(--color-dark-green)'); // Volver al color original
-                setShowToast(false);
-            }, 1000);
+          setButtonColor('var(--color-emerald-green)');
+    
+          // Llamada a la API para agregar al carrito en el backend
+          await addItemToCart(product.id, quantity);
+    
+          // Actualiza el estado del carrito globalmente
+          addToCart({
+            product,
+            quantity
+          });
+    
+          setShowToast(true);
+          setTimeout(() => {
+            setButtonColor('var(--color-dark-green)');
+            setShowToast(false);
+          }, 1000);
         } catch (error) {
-            console.error('Error adding product to cart:', error);
-
+          console.error('Error adding product to cart:', error);
         }
-    };
+      };
 
     const handleQuantityChange = (e) => {
         const value = Math.max(1, Math.min(e.target.value, product.stock)); // Asegura que la cantidad esté entre 1 y el stock disponible

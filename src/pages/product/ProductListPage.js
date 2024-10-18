@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import { LoadingComponent, ProductList, SidebarCategoryStore } from '../../components';
 import { getAllProducts } from '../../services/ProductService';
+import '../../styles/components/productListPage.css'
 
 const ProductListPage = () => {
   const [products, setProducts] = useState([]);
@@ -30,11 +31,11 @@ const ProductListPage = () => {
   }
 
   return (
-    <div>
+    <div className='product-list-page'>
       <div className="container">
-        <h1>Products</h1>
+        <h1 className='page-title text-center mb-4'>Explorer our Products</h1>
         <div className='row'>
-          <div className='col-2'>
+          <div className='col-md-3'>
             <SidebarCategoryStore />
           </div>
           <div className='col'>
