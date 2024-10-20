@@ -6,6 +6,7 @@ import { useCart } from '../../contexts/CartContext';
 const MiniCart = () => {
     const { cart, loading } = useCart(); // Accede al estado del carrito y la bandera de carga
 
+    
     if (loading) {
         // Mostrar un estado de carga si el carrito aún no está listo
         return <Badge bg="warning" pill>Loading...</Badge>;

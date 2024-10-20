@@ -84,9 +84,10 @@ const Header = ({ onLogout, isAuthenticated, user}) => {
               </>
             ) : (
               <>
-                <Dropdown.Item >
-                  <span className="dropdown-item" >{user?.name}</span>
-                </Dropdown.Item>
+                <div className="dropdown-user-title text-center" >¡Hi {user?.name}!</div>
+                  <Dropdown.Item as={Link} to="/profile">
+                    <div className='dropdown-item'>Perfil</div>
+                  </Dropdown.Item>
                 <DropdownDivider />
                 <Dropdown.Item onClick={onLogout}>
                   Logout
@@ -156,7 +157,7 @@ const Header = ({ onLogout, isAuthenticated, user}) => {
             <Dropdown.Toggle id="dropdown-user" className='user-dropdown-toggle'>
               <FontAwesomeIcon icon={faUser} size="lg" className='icon-nav-header-color' />
             </Dropdown.Toggle>
-            <Dropdown.Menu>
+            <Dropdown.Menu >
               {/* Solo mostrar Login y Register si el usuario no está autenticado */}
               {!isAuthenticated ? (
                 <>
@@ -171,8 +172,9 @@ const Header = ({ onLogout, isAuthenticated, user}) => {
               ) : (
                 <>
                   {/* Mostrar Perfil y Logout si el usuario está autenticado */}
-                  <Dropdown.Item >
-                  <span className="dropdown-item" >{user?.name}</span>
+                  <div className="dropdown-user-title text-center" >¡Hi {user?.name}!</div>
+                  <Dropdown.Item as={Link} to="/profile">
+                    <div className='dropdown-item'>Perfil</div>
                   </Dropdown.Item>
                   <DropdownDivider />
                   <Dropdown.Item onClick={onLogout}>

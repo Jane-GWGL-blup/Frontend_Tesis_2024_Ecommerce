@@ -19,11 +19,13 @@ export { default as AdminCreateDiscountPage } from './admin/AdminCreateDiscountP
 export { default as DiscountEditPage } from './admin/DiscountEditPage';
 
 
-
 export { default as LoginPage } from './auth/LoginPage';
 export { default as RegisterPage } from './auth/RegisterPage';
 export { default as ForgotPasswordPage } from './auth/ForgotPasswordPage';
 export { default as ResetPasswordPage } from './auth/ResetPasswordPage';
+
+
+export { default as UserProfilePage } from './user/UserProfilePage';
 
 export { default as CartPage } from './cart/CartPage';
 

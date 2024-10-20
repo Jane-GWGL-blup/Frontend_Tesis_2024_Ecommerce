@@ -3,14 +3,17 @@ import { Header, Footer, LoadingComponent } from '../../components';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { logout } from '../../services/AuthService';
 import { UserContext } from '../../contexts/UserContext'; // Importa el contexto
+import { useCart } from '../../contexts/CartContext';
 
 
 const StoreLayout = () => {
     const { userData, authenticated, setAuthenticated } = useContext(UserContext); // Accede al contexto
+    const { clearCart } = useCart();
    // const location = useLocation();
     const navigate = useNavigate();
 
     const handleLogout = () => {
+        clearCart(); // Limpia el carrito antes de cerrar sesión
         setAuthenticated(false);
         logout(); // Llama a la función de logout
         console.log('La función logout se está llamando');

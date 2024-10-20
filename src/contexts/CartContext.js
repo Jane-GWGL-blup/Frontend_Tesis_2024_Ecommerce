@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { UserContext } from '../contexts/UserContext'; // Asegúrate de importar correctamente el contexto de usuario
+import { getUserCart } from '../services/CartService';
 
 // Crear el contexto
 const CartContext = createContext();
@@ -15,25 +16,37 @@ export const CartProvider = ({ children }) => {
     return userData ? `cart_${userData.id}` : 'cart_guest';
   };
 
-  // Cargar el carrito desde localStorage cuando la aplicación se inicializa
+
+  // Cargar el carrito desde localStorage cuando el usuario inicie sesión
   useEffect(() => {
-    const savedCart = localStorage.getItem(getCartStorageKey());
-    if (savedCart) {
-      setCart(JSON.parse(savedCart));
+    //LOADCART: Espera la respuesta del API
+    const loadCart = async () => {
+      setLoading(true);
+      try {
+        const cartData = await getUserCart(); // Llama a la API para obtener el carrito
+        setCart(cartData);
+      } catch (error) {
+        console.error('Error loading user cart:', error);
+        clearCart();
+      }
+      setLoading(false);
+    };
+    //asegura que el carrito solo se cargue cuando el usuario haya iniciado sesión
+    if (userData) {
+      loadCart(); // Carga el carrito cuando el usuario inicia sesión
     }
-    setLoading(false); // Indicar que el carrito ya ha sido cargado
   }, [userData]);
 
   // Guardar el carrito en localStorage cada vez que cambie el estado del carrito
   useEffect(() => {
-    if (!loading) {
-      if (cart && cart.items.length > 0) {
+    if (cart) {
+      if (cart.items.length > 0) {
         localStorage.setItem(getCartStorageKey(), JSON.stringify(cart));
       } else {
-        localStorage.removeItem(getCartStorageKey()); // Si el carrito está vacío, lo eliminamos de localStorage
+        localStorage.removeItem(getCartStorageKey());
       }
     }
-  }, [cart, loading, userData]);
+  }, [cart]);
 
   // Función para actualizar el carrito globalmente
   const addToCart = (newItem) => {
@@ -62,6 +75,7 @@ export const CartProvider = ({ children }) => {
   const clearCart = () => {
     setCart({ items: [] });
     localStorage.removeItem(getCartStorageKey()); // Borra el carrito de localStorage
+
   };
 
   return (

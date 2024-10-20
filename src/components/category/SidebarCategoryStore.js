@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRing, faGem, faStar, faHandSparkles } from '@fortawesome/free-solid-svg-icons'; // Importar los iconos que necesites
 import '../../styles/components/category.css'
 
-const SidebarCategoryStore = ({ onLogout }) => {
+const SidebarCategoryStore = () => {
   // Estado local para la simulación de usuario
   const [user, setUser] = useState({
     id: 1,

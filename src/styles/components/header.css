@@ -178,3 +178,10 @@
 .dropdown-menu-categories-ss .dropdown-item:hover {
     color: var(--color-gold);
 }
+
+.dropdown-user-title{
+    background-color: var(--color-dark-gray);
+    color: var(--color-white);
+    padding: 4%;
+    font-weight: 500;
+}

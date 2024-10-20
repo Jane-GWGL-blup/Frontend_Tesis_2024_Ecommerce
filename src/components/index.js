@@ -6,10 +6,10 @@ export { default as StoreLayout } from './store/StoreLayout';
 export { default as AdminHeader } from './admin/AdminHeader';
 export { default as AdminSidebar } from './admin/AdminSidebar';
 export { default as AdminDashboard } from './admin/AdminDashboard';
-export { default as AdminCreateProduct} from './admin/AdminCreateProduct';
+export { default as AdminCreateProduct } from './admin/AdminCreateProduct';
 export { default as AdminManageProduct } from './admin/AdminManageProduct';
 export { default as AdminEditProductForm } from './admin/AdminEditProductForm';
-export { default as AdminCreateCategory} from './admin/AdminCreateCategory';
+export { default as AdminCreateCategory } from './admin/AdminCreateCategory';
 export { default as AdminManageCategory } from './admin/AdminManageCategory';
 export { default as AdminEditCategoryForm } from './admin/AdminEditCategoryForm';
 export { default as AdminManageUsers } from './admin/AdminManageUsers';
@@ -28,6 +28,14 @@ export { default as LoginForm } from './auth/LoginForm';
 export { default as RegisterForm } from './auth/RegisterForm';
 export { default as ForgotPasswordForm } from './auth/ForgotPasswordForm';
 export { default as ResetPasswordForm } from './auth/ResetPasswordForm';
+
+/* USER */
+export { default as UserProfile } from './user/UserProfile';
+/* 
+export { default as OrderHistory } from './user/OrderHistory';
+export { default as OrderDetail } from './user/OrderDetail';
+export { default as AddressForm } from './user/AddressForm';
+ */
 
 /* CART */
 export { default as CartTable } from './cart/CartTable';
@@ -48,22 +56,17 @@ export { default as ProductList } from './product/ProductList';
 export { default as ProductDetail } from './product/ProductDetail';
 /* export { default as ProductReview } from './product/ProductReview';
  */
-/* export { default as UserProfile } from './user/UserProfile';
-export { default as OrderHistory } from './user/OrderHistory';
-export { default as OrderDetail } from './user/OrderDetail';
-export { default as AddressForm } from './user/AddressForm';
- */
 
 export { default as SidebarCategoryStore } from './category/SidebarCategoryStore';
 export { default as CategoryListCarousel } from './category/CategoryListCarousel';
 
 /* MODAL */
-export {default as AlertModal } from './common/modals/AlertModal';
+export { default as AlertModal } from './common/modals/AlertModal';
 
 //ADMINMODAL
 
 //CHARTS
-export {default as ConversionRateChart } from './admin/charts/ConversionRateChart';
-export {default as InventoryStatusChart } from './admin/charts/InventoryStatusChart';
-export {default as MonthlySalesChart } from './admin/charts/MonthlySalesChart';
-export {default as StatisticCard } from './admin/charts/StatisticCard';
+export { default as ConversionRateChart } from './admin/charts/ConversionRateChart';
+export { default as InventoryStatusChart } from './admin/charts/InventoryStatusChart';
+export { default as MonthlySalesChart } from './admin/charts/MonthlySalesChart';
+export { default as StatisticCard } from './admin/charts/StatisticCard';
