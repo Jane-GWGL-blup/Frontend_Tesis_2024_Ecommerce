@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { Header, Footer, LoadingComponent } from '../../components';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { logout } from '../../services/AuthService';
-import { UserContext } from '../../contexts/UserContext'; // Importa el contexto
+/* import { clearCartBackend } from '../../services/CartService';
+ */import { UserContext } from '../../contexts/UserContext'; // Importa el contexto
 import { useCart } from '../../contexts/CartContext';
 
 
@@ -12,10 +13,11 @@ const StoreLayout = () => {
    // const location = useLocation();
     const navigate = useNavigate();
 
-    const handleLogout = () => {
+    const handleLogout = async () => {
+        /* await clearCartBackend(); */
         clearCart(); // Limpia el carrito antes de cerrar sesión
         setAuthenticated(false);
-        logout(); // Llama a la función de logout
+        await logout(); // Llama a la función de logout
         console.log('La función logout se está llamando');
         navigate('/'); // Redirige a la página de inicio o a la ruta que desees
     };

@@ -6,6 +6,7 @@ export const API_URLS = {
 
   AUTH_REGISTER: `${BASE_URL}/register`,
   AUTH_LOGIN:`${BASE_URL}/login`,
+  AUTH_LOGOUT:`${BASE_URL}/logout`,
   PRODUCTS: `${BASE_URL}/products`,
   //PRODUCTS_EDIT: (id) => `${BASE_URL}/products/${id}`, // Hacer que sea una función que reciba el ID
   CATEGORIES: `${BASE_URL}/categories`,

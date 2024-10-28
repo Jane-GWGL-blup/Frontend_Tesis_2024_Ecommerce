@@ -99,15 +99,6 @@ const Header = ({ onLogout, isAuthenticated, user}) => {
 
         {/* Dropdown del Carrito de Compras para pantallas pequeñas*/}
         <MiniCart /> 
-{/*         <Dropdown align="end" className="ml-2 mx-2">
-          <Dropdown.Toggle variant="success" id="dropdown-cart" className='cart-dropdown-toggle'>
-            <FontAwesomeIcon icon={faShoppingCart} size="lg" className='icon-nav-header-color' />
-            <Badge bg="warning" pill className="ml-1">#</Badge>
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            <Dropdown.Item as={Link} to="/cart">Tu carrito esta vacio</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown> */}
       </div>
 
       {/* ELEMENTOS QUE VAN A COLAPSAR - PANTALLAS PEQUEÑAS */}
@@ -186,11 +177,6 @@ const Header = ({ onLogout, isAuthenticated, user}) => {
           </Dropdown>
 
           {/* Dropdown del Carrito de Compras para pantallas grandes cartItems.length */}
-{/*           <Dropdown align="end" className="mx-3" as={Link} to="/cart">
-            <Dropdown.Toggle variant="success" id="dropdown-cart" className='cart-dropdown-toggle'>
-              <FontAwesomeIcon icon={faShoppingCart} size="lg" className='icon-nav-header-color' />
-            </Dropdown.Toggle>
-          </Dropdown> */}
           <MiniCart /> 
         </div>
         {/*Navbar donde va productos, etc pantallas pequeñas*/}

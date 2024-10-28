@@ -1,0 +1,33 @@
+@import url('../variables.css');
+
+.auth-modal {
+    --modal-background: var(--color-platinum);
+    --header-background: var(--color-sepia-brown);
+    --text-color: var(--color-dark-gray);
+    --footer-background: var(--color-light-grey)
+   
+}
+
+.modal-header {
+    background-color: var(--header-background);
+    color: var(--color-white);
+}
+
+.modal-body {
+    color: var(--text-color);
+}
+
+.modal-footer {
+    background-color: var(--footer-background);
+}
+
+.link-authmodal{
+    color: var(--color-gold);
+    background: none; /* Sin fondo */
+    border: none; /* Sin bordes */
+    padding: 0; /* Sin relleno */
+}
+
+.link-authmodal:hover{
+    background: none;
+}

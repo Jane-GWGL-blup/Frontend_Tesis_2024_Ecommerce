@@ -22,8 +22,8 @@ export const loginUser = async (userData) => {
       throw new Error("Token no recibido en la respuesta.");
     }
     // Asegúrate de que estás almacenando el token correctamente
-    /* localStorage.setItem('token', response.data.token); */
-
+/*     localStorage.setItem('token', response.data.token); 
+ */
     // Asegúrate de que estás guardando un objeto completo del usuario
     const userDataToStore = {
       id: response.data.id,
@@ -43,10 +43,15 @@ export const loginUser = async (userData) => {
 }
 
 
-export const logout = () => {
-  // Aquí puedes eliminar el token del localStorage o cualquier otro mecanismo de autenticación
-  localStorage.removeItem('token');
-  localStorage.removeItem('user');
+export const logout = async () => {
+  try {
+    await axios.post(API_URLS.AUTH_LOGOUT); // Asegúrate de que esta URL es correcta
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    localStorage.removeItem('userId');
+} catch (error) {
+    console.error("Error logging out:", error);
+}
 };
 
 // Función para verificar si el usuario es un administrador

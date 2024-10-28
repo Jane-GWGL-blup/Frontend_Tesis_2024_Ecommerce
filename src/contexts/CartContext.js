@@ -21,7 +21,6 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     //LOADCART: Espera la respuesta del API
     const loadCart = async () => {
-      setLoading(true);
       try {
         const cartData = await getUserCart(); // Llama a la API para obtener el carrito
         setCart(cartData);
@@ -29,7 +28,6 @@ export const CartProvider = ({ children }) => {
         console.error('Error loading user cart:', error);
         clearCart();
       }
-      setLoading(false);
     };
     //asegura que el carrito solo se cargue cuando el usuario haya iniciado sesión
     if (userData) {

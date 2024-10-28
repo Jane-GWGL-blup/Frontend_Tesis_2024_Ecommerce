@@ -115,7 +115,7 @@ const LoginPage = () => {
 
     } catch (error) {
       console.log("Error logging in:", error.response.data);
-      console.log('Intento de inicio de sesión:', {
+      console.log('Login attempt:', {
         email: formData.email,
       });
       // Manejar el error del login

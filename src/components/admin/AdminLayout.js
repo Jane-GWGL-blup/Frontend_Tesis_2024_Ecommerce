@@ -3,17 +3,18 @@ import { AdminHeader, AdminSidebar } from '../../components/';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { logout, isAuthenticated } from '../../services/AuthService';
 import { UserContext } from '../../contexts/UserContext'; // Importa el contexto
-
+import { useCart } from '../../contexts/CartContext';
 
 const AdminLayout = ({  children }) => {
   const { userData, authenticated, setAuthenticated } = useContext(UserContext); // Accede al contexto
   const [searchResults, setSearchResults] = useState([]);
   const navigate = useNavigate();
+  const { clearCart } = useCart();
 
-
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    clearCart(); // Limpia el carrito antes de cerrar sesión
     setAuthenticated(false);
-    logout(); // Llama a la función de logout
+    await logout(); // Llama a la función de logout
     navigate('/'); // Redirige a la página de inicio o a la ruta que desees
   };
 

@@ -39,25 +39,25 @@ function App() {
 
           {/* Rutas de administración anidadas */}
           <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<ProtectedRoute element={<AdminDashboardPage />} isAllowed={isUserAdmin} />} />
-            <Route path='dashboard' element={<ProtectedRoute element={<AdminDashboardPage />} isAllowed={isUserAdmin} />} />
-            <Route path="products" element={<ProtectedRoute element={<ManageProductPage />} isAllowed={isUserAdmin} />} />
-            <Route path="products/create" element={<ProtectedRoute element={<ProductCreatePage />} isAllowed={isUserAdmin} />} />
-            <Route path="products/edit/:id" element={<ProtectedRoute element={<ProductEditPage />} isAllowed={isUserAdmin} />} />
-            <Route path="categories" element={<ProtectedRoute element={<ManageCategoryPage />} isAllowed={isUserAdmin} />} />
-            <Route path="categories/create" element={<ProtectedRoute element={<CategoryCreatePage />} isAllowed={isUserAdmin} />} />
-            <Route path="categories/edit/:id" element={<ProtectedRoute element={<CategoryEditPage />} isAllowed={isUserAdmin} />} />
-            <Route path="users" element={<ProtectedRoute element={<ManageUserPage/>} isAllowed={isUserAdmin} />} />
-            <Route path="users/create" element={<ProtectedRoute element={<UserCreatePage/>} isAllowed={isUserAdmin} />} />
-            <Route path="orders" element={<ProtectedRoute element={<AdminManageOrdersPage/>} isAllowed={isUserAdmin} />} />
-            <Route path="orders/:id" element={<ProtectedRoute element={<AdminOrderDetailsPage/>} isAllowed={isUserAdmin} />} />
+            <Route index element={<ProtectedRoute element={<AdminDashboardPage />} isAllowed={isUserAdmin} isAdminRoute={true} isAuthenticated={isUserAuthenticated} isAdmin={isUserAdmin} />} />
+            <Route path='dashboard' element={<ProtectedRoute element={<AdminDashboardPage />} isAllowed={isUserAdmin} isAdminRoute={true} isAuthenticated={isUserAuthenticated} isAdmin={isUserAdmin} />} />
+            <Route path="products" element={<ProtectedRoute element={<ManageProductPage />} isAllowed={isUserAdmin} isAdminRoute={true} isAuthenticated={isUserAuthenticated} isAdmin={isUserAdmin} />} />
+            <Route path="products/create" element={<ProtectedRoute element={<ProductCreatePage />} isAllowed={isUserAdmin} isAdminRoute={true} isAuthenticated={isUserAuthenticated} isAdmin={isUserAdmin} />} />
+            <Route path="products/edit/:id" element={<ProtectedRoute element={<ProductEditPage />} isAllowed={isUserAdmin} isAdminRoute={true} isAuthenticated={isUserAuthenticated} isAdmin={isUserAdmin} />} />
+            <Route path="categories" element={<ProtectedRoute element={<ManageCategoryPage />} isAllowed={isUserAdmin} isAdminRoute={true} isAuthenticated={isUserAuthenticated} isAdmin={isUserAdmin} />} />
+            <Route path="categories/create" element={<ProtectedRoute element={<CategoryCreatePage />} isAllowed={isUserAdmin} isAdminRoute={true} isAuthenticated={isUserAuthenticated} isAdmin={isUserAdmin} />} />
+            <Route path="categories/edit/:id" element={<ProtectedRoute element={<CategoryEditPage />} isAllowed={isUserAdmin} isAdminRoute={true} isAuthenticated={isUserAuthenticated} isAdmin={isUserAdmin} />} />
+            <Route path="users" element={<ProtectedRoute element={<ManageUserPage/>} isAllowed={isUserAdmin} isAdminRoute={true} isAuthenticated={isUserAuthenticated} isAdmin={isUserAdmin} />} />
+            <Route path="users/create" element={<ProtectedRoute element={<UserCreatePage/>} isAllowed={isUserAdmin} isAdminRoute={true} isAuthenticated={isUserAuthenticated} isAdmin={isUserAdmin} />} />
+            <Route path="orders" element={<ProtectedRoute element={<AdminManageOrdersPage/>} isAllowed={isUserAdmin} isAdminRoute={true} isAuthenticated={isUserAuthenticated} isAdmin={isUserAdmin} />} />
+            <Route path="orders/:id" element={<ProtectedRoute element={<AdminOrderDetailsPage/>} isAllowed={isUserAdmin} isAdminRoute={true} isAuthenticated={isUserAuthenticated} isAdmin={isUserAdmin} />} />
             
-            <Route path="invoices/:id" element={<ProtectedRoute element={<InvoiceDetailsPage/>} isAllowed={isUserAdmin} />} />
-            <Route path="invoices" element={<ProtectedRoute element={<InvoiceListPage/>} isAllowed={isUserAdmin} />} />
+            <Route path="invoices/:id" element={<ProtectedRoute element={<InvoiceDetailsPage/>} isAllowed={isUserAdmin} isAdminRoute={true} isAuthenticated={isUserAuthenticated} isAdmin={isUserAdmin} />} />
+            <Route path="invoices" element={<ProtectedRoute element={<InvoiceListPage/>} isAllowed={isUserAdmin} isAdminRoute={true} isAuthenticated={isUserAuthenticated} isAdmin={isUserAdmin} />} />
             {/* Rutas para la gestión de descuentos */}
-            <Route path="discounts" element={<ProtectedRoute element={<AdminManageDiscountsPage/>} isAllowed={isUserAdmin} />} />
-            <Route path="discounts/create" element={<ProtectedRoute element={<AdminCreateDiscountPage/>} isAllowed={isUserAdmin} />} />
-            <Route path="discounts/edit/:id" element={<ProtectedRoute element={<DiscountEditPage/>} isAllowed={isUserAdmin} />} />
+            <Route path="discounts" element={<ProtectedRoute element={<AdminManageDiscountsPage/>} isAllowed={isUserAdmin} isAdminRoute={true} isAuthenticated={isUserAuthenticated} isAdmin={isUserAdmin} />} />
+            <Route path="discounts/create" element={<ProtectedRoute element={<AdminCreateDiscountPage/>} isAllowed={isUserAdmin} isAdminRoute={true} isAuthenticated={isUserAuthenticated} isAdmin={isUserAdmin} />} />
+            <Route path="discounts/edit/:id" element={<ProtectedRoute element={<DiscountEditPage/>} isAllowed={isUserAdmin} isAdminRoute={true} isAuthenticated={isUserAuthenticated} isAdmin={isUserAdmin} />} />
 
           </Route>
 
@@ -71,7 +71,8 @@ function App() {
             <Route path="products" element={<ProductListPage />} />
             <Route path="products/detail/:productName" element={<ProductDetailPage />} />
             <Route path="cart" element={<CartPage />} />
-            {/* Rutas de usuario normal protegidas que se usaran despues*/}
+{/*             <Route path="cart" element={<ProtectedRoute element={<CartPage />} isAllowed={isUserAuthenticated} />} />
+ */}            {/* Rutas de usuario normal protegidas que se usaran despues*/}
             <Route path="profile" element={<ProtectedRoute element={<UserProfilePage />} isAllowed={isUserAuthenticated} />} />
             {/* <Route path="profile" element={<ProtectedRoute element={<UserProfilePage />} isAllowed={isUserAuthenticated} />} />
           <Route path="orders" element={<ProtectedRoute element={<OrderHistoryPage />} isAllowed={isUserAuthenticated} />} />

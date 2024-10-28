@@ -62,7 +62,8 @@ export { default as CategoryListCarousel } from './category/CategoryListCarousel
 
 /* MODAL */
 export { default as AlertModal } from './common/modals/AlertModal';
-
+export { default as AuthModal} from './common/modals/AuthModal';
+ 
 //ADMINMODAL
 
 //CHARTS
